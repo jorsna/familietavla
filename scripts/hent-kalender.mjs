@@ -15,7 +15,8 @@ import { writeFile, mkdir } from 'node:fs/promises';
 
 /* ── Innstillinger ─────────────────────────────────────────── */
 
-const DAGER_FRAM = 14;                 // detaljert program på tavla
+const DAGER_FRAM = 14;                 // fullt detaljert program, rutiner og alt
+const PLAN_DAGER = 42;                 // seks uker fram, men bare det som skiller seg ut
 const VID_VINDU = 180;                 // hvor langt fram vi leter etter stengte dager
 const TIDSSONE = 'Europe/Oslo';
 
@@ -137,6 +138,7 @@ async function main() {
   const naa = new Date();
   const fra = new Date(naa.getFullYear(), naa.getMonth(), naa.getDate());
   const til = new Date(fra.getTime() + DAGER_FRAM * 86400000);
+  const tilPlan = new Date(fra.getTime() + PLAN_DAGER * 86400000);
   const tilVid = new Date(fra.getTime() + VID_VINDU * 86400000);
 
   const raa = [];
@@ -175,10 +177,15 @@ async function main() {
           stengteDager.push({ dato, tittel, barn });
         }
 
-        // Detaljert program bare for de nærmeste dagene
-        if (forekomst.start >= til) continue;
+        /* De første to ukene tas med i sin helhet. Videre fram
+           beholdes bare det som skiller dagene fra hverandre —
+           ukesvisningen filtrerer likevel bort rutinene, og filen
+           blir fem ganger mindre. */
+        if (forekomst.start >= tilPlan) continue;
+        const kunHovedpunkt = forekomst.start >= til;
 
         raa.push({
+          kunHovedpunkt,
           feedtype: feed.type,
           barn,
           dato,
@@ -252,6 +259,9 @@ async function main() {
         post.type = 'spesiell';
       }
     }
+
+    // Utenfor detaljvinduet: bare det som er verdt å planlegge etter
+    if (p.kunHovedpunkt && (post.type === 'rutine' || post.type === 'mat')) continue;
 
     if (!dager[p.dato]) dager[p.dato] = [];
     dager[p.dato].push(post);
