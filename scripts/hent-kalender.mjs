@@ -15,7 +15,8 @@ import { writeFile, mkdir } from 'node:fs/promises';
 
 /* ── Innstillinger ─────────────────────────────────────────── */
 
-const DAGER_FRAM = 14;
+const DAGER_FRAM = 14;                 // detaljert program på tavla
+const VID_VINDU = 180;                 // hvor langt fram vi leter etter stengte dager
 const TIDSSONE = 'Europe/Oslo';
 
 const FEEDER = [
@@ -136,8 +137,10 @@ async function main() {
   const naa = new Date();
   const fra = new Date(naa.getFullYear(), naa.getMonth(), naa.getDate());
   const til = new Date(fra.getTime() + DAGER_FRAM * 86400000);
+  const tilVid = new Date(fra.getTime() + VID_VINDU * 86400000);
 
   const raa = [];
+  const stengteDager = [];
 
   for (const feed of FEEDER) {
     let data;
@@ -153,22 +156,32 @@ async function main() {
       if (ev.status === 'CANCELLED') continue;
       if (skalIgnoreres(ev.summary)) continue;
 
-      for (const forekomst of pakkUt(ev, fra, til)) {
+      for (const forekomst of pakkUt(ev, fra, tilVid)) {
         const kilde = forekomst.overstyrt || ev;
         const tittel = ryddTittel(kilde.summary);
         if (!tittel) continue;
 
         const sted = ryddSted(kilde.location);
+        const dato = tilDato(forekomst.start);
 
-        // MyKid: barnet står i stedsfeltet, og feltet er ikke et sted
         const barn = feed.type === 'mykid'
           ? (finnBarn(sted) || feed.navn)
           : (finnBarn(kilde.summary) || 'familie');
 
+        /* Stengte dager samles for hele halvåret. Å oppdage en
+           planleggingsdag samme morgen er den dyreste feilen tavla
+           kan la gå gjennom. */
+        if (feed.type === 'mykid' && erStengt(tittel)) {
+          stengteDager.push({ dato, tittel, barn });
+        }
+
+        // Detaljert program bare for de nærmeste dagene
+        if (forekomst.start >= til) continue;
+
         raa.push({
           feedtype: feed.type,
           barn,
-          dato: tilDato(forekomst.start),
+          dato,
           tittel,
           sted: feed.type === 'mykid' ? '' : sted,
           heldags: erHeldags(kilde),
@@ -202,6 +215,20 @@ async function main() {
   const dager = {};
 
   for (const p of unike) {
+    /* "Husk: gymtøy" i kalenderen havner i huskelinja nederst,
+       ikke i tidslinja. Da kan begge foreldre legge inn en
+       påminnelse fra mobilen uten å røre noen fil. */
+    if (/^husk\b/i.test(p.tittel)) {
+      if (!dager[p.dato]) dager[p.dato] = [];
+      dager[p.dato].push({
+        barn: p.barn,
+        tittel: p.tittel.replace(/^husk\s*[:\-–]?\s*/i, '').trim() || p.tittel,
+        type: 'husk',
+        kilde: 'kalender'
+      });
+      continue;
+    }
+
     const post = {
       barn: p.barn,
       tittel: p.tittel,
@@ -243,9 +270,21 @@ async function main() {
     JSON.stringify({ generert: naa.toISOString(), dager }, null, 2)
   );
 
+  // Stengte dager: én oppføring per dato, sortert
+  const settDato = new Set();
+  const stengt = stengteDager
+    .filter(s => { if (settDato.has(s.dato)) return false; settDato.add(s.dato); return true; })
+    .sort((a, b) => a.dato.localeCompare(b.dato));
+
+  await writeFile(
+    'data/stengt.json',
+    JSON.stringify({ generert: naa.toISOString(), dager: stengt }, null, 2)
+  );
+
   const antall = Object.values(dager).reduce((n, d) => n + d.length, 0);
   console.log(`Skrev ${antall} hendelser fordelt på ${Object.keys(dager).length} dager.`);
   console.log(`Fjernet ${raa.length - unike.length} duplikater.`);
+  console.log(`Fant ${stengt.length} stengte dager de neste ${VID_VINDU} dagene.`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
