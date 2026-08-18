@@ -17,30 +17,39 @@
    ══════════════════════════════════════════════════════════ */
 
 const CONFIG = {
+  /* vaersted peker inn i CONFIG.steder under.
+     Sofia er på skolen, de to andre i barnehagen. */
   barn: [
-    { id: 'sofia',     navn: 'Sofia',     farge: '#F0A93C', undertekst: '2C · AKS' },
-    { id: 'sebastian', navn: 'Sebastian', farge: '#E8674A', undertekst: 'Barnehage' },
-    { id: 'ellie',     navn: 'Ellie',     farge: '#3FB8A5', undertekst: 'Småbarn' }
+    { id: 'sofia',     navn: 'Sofia',     farge: '#F0A93C', undertekst: '2C · AKS',   vaersted: 1 },
+    { id: 'sebastian', navn: 'Sebastian', farge: '#E8674A', undertekst: 'Barnehage',  vaersted: 0 },
+    { id: 'ellie',     navn: 'Ellie',     farge: '#3FB8A5', undertekst: 'Småbarn',    vaersted: 0 }
   ],
   familie: { navn: 'Familien', farge: '#9C8CE0' },
 
-  dagStart: 7.5,
+  dagStart: 7,
   dagSlutt: 18.5,
 
-  // Når AKS-aktivitetene ligger. Juster til faktiske tider.
   aksTider: [['14:00', '15:00'], ['15:15', '16:15']],
 
-  sted: { navn: 'Oslo', lat: 59.913, lon: 10.752 },
+  /* Værsteder. Første er hovedstedet og styrer sammendraget øverst.
+     Barnehagen ligger på Voksentoppen, rundt 400 moh — merkbart
+     kaldere enn skolen, særlig på grensen mellom regn og snø. */
+  steder: [
+    { navn: 'Barnehagen', kort: 'BHG',   lat: 59.9773, lon: 10.6652 },
+    { navn: 'Skolen',     kort: 'SKOLE', lat: 59.9675, lon: 10.6474 }
+  ],
+
+  // Etter dette klokkeslettet åpner tavla på morgendagen
+  morgendagFra: 18,
+
   nattFra: 21,
   nattTil: 6,
-  dataIntervallMin: 10,
-  supabase: { url: '', anonKey: '' }
+  dataIntervallMin: 10
 };
 
 
 /* ══════════════════════════════════════════════════════════
-   2. RAMMER — når de er der. Endres sjelden.
-      ukedag: 1 = mandag ... 5 = fredag
+   2. RAMMER
    ══════════════════════════════════════════════════════════ */
 
 const skoledag = [
@@ -57,40 +66,34 @@ const RAMMER = {
 
 
 /* ══════════════════════════════════════════════════════════
-   3. TIMEPLAN 2C — like fag etter hverandre er slått sammen.
-      viktig: true løfter fram det som krever noe hjemmefra.
+   3. TIMEPLAN 2C
    ══════════════════════════════════════════════════════════ */
 
 const FAGPLAN = {
   sofia: {
-    // Mandag
     1: [
       { start: '08:30', slutt: '09:30', tittel: 'Norsk' },
       { start: '09:45', slutt: '11:15', tittel: 'Matematikk' },
       { start: '12:00', slutt: '13:00', tittel: 'KRLE', sted: 'Amanda' },
       { start: '13:00', slutt: '13:30', tittel: 'Musikk' }
     ],
-    // Tirsdag
     2: [
       { start: '08:30', slutt: '09:30', tittel: 'Matematikk' },
       { start: '09:45', slutt: '11:15', tittel: 'Norsk' },
       { start: '12:00', slutt: '12:30', tittel: 'Engelsk' },
       { start: '12:30', slutt: '13:30', tittel: 'Samfunnsfag' }
     ],
-    // Onsdag
     3: [
       { start: '08:30', slutt: '09:30', tittel: 'Norsk' },
       { start: '09:45', slutt: '11:15', tittel: 'Gym', sted: 'Brede', viktig: true },
       { start: '12:00', slutt: '12:30', tittel: 'Norsk' },
       { start: '12:30', slutt: '13:30', tittel: 'Musikk' }
     ],
-    // Torsdag
     4: [
       { start: '08:30', slutt: '09:30', tittel: 'Matematikk' },
       { start: '09:45', slutt: '11:15', tittel: 'Norsk' },
       { start: '12:00', slutt: '13:30', tittel: 'Naturfag' }
     ],
-    // Fredag
     5: [
       { start: '08:30', slutt: '09:00', tittel: 'Engelsk' },
       { start: '09:00', slutt: '09:30', tittel: 'Klassens time' },
@@ -102,9 +105,7 @@ const FAGPLAN = {
 
 
 /* ══════════════════════════════════════════════════════════
-   4. AKS — ny plan hver uke.
-      Legg inn neste uke som et nytt ukenummer. Tavla velger
-      riktig uke selv, så du trenger ikke slette den gamle.
+   4. AKS — ny plan hver uke, nøklet på ukenummer
    ══════════════════════════════════════════════════════════ */
 
 const AKS = {
@@ -127,37 +128,34 @@ const AKS = {
 
 
 /* ══════════════════════════════════════════════════════════
-   5. RUTINER — det som skjer likt hver dag.
+   5. RUTINER
+      Barnehagen kommer fra MyKid. Sofias friminutt står her.
    ══════════════════════════════════════════════════════════ */
 
 const RUTINER = {
   sofia: [
-    { start: '09:30', slutt: '09:45', tittel: 'Lillefri',  type: 'rutine' },
-    { start: '11:15', slutt: '11:30', tittel: 'Matpakke',  type: 'mat' },
-    { start: '11:30', slutt: '12:00', tittel: 'Storefri',  type: 'rutine' }
+    { start: '09:30', slutt: '09:45', tittel: 'Lillefri', type: 'rutine' },
+    { start: '11:15', slutt: '11:30', tittel: 'Matpakke', type: 'mat' },
+    { start: '11:30', slutt: '12:00', tittel: 'Storefri', type: 'rutine' }
   ],
-  // Barnehagerutinene kommer nå fra MyKid-feeden.
-  // Hold disse tomme, ellers får du hver post to ganger.
   sebastian: [],
   ellie: []
 };
 
 
 /* ══════════════════════════════════════════════════════════
-   6. DAGENS INNHOLD — fylles av MyKid, ukeplan og kalender.
-      Alt her overstyrer rutinene.
+   6. MANUELLE TILLEGG
+      Ting som ikke finnes i noen kalender. Normalt tomt.
+      Datoformat: 'ÅÅÅÅ-MM-DD'
    ══════════════════════════════════════════════════════════ */
 
-const TESTDATA = {
+const MANUELT = {
   hendelser: [
-    { barn: 'familie', start: '16:45', slutt: '17:30', tittel: 'Middag: taco',
-      type: 'mat', kilde: 'manuell' }
+    // { dato: '2026-08-19', barn: 'familie', start: '17:00', slutt: '18:00',
+    //   tittel: 'Middag: taco', type: 'mat' }
   ],
-
-  heldags: [],
-
   husk: [
-    { barn: 'familie', tekst: 'Søppel ut i kveld' }
+    // { dato: '2026-08-19', barn: 'sofia', tekst: 'Gymtøy' }
   ]
 };
 </script>
@@ -172,6 +170,7 @@ const TESTDATA = {
   --tekst-dus: #7E8EA6;
   --naa:       #FF5E6C;
   --mat:       #C9A227;
+  --regn:      #4B8FD6;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -196,40 +195,53 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 /* ── Topplinje ── */
 
 .topp {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 22px; padding: 15px 24px 12px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; padding: 13px 22px 11px; border-bottom: 1px solid var(--line);
 }
-.dato { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
-.dato .dag {
+.venstre { display: flex; align-items: baseline; gap: 11px; min-width: 0; }
+.dag {
   font-family: 'Anton', Impact, sans-serif;
-  font-size: clamp(24px, 3.6vw, 38px);
+  font-size: clamp(22px, 3.2vw, 34px);
   text-transform: uppercase; letter-spacing: 0.02em; line-height: 1;
 }
-.dato .rest {
+.datorest {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(13px, 1.7vw, 18px); font-weight: 500;
+  font-size: clamp(12px, 1.5vw, 16px); font-weight: 500;
   color: var(--tekst-dus); text-transform: uppercase;
   letter-spacing: 0.09em; white-space: nowrap;
 }
-.hoyre { display: flex; align-items: baseline; gap: 22px; }
-.vaer {
-  display: flex; align-items: baseline; gap: 8px;
+
+.dagvalg { display: flex; gap: 3px; background: var(--panel); border-radius: 5px; padding: 3px; }
+.dagvalg button {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(13px, 1.7vw, 18px); font-weight: 500;
+  font-size: 12.5px; font-weight: 600; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--tekst-dus);
+  background: transparent; border: none; border-radius: 3px;
+  padding: 5px 12px; cursor: pointer;
+}
+.dagvalg button.aktiv { background: var(--line); color: var(--tekst); }
+
+.hoyre { display: flex; align-items: center; gap: 18px; }
+.vaertopp {
+  display: flex; align-items: baseline; gap: 9px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(12px, 1.5vw, 16px); font-weight: 500;
   color: var(--tekst-dus); text-transform: uppercase;
   letter-spacing: 0.06em; white-space: nowrap;
 }
-.vaer .grader { color: var(--tekst); font-size: 1.35em; }
+.vaertopp .grader { color: var(--tekst); font-size: 1.4em; }
+.vaertopp .vaat { color: var(--regn); }
 .klokke {
   font-family: 'Anton', Impact, sans-serif;
-  font-size: clamp(26px, 3.8vw, 40px);
+  font-size: clamp(24px, 3.4vw, 36px);
   line-height: 1; font-variant-numeric: tabular-nums;
 }
 
 /* ── Rutenett ── */
 
 .rutenett {
-  display: grid; grid-template-columns: 50px repeat(var(--kolonner), 1fr);
+  display: grid;
+  grid-template-columns: 48px 92px repeat(var(--kolonner), 1fr);
   overflow: hidden; position: relative;
 }
 .kol {
@@ -239,22 +251,32 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 }
 .kol:last-child { border-right: none; }
 
-.kol-topp { padding: 10px 11px 8px; border-bottom: 1px solid var(--line); }
+.kol-topp { padding: 9px 10px 7px; border-bottom: 1px solid var(--line); }
 .kol-navn {
   font-family: 'Anton', Impact, sans-serif;
-  font-size: clamp(15px, 1.9vw, 22px);
+  font-size: clamp(14px, 1.8vw, 21px);
   text-transform: uppercase; letter-spacing: 0.03em;
   line-height: 1; color: var(--f);
 }
 .kol-under {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.13em;
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.13em;
   text-transform: uppercase; color: var(--tekst-dus); margin-top: 4px;
 }
+.kol-vaer {
+  display: flex; align-items: baseline; gap: 7px; margin-top: 5px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.kol-vaer .kv-sted { color: var(--tekst-dus); opacity: 0.75; }
+.kol-vaer .kv-temp { color: var(--tekst); font-size: 13px; font-variant-numeric: tabular-nums; }
+.kol-vaer .kv-vaat { color: var(--regn); }
+
 .heldags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .heldags span {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em;
   text-transform: uppercase; padding: 3px 7px; border-radius: 3px;
   background: color-mix(in srgb, var(--f) 22%, transparent); color: var(--f);
 }
@@ -266,16 +288,54 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 .akse { position: relative; }
 .akse .time {
   position: absolute; left: 0; right: 0; transform: translateY(-50%);
-  padding-right: 8px; text-align: right;
+  padding-right: 7px; text-align: right;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11.5px; font-weight: 500; color: var(--tekst-dus);
+  font-size: 11px; font-weight: 500; color: var(--tekst-dus);
   font-variant-numeric: tabular-nums;
 }
 
 .spor { position: relative; overflow: hidden; }
 .strek { position: absolute; left: 0; right: 0; height: 1px; background: var(--line-svak); }
 
-/* ── Ramme ── */
+/* ── Værkolonnen ── */
+
+.vaerkol .kol-topp { padding: 9px 8px 7px; }
+.vaerkol .kol-navn { color: var(--tekst-dus); font-size: clamp(12px, 1.5vw, 16px); }
+.vaer-merker {
+  display: flex; justify-content: space-between; margin-top: 5px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9.5px; font-weight: 600; letter-spacing: 0.09em;
+  color: var(--tekst-dus);
+}
+
+.vaertime {
+  position: absolute; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--line-svak);
+}
+.vaertime .vaat-fyll {
+  position: absolute; left: 0; bottom: 0; right: 0;
+  background: var(--regn); pointer-events: none;
+}
+.vt-a, .vt-b {
+  position: relative;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.vt-a { font-size: clamp(13px, 1.5vw, 17px); font-weight: 600; }
+.vt-b {
+  font-size: clamp(11px, 1.2vw, 13.5px); font-weight: 500;
+  color: var(--tekst-dus);
+}
+.vt-mm {
+  position: absolute; left: 8px; bottom: 2px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9.5px; font-weight: 600; letter-spacing: 0.06em;
+  color: #BBD8F5;
+}
+
+/* ── Poster ── */
 
 .ramme {
   position: absolute; left: 3px; right: 3px; border-radius: 6px;
@@ -286,12 +346,10 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 .ramme .r-navn {
   position: absolute; top: 3px; left: 8px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--f) 70%, var(--tekst-dus));
 }
-
-/* ── Poster ── */
 
 .post {
   position: absolute; left: 9px; right: 7px; z-index: 5;
@@ -299,19 +357,19 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   display: flex; flex-direction: column; justify-content: center;
 }
 .p-tittel {
-  font-size: clamp(12.5px, 1.45vw, 17px);
+  font-size: clamp(12px, 1.4vw, 16.5px);
   font-weight: 600; line-height: 1.12; letter-spacing: -0.01em;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .p-meta {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.07em;
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.07em;
   text-transform: uppercase; color: var(--tekst-dus); margin-top: 2px;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .post.smal { flex-direction: row; align-items: center; gap: 6px; padding: 1px 8px; }
 .post.smal .p-meta { margin-top: 0; }
-.post.smal .p-tittel { font-size: clamp(11.5px, 1.25vw, 14px); }
+.post.smal .p-tittel { font-size: clamp(11px, 1.2vw, 13.5px); }
 
 .post.okt {
   background: color-mix(in srgb, var(--f) 15%, var(--panel));
@@ -333,7 +391,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   z-index: 6;
 }
 .post.spesiell .p-tittel {
-  font-weight: 700; font-size: clamp(13.5px, 1.6vw, 19px); white-space: normal;
+  font-weight: 700; font-size: clamp(13px, 1.55vw, 18px); white-space: normal;
 }
 .post.spesiell .p-meta { color: color-mix(in srgb, var(--f) 75%, var(--tekst)); }
 
@@ -351,12 +409,12 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 
 .naa-linje { position: absolute; left: 0; right: 0; height: 0; pointer-events: none; z-index: 30; }
 .naa-linje .bjelke {
-  position: absolute; left: 50px; right: 0; height: 1.5px;
+  position: absolute; left: 48px; right: 0; height: 1.5px;
   background: linear-gradient(90deg, var(--naa) 0%, color-mix(in srgb, var(--naa) 50%, transparent) 100%);
   transform: translateY(-50%);
 }
 .naa-linje .kule {
-  position: absolute; left: 50px; width: 10px; height: 10px; margin-left: -5px;
+  position: absolute; left: 48px; width: 10px; height: 10px; margin-left: -5px;
   border-radius: 50%; background: var(--naa); transform: translateY(-50%);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--naa) 20%, transparent);
   animation: puls 3.4s ease-in-out infinite;
@@ -366,10 +424,10 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   50%     { box-shadow: 0 0 0 9px color-mix(in srgb, var(--naa) 5%, transparent); }
 }
 .naa-linje .etikett {
-  position: absolute; left: 0; width: 50px; transform: translateY(-50%);
-  padding-right: 8px; text-align: right;
+  position: absolute; left: 0; width: 48px; transform: translateY(-50%);
+  padding-right: 7px; text-align: right;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11.5px; font-weight: 600; color: var(--naa);
+  font-size: 11px; font-weight: 600; color: var(--naa);
   font-variant-numeric: tabular-nums;
 }
 @media (prefers-reduced-motion: reduce) { .naa-linje .kule { animation: none; } }
@@ -378,50 +436,125 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 
 .husk {
   display: flex; align-items: center; gap: 18px;
-  padding: 11px 24px; border-top: 1px solid var(--line);
-  background: var(--panel); min-height: 54px;
+  padding: 10px 22px; border-top: 1px solid var(--line);
+  background: var(--panel); min-height: 52px;
 }
 .husk-merkelapp {
   font-family: 'Anton', Impact, sans-serif;
-  font-size: 13.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--tekst-dus); flex-shrink: 0;
 }
-.husk-liste { display: flex; flex-wrap: wrap; gap: 7px 18px; align-items: center; min-width: 0; }
-.husk-post { display: flex; align-items: center; gap: 8px; font-size: clamp(13.5px, 1.55vw, 18px); font-weight: 500; }
+.husk-liste { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; min-width: 0; }
+.husk-post { display: flex; align-items: center; gap: 7px; font-size: clamp(13px, 1.5vw, 17px); font-weight: 500; }
 .husk-post i { width: 8px; height: 8px; border-radius: 50%; background: var(--f); flex-shrink: 0; }
-.husk-tom { color: var(--tekst-dus); font-size: 16px; }
+.husk-post.ai i { background: transparent; box-shadow: inset 0 0 0 2px var(--f); }
+.husk-tom { color: var(--tekst-dus); font-size: 15px; }
 
-.status { position: fixed; right: 8px; bottom: 7px; width: 5px; height: 5px; border-radius: 50%; background: #3FB8A5; opacity: 0.3; z-index: 50; }
+.status { position: fixed; right: 7px; bottom: 6px; width: 5px; height: 5px; border-radius: 50%; background: #3FB8A5; opacity: 0.3; z-index: 50; }
 .status.feil { background: var(--naa); opacity: 0.8; }
 
 .helg-melding {
-  grid-column: 1 / -1; display: flex; flex-direction: column;
+  grid-column: 3 / -1; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 10px; color: var(--tekst-dus);
 }
 .helg-melding strong {
-  font-family: 'Anton', Impact, sans-serif; font-size: 38px;
+  font-family: 'Anton', Impact, sans-serif; font-size: 36px;
   color: var(--tekst); text-transform: uppercase; letter-spacing: 0.03em;
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   SMAL SKJERM — telefon og iPad i portrett
+   Samme kolonner som på storskjerm, men med lesbar bredde.
+   Tidsaksen låses til venstre, resten sveiper du bortover.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 899px) {
+  .topp { flex-wrap: wrap; gap: 8px; padding: 10px 14px 8px; }
+  .venstre { order: 1; }
+  .hoyre { order: 2; margin-left: auto; gap: 12px; }
+  .dagvalg { order: 3; width: 100%; }
+  .dagvalg button { flex: 1; padding: 7px 0; }
+
+  .dag { font-size: 22px; }
+  .datorest { font-size: 12px; }
+  .klokke { font-size: 24px; }
+  .vaertopp { font-size: 12px; gap: 7px; }
+
+  .rutenett {
+    grid-template-columns: 44px 78px repeat(var(--kolonner), minmax(150px, 1fr));
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rutenett::-webkit-scrollbar { display: none; }
+
+  /* Tidsaksen blir stående mens resten sveipes */
+  .rutenett > .kol:first-child {
+    position: sticky; left: 0; z-index: 20;
+    background: var(--ink);
+    border-right: 1px solid var(--line);
+  }
+  .rutenett > .kol:not(:first-child) { scroll-snap-align: start; }
+
+  .kol-navn { font-size: 16px; }
+  .kol-under { font-size: 10px; letter-spacing: 0.1em; }
+  .heldags span { font-size: 10px; }
+
+  .p-tittel { font-size: 14px; }
+  .post.spesiell .p-tittel { font-size: 15px; }
+  .p-meta { font-size: 10.5px; }
+  .post.smal .p-tittel { font-size: 12.5px; }
+
+  .vt-a { font-size: 14px; }
+  .vt-b { font-size: 11.5px; }
+
+  .naa-linje .bjelke, .naa-linje .kule { left: 44px; }
+  .naa-linje .etikett { width: 44px; font-size: 10.5px; }
+
+  .husk { padding: 10px 14px; min-height: 46px; }
+  .husk-merkelapp { font-size: 12px; }
+  .husk-post { font-size: 14px; }
+}
+
+.varsel {
+  position: fixed; left: 50%; bottom: 62px; transform: translateX(-50%);
+  z-index: 60; max-width: 92vw;
+  background: color-mix(in srgb, var(--naa) 22%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--naa) 45%, transparent);
+  border-radius: 6px; padding: 9px 15px;
+  font-size: 14px; font-weight: 500; text-align: center;
+  color: #FFD9DD;
+}
+.varsel[hidden] { display: none; }
 </style>
 </head>
 
 <body>
 <div class="tavle">
   <header class="topp">
-    <div class="dato">
+    <div class="venstre">
       <span class="dag" id="ukedag">—</span>
-      <span class="rest" id="datorest">—</span>
+      <span class="datorest" id="datorest">—</span>
     </div>
+
+    <div class="dagvalg">
+      <button id="knappIdag" class="aktiv">I dag</button>
+      <button id="knappImorgen">I morgen</button>
+    </div>
+
     <div class="hoyre">
-      <div class="vaer" id="vaer"><span>Henter vær</span></div>
+      <div class="vaertopp" id="vaertopp"><span>Henter vær</span></div>
       <div class="klokke" id="klokke">--:--</div>
     </div>
   </header>
 
   <main class="rutenett" id="rutenett"></main>
+  <div class="varsel" id="varsel" hidden></div>
 
   <footer class="husk">
-    <span class="husk-merkelapp">Husk i dag</span>
+    <span class="husk-merkelapp" id="husklapp">Husk i dag</span>
     <div class="husk-liste" id="husk"></div>
   </footer>
 </div>
@@ -443,6 +576,10 @@ const naaDesimal = () => { const n = new Date(); return n.getHours() + n.getMinu
 const overlapper = (a, b) =>
   tilDesimal(a.start) < tilDesimal(b.slutt) && tilDesimal(b.start) < tilDesimal(a.slutt);
 
+const datoNoekkel = d => `${d.getFullYear()}-`
+  + `${String(d.getMonth() + 1).padStart(2, '0')}-`
+  + `${String(d.getDate()).padStart(2, '0')}`;
+
 function ukenummer(d) {
   const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
   const dag = t.getUTCDay() || 7;
@@ -451,40 +588,58 @@ function ukenummer(d) {
   return Math.ceil(((t - start) / 86400000 + 1) / 7);
 }
 
+/* Hvilken dag vises: 0 = i dag, 1 = i morgen */
+let dagOffset = new Date().getHours() >= CONFIG.morgendagFra ? 1 : 0;
+
+const valgtDato = () => {
+  const d = new Date();
+  d.setDate(d.getDate() + dagOffset);
+  return d;
+};
+
 
 /* ══════════════════════════════════════════════════════════
    DATAKILDE
    ══════════════════════════════════════════════════════════ */
 
-async function hentData() {
-  const idag = new Date();
-  const ukedag = idag.getDay();
-  const uke = ukenummer(idag);
-  const alleBarn = [...CONFIG.barn.map(b => b.id), 'familie'];
+let kalenderFil = null;
+let paaminnelserFil = null;
+let kalenderFeil = null;
 
-  // Henter kalenderdata generert av GitHub Actions.
-  // Feiler den, faller tavla tilbake på testdataene uten å kræsje.
-  let fraKalender = [];
-  let heldagsKalender = [];
-
+async function hentKalenderfil() {
   try {
     const svar = await fetch('data/kalender.json?v=' + Date.now());
-    if (svar.ok) {
-      const fil = await svar.json();
-      const noekkel = `${idag.getFullYear()}-`
-        + `${String(idag.getMonth() + 1).padStart(2, '0')}-`
-        + `${String(idag.getDate()).padStart(2, '0')}`;
-      const idagsPoster = fil.dager?.[noekkel] || [];
-      fraKalender     = idagsPoster.filter(p => !p.heldags);
-      heldagsKalender = idagsPoster.filter(p =>  p.heldags);
-    }
+    if (svar.ok) { kalenderFil = await svar.json(); kalenderFeil = null; }
+    else kalenderFeil = `Fant ikke data/kalender.json (${svar.status})`;
   } catch (e) {
-    console.warn('Ingen kalenderdata tilgjengelig ennå.', e);
+    kalenderFeil = location.protocol === 'file:'
+      ? 'Åpne tavla via nettadressen, ikke som lokal fil'
+      : 'Får ikke kontakt med data/kalender.json';
   }
+  try {
+    const svar = await fetch('data/paaminnelser.json?v=' + Date.now());
+    if (svar.ok) paaminnelserFil = await svar.json();
+  } catch (e) {
+    /* påminnelser er valgfritt */
+  }
+}
 
-  const dagens  = [...TESTDATA.hendelser, ...fraKalender];
-  const heldags = [...TESTDATA.heldags, ...heldagsKalender];
-  const husk    = [...TESTDATA.husk];
+function byggDag() {
+  const dato = valgtDato();
+  const noekkel = datoNoekkel(dato);
+  const ukedag = dato.getDay();
+  const uke = ukenummer(dato);
+  const alleBarn = [...CONFIG.barn.map(b => b.id), 'familie'];
+
+  const fraFil = kalenderFil?.dager?.[noekkel] || [];
+  const manuelle = MANUELT.hendelser.filter(h => h.dato === noekkel);
+
+  const dagens  = [...fraFil.filter(p => !p.heldags), ...manuelle];
+  const heldags = fraFil.filter(p => p.heldags);
+  const husk    = [
+    ...MANUELT.husk.filter(h => h.dato === noekkel),
+    ...(paaminnelserFil?.dager?.[noekkel]?.paaminnelser || [])
+  ];
 
   const rammer = [];
   let poster = [];
@@ -495,7 +650,6 @@ async function hentData() {
     const fag = (FAGPLAN[id]?.[ukedag] || [])
       .map(f => ({ ...f, type: f.viktig ? 'spesiell' : 'okt' }));
 
-    // AKS-aktiviteter for gjeldende uke
     const aksIdag = (id === 'sofia' ? (AKS[uke]?.[ukedag] || []) : [])
       .filter(Boolean)
       .map((tittel, i) => ({
@@ -507,7 +661,7 @@ async function hentData() {
       .filter(a => a.start);
 
     const faste = [...fag, ...aksIdag, ...(RUTINER[id] || [])]
-      .map(p => ({ ...p, barn: id, kilde: p.kilde || 'fast' }));
+      .map(p => ({ ...p, barn: id, kilde: 'fast' }));
 
     const dagensForBarn = dagens.filter(d => d.barn === id);
     const beholdt = faste.filter(f => !dagensForBarn.some(d => overlapper(f, d)));
@@ -515,12 +669,159 @@ async function hentData() {
     poster = poster.concat(beholdt, dagensForBarn);
   });
 
-  // Gym krever gymtøy — legges automatisk i huskelinja
   poster.filter(p => p.tittel === 'Gym').forEach(p => {
     if (!husk.some(h => h.tekst === 'Gymtøy')) husk.unshift({ barn: p.barn, tekst: 'Gymtøy' });
   });
 
-  return { rammer, poster, heldags, husk, uke };
+  return { rammer, poster, heldags, husk, dato, noekkel };
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   VÆR — Open-Meteo, to steder i ett kall
+   ══════════════════════════════════════════════════════════ */
+
+const VAERKODER = {
+  0:'Klart',1:'Lettskyet',2:'Delvis skyet',3:'Skyet',45:'Tåke',48:'Tåke',
+  51:'Yr',53:'Yr',55:'Yr',61:'Regn',63:'Regn',65:'Kraftig regn',
+  66:'Sludd',67:'Sludd',71:'Snø',73:'Snø',75:'Mye snø',77:'Snø',
+  80:'Regnbyger',81:'Regnbyger',82:'Kraftige byger',85:'Snøbyger',86:'Snøbyger',
+  95:'Torden',96:'Torden',99:'Torden'
+};
+
+let vaerData = null;
+
+async function hentVaer() {
+  const lat = CONFIG.steder.map(s => s.lat).join(',');
+  const lon = CONFIG.steder.map(s => s.lon).join(',');
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}`
+    + `&current=temperature_2m,weather_code`
+    + `&hourly=temperature_2m,precipitation,precipitation_probability,weather_code`
+    + `&timezone=Europe%2FOslo&forecast_days=3`;
+
+  try {
+    const svar = await (await fetch(url)).json();
+    const liste = Array.isArray(svar) ? svar : [svar];
+
+    vaerData = liste.map((d, i) => ({
+      sted: CONFIG.steder[i],
+      naa: d.current,
+      timer: d.hourly.time.map((t, j) => ({
+        tid: t,
+        temp: d.hourly.temperature_2m[j],
+        mm: d.hourly.precipitation[j],
+        sannsyn: d.hourly.precipitation_probability[j],
+        kode: d.hourly.weather_code[j]
+      }))
+    }));
+  } catch (e) {
+    console.warn('Klarte ikke hente vær.', e);
+    vaerData = null;
+  }
+  tegnVaertopp();
+}
+
+const timerForDag = (sted, noekkel) =>
+  (sted?.timer || []).filter(t => t.tid.startsWith(noekkel));
+
+/* Sammendrag for ett sted på én dag, avgrenset til timene
+   barna faktisk er ute av huset. */
+function dagsvaer(stedIndeks, noekkel) {
+  if (!vaerData?.[stedIndeks]) return null;
+  const timer = timerForDag(vaerData[stedIndeks], noekkel)
+    .filter(t => {
+      const h = +t.tid.slice(11, 13);
+      return h >= CONFIG.dagStart && h <= CONFIG.dagSlutt;
+    });
+  if (!timer.length) return null;
+
+  return {
+    min: Math.round(Math.min(...timer.map(t => t.temp))),
+    maks: Math.round(Math.max(...timer.map(t => t.temp))),
+    mm: timer.reduce((s, t) => s + (t.mm || 0), 0),
+    sannsyn: Math.max(...timer.map(t => t.sannsyn || 0))
+  };
+}
+
+function tegnVaertopp() {
+  const boks = document.getElementById('vaertopp');
+  if (!vaerData?.length) { boks.innerHTML = '<span>Vær utilgjengelig</span>'; return; }
+
+  const noekkel = datoNoekkel(valgtDato());
+  const timer = timerForDag(vaerData[0], noekkel)
+    .filter(t => { const h = +t.tid.slice(11,13); return h >= CONFIG.dagStart && h <= CONFIG.dagSlutt; });
+
+  if (!timer.length) { boks.innerHTML = '<span>Ingen varsel</span>'; return; }
+
+  const min = Math.round(Math.min(...timer.map(t => t.temp)));
+  const maks = Math.round(Math.max(...timer.map(t => t.temp)));
+  const mm = timer.reduce((s, t) => s + (t.mm || 0), 0);
+  const sannsyn = Math.max(...timer.map(t => t.sannsyn || 0));
+
+  let start = '';
+  if (dagOffset === 0) {
+    start = `<span class="grader">${Math.round(vaerData[0].naa.temperature_2m)}°</span>`
+          + `<span>${VAERKODER[vaerData[0].naa.weather_code] || ''}</span>`;
+  } else {
+    const midt = timer[Math.floor(timer.length / 2)];
+    start = `<span class="grader">${Math.round(midt.temp)}°</span>`
+          + `<span>${VAERKODER[midt.kode] || ''}</span>`;
+  }
+
+  boks.innerHTML = start
+    + `<span>${min}° / ${maks}°</span>`
+    + (mm >= 0.2
+        ? `<span class="vaat">${mm.toFixed(1)} mm · ${sannsyn}%</span>`
+        : `<span>Tørt</span>`);
+}
+
+function lagVaerkolonne(noekkel) {
+  const kol = document.createElement('div');
+  kol.className = 'kol vaerkol';
+
+  const merker = CONFIG.steder.map(s => `<span>${s.kort}</span>`).join('');
+  kol.innerHTML = `
+    <div class="kol-topp">
+      <div class="kol-navn">Vær</div>
+      <div class="vaer-merker">${merker}</div>
+    </div>
+    <div class="spor"></div>`;
+
+  const spor = kol.querySelector('.spor');
+  if (!vaerData?.length) return kol;
+
+  const a = timerForDag(vaerData[0], noekkel);
+  const b = timerForDag(vaerData[1], noekkel);
+  if (!a.length) return kol;
+
+  for (let t = Math.floor(CONFIG.dagStart); t < Math.ceil(CONFIG.dagSlutt); t++) {
+    const ta = a.find(x => +x.tid.slice(11,13) === t);
+    if (!ta) continue;
+    const tb = b.find(x => +x.tid.slice(11,13) === t);
+
+    const topp = posisjon(t);
+    const bunn = posisjon(t + 1);
+
+    const rad = document.createElement('div');
+    rad.className = 'vaertime';
+    rad.style.top = topp + '%';
+    rad.style.height = (bunn - topp) + '%';
+
+    // Nedbør tegnes som en stigende vannstand i timen
+    const mm = ta.mm || 0;
+    const fyll = Math.min(mm / 2, 1);      // 2 mm i timen fyller hele
+    const alfa = mm > 0 ? 0.18 + fyll * 0.45 : 0;
+
+    rad.innerHTML = `
+      ${mm > 0 ? `<div class="vaat-fyll" style="height:${Math.max(fyll * 100, 12)}%;opacity:${alfa}"></div>` : ''}
+      <span class="vt-a">${Math.round(ta.temp)}°</span>
+      <span class="vt-b">${tb ? Math.round(tb.temp) + '°' : ''}</span>
+      ${mm >= 0.2 ? `<span class="vt-mm">${mm.toFixed(1)}</span>` : ''}`;
+
+    spor.appendChild(rad);
+  }
+
+  return kol;
 }
 
 
@@ -541,11 +842,14 @@ function tegnRutenett(data) {
   akseKol.innerHTML = '<div class="kol-topp">&nbsp;</div><div class="akse" id="akse"></div>';
   rutenett.appendChild(akseKol);
 
+  rutenett.appendChild(lagVaerkolonne(data.noekkel));
+
   if (!data.poster.length && !data.heldags.length) {
     const m = document.createElement('div');
     m.className = 'helg-melding';
-    m.innerHTML = '<strong>Fri i dag</strong><span>Ingenting er planlagt</span>';
+    m.innerHTML = '<strong>Fri</strong><span>Ingenting er planlagt</span>';
     rutenett.appendChild(m);
+    tegnTidsakse();
     return;
   }
 
@@ -561,6 +865,7 @@ function tegnRutenett(data) {
       <div class="kol-topp">
         <div class="kol-navn">${barn.navn}</div>
         ${barn.undertekst ? `<div class="kol-under">${barn.undertekst}</div>` : ''}
+        ${kolonneVaer(barn, data.noekkel)}
         ${heldags.length ? `<div class="heldags">${heldags.map(h => `<span class="${h.stengt ? 'stengt' : ''}">${h.tittel}</span>`).join('')}</div>` : ''}
       </div>
       <div class="spor"></div>`;
@@ -582,6 +887,21 @@ function tegnRutenett(data) {
 
   tegnTidsakse();
   tegnNaaLinje();
+}
+
+function kolonneVaer(barn, noekkel) {
+  if (barn.vaersted === undefined) return '';
+  const v = dagsvaer(barn.vaersted, noekkel);
+  if (!v) return '';
+
+  const sted = CONFIG.steder[barn.vaersted];
+  const vaatt = v.mm >= 0.2;
+
+  return `<div class="kol-vaer">
+    <span class="kv-sted">${sted.kort}</span>
+    <span class="kv-temp">${v.min}–${v.maks}°</span>
+    ${vaatt ? `<span class="kv-vaat">${v.mm.toFixed(1)} mm</span>` : ''}
+  </div>`;
 }
 
 function lagRamme(r) {
@@ -634,6 +954,8 @@ function tegnTidsakse() {
 
 function tegnNaaLinje() {
   document.querySelector('.naa-linje')?.remove();
+  if (dagOffset !== 0) return;
+
   const naa = naaDesimal();
   if (naa < CONFIG.dagStart || naa > CONFIG.dagSlutt) return;
 
@@ -663,84 +985,94 @@ function tegnNaaLinje() {
 
 function tegnHusk(husk) {
   const boks = document.getElementById('husk');
-  if (!husk.length) { boks.innerHTML = '<span class="husk-tom">Ingenting spesielt i dag</span>'; return; }
+  document.getElementById('husklapp').textContent = dagOffset === 0 ? 'Husk i dag' : 'Husk i morgen';
+  if (!husk.length) { boks.innerHTML = '<span class="husk-tom">Ingenting spesielt</span>'; return; }
   boks.innerHTML = husk.map(h => {
     const b = finnBarn(h.barn);
-    return `<div class="husk-post" style="--f:${b.farge}"><i></i><span>${h.tekst}</span></div>`;
+    const ai = h.kilde === 'ai' ? ' ai' : '';
+    return `<div class="husk-post${ai}" style="--f:${b.farge}"><i></i><span>${h.tekst}</span></div>`;
   }).join('');
 }
 
-/* ── Klokke, dato, nattmodus ── */
+function tegnDato() {
+  const d = valgtDato();
+  document.getElementById('ukedag').textContent = UKEDAGER[d.getDay()];
+  document.getElementById('datorest').textContent =
+    `${d.getDate()}. ${MAANEDER[d.getMonth()]} · Uke ${ukenummer(d)}`;
+  document.getElementById('knappIdag').classList.toggle('aktiv', dagOffset === 0);
+  document.getElementById('knappImorgen').classList.toggle('aktiv', dagOffset === 1);
+}
 
-let sisteDato = null;
+
+/* ── Klokke og nattmodus ── */
+
+let sisteDatoNokkel = null;
 
 function oppdaterKlokke() {
   const n = new Date();
   document.getElementById('klokke').textContent =
     `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
-  document.getElementById('ukedag').textContent = UKEDAGER[n.getDay()];
-  document.getElementById('datorest').textContent =
-    `${n.getDate()}. ${MAANEDER[n.getMonth()]} · Uke ${ukenummer(n)}`;
 
   const time = n.getHours();
   document.body.classList.toggle('natt', time >= CONFIG.nattFra || time < CONFIG.nattTil);
 
-  const nokkel = n.toDateString();
-  if (sisteDato && sisteDato !== nokkel) last();
-  sisteDato = nokkel;
+  const noekkel = n.toDateString();
+  if (sisteDatoNokkel && sisteDatoNokkel !== noekkel) {
+    dagOffset = 0;
+    last();
+  }
+  sisteDatoNokkel = noekkel;
 
   if (sisteData) tegnNaaLinje();
 }
 
-/* ── Vær ── */
-
-const VAERKODER = {
-  0:'Klart',1:'Lettskyet',2:'Delvis skyet',3:'Skyet',45:'Tåke',48:'Tåke',
-  51:'Yr',53:'Yr',55:'Yr',61:'Regn',63:'Regn',65:'Kraftig regn',
-  66:'Sludd',67:'Sludd',71:'Snø',73:'Snø',75:'Mye snø',77:'Snø',
-  80:'Regnbyger',81:'Regnbyger',82:'Kraftige byger',85:'Snøbyger',86:'Snøbyger',
-  95:'Torden',96:'Torden',99:'Torden'
-};
-
-async function hentVaer() {
-  const { lat, lon } = CONFIG.sted;
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}`
-    + `&current=temperature_2m,weather_code`
-    + `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max`
-    + `&timezone=Europe%2FOslo&forecast_days=1`;
-  try {
-    const d = await (await fetch(url)).json();
-    const naa = Math.round(d.current.temperature_2m);
-    const maks = Math.round(d.daily.temperature_2m_max[0]);
-    const min = Math.round(d.daily.temperature_2m_min[0]);
-    const nedbor = d.daily.precipitation_probability_max[0];
-    document.getElementById('vaer').innerHTML =
-      `<span class="grader">${naa}°</span><span>${VAERKODER[d.current.weather_code] || ''}</span>`
-      + `<span>${min}° / ${maks}°</span>`
-      + (nedbor >= 30 ? `<span>${nedbor}% nedbør</span>` : '');
-  } catch { document.getElementById('vaer').innerHTML = '<span>Vær utilgjengelig</span>'; }
-}
 
 /* ── Oppstart ── */
+
+function tegnAlt() {
+  sisteData = byggDag();
+  tegnDato();
+  tegnRutenett(sisteData);
+  tegnHusk(sisteData.husk);
+  tegnVaertopp();
+
+  const varsel = document.getElementById('varsel');
+  if (kalenderFeil) {
+    varsel.textContent = `Bare Sofia vises: ${kalenderFeil}`;
+    varsel.hidden = false;
+  } else {
+    varsel.hidden = true;
+  }
+}
 
 async function last() {
   const status = document.getElementById('status');
   try {
-    sisteData = await hentData();
-    tegnRutenett(sisteData);
-    tegnHusk(sisteData.husk);
+    await hentKalenderfil();
+    tegnAlt();
     status.classList.remove('feil');
   } catch (e) { console.error(e); status.classList.add('feil'); }
 }
 
+document.getElementById('knappIdag').addEventListener('click', () => {
+  dagOffset = 0; tegnAlt();
+});
+document.getElementById('knappImorgen').addEventListener('click', () => {
+  dagOffset = 1; tegnAlt();
+});
+
 oppdaterKlokke();
+hentVaer().then(() => { if (sisteData) tegnAlt(); });
 last();
-hentVaer();
 
 setInterval(oppdaterKlokke, 15000);
 setInterval(last, CONFIG.dataIntervallMin * 60 * 1000);
-setInterval(hentVaer, 20 * 60 * 1000);
-window.addEventListener('resize', () => { if (sisteData) tegnRutenett(sisteData); });
+setInterval(() => hentVaer().then(() => { if (sisteData) tegnAlt(); }), 20 * 60 * 1000);
+let endreTimer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(endreTimer);
+  endreTimer = setTimeout(() => { if (sisteData) tegnAlt(); }, 150);
+});
 
 if ('wakeLock' in navigator) {
   const hold = () => navigator.wakeLock.request('screen').catch(() => {});
