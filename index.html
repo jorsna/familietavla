@@ -965,6 +965,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
       <button id="knappImorgen">I morgen</button>
       <button id="knappUke">Uke</button>
       <button id="knappOppgaver" class="stjerneknapp">⭐ Stjerner</button>
+      <button id="knappTema" class="temaknapp" title="Lys eller mørk">☼</button>
       <button id="knappFullskjerm" class="fullskjerm" title="Fullskjerm">⛶</button>
     </div>
 
@@ -2145,21 +2146,21 @@ lesLokalt();
 
 let visning = 'dag';
 
-document.getElementById('knappIdag').addEventListener('click', () => {
+document.getElementById('knappIdag')?.addEventListener('click', () => {
   visning = 'dag'; dagOffset = 0; tegnAlt();
 });
-document.getElementById('knappImorgen').addEventListener('click', () => {
+document.getElementById('knappImorgen')?.addEventListener('click', () => {
   visning = 'dag'; dagOffset = 1; tegnAlt();
 });
-document.getElementById('knappUke').addEventListener('click', () => {
+document.getElementById('knappUke')?.addEventListener('click', () => {
   visning = 'uke'; tegnAlt();
 });
-document.getElementById('knappOppgaver').addEventListener('click', aapneStjerner);
+document.getElementById('knappOppgaver')?.addEventListener('click', aapneStjerner);
 
 /* Knappen sykler lys, mørk, auto. Auto er lys om dagen og mørk
    om kvelden. Valget lagres på denne skjermen, så iPaden kan stå
    lyst mens telefonen står mørkt. */
-document.getElementById('knappTema').addEventListener('click', () => {
+document.getElementById('knappTema')?.addEventListener('click', () => {
   temaValg = temaValg === 'lys' ? 'mork' : (temaValg === 'mork' ? 'auto' : 'lys');
   try { localStorage.setItem('familietavla-tema', temaValg); } catch (e) {}
   settTema(true);
@@ -2175,6 +2176,7 @@ try {
    åpnes fra Hjem-skjermen, så knappen skjules der den ikke virker. */
 (function () {
   const knapp = document.getElementById('knappFullskjerm');
+  if (!knapp) return;
   const staaende = window.navigator.standalone
     || window.matchMedia('(display-mode: standalone)').matches;
 
