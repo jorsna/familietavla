@@ -42,6 +42,9 @@ const CONFIG = {
   // Etter dette klokkeslettet åpner tavla på morgendagen
   morgendagFra: 18,
 
+  // Piksler per time når tavla vises på telefon. Høyere = mer luft.
+  pxPerTimeSmal: 66,
+
   nattFra: 21,
   nattTil: 6,
   dataIntervallMin: 10
@@ -105,26 +108,10 @@ const FAGPLAN = {
 
 
 /* ══════════════════════════════════════════════════════════
-   4. AKS — ny plan hver uke, nøklet på ukenummer
+   4. AKS
+      Planen ligger i data/aks.json, ikke her. Den byttes hver
+      uke, og skal ikke kreve at du redigerer programkoden.
    ══════════════════════════════════════════════════════════ */
-
-const AKS = {
-  34: {
-    1: ['Sommerglede ballong', 'Dødball'],
-    2: ['Bingo', 'Makrame'],
-    3: ['Gymsal: stikkball', 'Navneskilt'],
-    4: ['Fotball', 'Is krem'],
-    5: ['Just dance', 'Superhelt-masker']
-  }
-
-  // 35: {
-  //   1: ['', ''],
-  //   2: ['', ''],
-  //   3: ['', ''],
-  //   4: ['', ''],
-  //   5: ['', '']
-  // }
-};
 
 
 /* ══════════════════════════════════════════════════════════
@@ -273,6 +260,15 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 .kol-vaer .kv-sted { color: var(--tekst-dus); opacity: 0.75; }
 .kol-vaer .kv-temp { color: var(--tekst); font-size: 13px; font-variant-numeric: tabular-nums; }
 .kol-vaer .kv-vaat { color: var(--regn); }
+
+.mangler {
+  margin-top: 6px; padding: 3px 7px; border-radius: 3px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--f) 14%, transparent);
+  color: color-mix(in srgb, var(--f) 80%, var(--tekst));
+}
 
 .heldags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .heldags span {
@@ -534,6 +530,33 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   color: #FFD9DD;
 }
 .varsel[hidden] { display: none; }
+/* ══════════════════════════════════════════════════════════
+   HØYDE PÅ SMAL SKJERM
+   Hele dagen presset inn i telefonhøyde gir 25 px per time.
+   Her får timen fast høyde, og tavla scrolles i begge retninger.
+   Overskriftene låses øverst så du ser hvem sin kolonne du er i.
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 899px) {
+  .rutenett { overflow-x: auto; overflow-y: auto; }
+
+  .rutenett > .kol { grid-template-rows: auto var(--sporpx, 700px); }
+
+  .kol-topp {
+    position: sticky; top: 0; z-index: 15;
+    background: var(--ink);
+  }
+  .rutenett > .kol:first-child .kol-topp { z-index: 25; }
+
+  .akse .time { font-size: 12px; }
+  .p-tittel { font-size: 15px; }
+  .post.spesiell .p-tittel { font-size: 16.5px; }
+  .p-meta { font-size: 11px; }
+  .post.smal .p-tittel { font-size: 13.5px; }
+  .vt-a { font-size: 15px; }
+  .vt-b { font-size: 12.5px; }
+  .vt-ikon-time { font-size: 13px; }
+}
 </style>
 </head>
 
@@ -610,6 +633,7 @@ const valgtDato = () => {
 
 let kalenderFil = null;
 let paaminnelserFil = null;
+let aksFil = null;
 let kalenderFeil = null;
 
 async function hentKalenderfil() {
@@ -621,6 +645,12 @@ async function hentKalenderfil() {
     kalenderFeil = location.protocol === 'file:'
       ? 'Åpne tavla via nettadressen, ikke som lokal fil'
       : 'Får ikke kontakt med data/kalender.json';
+  }
+  try {
+    const svar = await fetch('data/aks.json?v=' + Date.now());
+    if (svar.ok) aksFil = await svar.json();
+  } catch (e) {
+    /* AKS er valgfritt */
   }
   try {
     const svar = await fetch('data/paaminnelser.json?v=' + Date.now());
@@ -656,7 +686,8 @@ function byggDag() {
     const fag = (FAGPLAN[id]?.[ukedag] || [])
       .map(f => ({ ...f, type: f.viktig ? 'spesiell' : 'okt' }));
 
-    const aksIdag = (id === 'sofia' ? (AKS[uke]?.[ukedag] || []) : [])
+    const aksUke = aksFil?.[String(uke)]?.[String(ukedag)] || [];
+    const aksIdag = (id === 'sofia' ? aksUke : [])
       .filter(Boolean)
       .map((tittel, i) => ({
         tittel,
@@ -679,7 +710,9 @@ function byggDag() {
     if (!husk.some(h => h.tekst === 'Gymtøy')) husk.unshift({ barn: p.barn, tekst: 'Gymtøy' });
   });
 
-  return { rammer, poster, heldags, husk, dato, noekkel };
+  return { rammer, poster, heldags, husk, dato, noekkel, uke, ukedag,
+           aksMangler: ukedag >= 1 && ukedag <= 5
+             && !(aksFil?.[String(uke)]?.[String(ukedag)] || []).filter(Boolean).length };
 }
 
 
@@ -872,11 +905,14 @@ function lagVaerkolonne(noekkel) {
    ══════════════════════════════════════════════════════════ */
 
 let sisteData = null;
+let naaVist = false;
 
 function tegnRutenett(data) {
   const rutenett = document.getElementById('rutenett');
   const kolonner = [...CONFIG.barn.map(b => b.id), 'familie'];
   rutenett.style.setProperty('--kolonner', kolonner.length);
+  rutenett.style.setProperty('--sporpx',
+    Math.round((CONFIG.dagSlutt - CONFIG.dagStart) * CONFIG.pxPerTimeSmal) + 'px');
   rutenett.innerHTML = '';
 
   const akseKol = document.createElement('div');
@@ -908,6 +944,8 @@ function tegnRutenett(data) {
         <div class="kol-navn">${barn.navn}</div>
         ${barn.undertekst ? `<div class="kol-under">${barn.undertekst}</div>` : ''}
         ${kolonneVaer(barn, data.noekkel)}
+        ${id === 'sofia' && data.aksMangler
+          ? `<div class="mangler">AKS-plan mangler for uke ${data.uke}</div>` : ''}
         ${heldags.length ? `<div class="heldags">${heldags.map(h => `<span class="${h.stengt ? 'stengt' : ''}">${h.tittel}</span>`).join('')}</div>` : ''}
       </div>
       <div class="spor"></div>`;
@@ -1006,9 +1044,10 @@ function tegnNaaLinje() {
   const spor = document.querySelector('.spor');
   if (!spor) return;
 
-  const sb = spor.getBoundingClientRect();
-  const rb = rutenett.getBoundingClientRect();
-  const topp = (sb.top - rb.top) + sb.height * (posisjon(naa) / 100);
+  /* Regnes ut fra elementenes egen plassering, ikke fra skjermbildet.
+     Ellers havner linja feil så snart tavla scrolles på telefon. */
+  const kol = spor.parentElement;
+  const topp = kol.offsetTop + spor.offsetTop + spor.offsetHeight * (posisjon(naa) / 100);
 
   const n = new Date();
   const klokke = `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
@@ -1018,6 +1057,12 @@ function tegnNaaLinje() {
   linje.style.top = topp + 'px';
   linje.innerHTML = `<div class="etikett">${klokke}</div><div class="bjelke"></div><div class="kule"></div>`;
   rutenett.appendChild(linje);
+
+  // Første gang: rull slik at nåtiden er synlig
+  if (!naaVist && rutenett.scrollHeight > rutenett.clientHeight) {
+    rutenett.scrollTop = Math.max(0, topp - rutenett.clientHeight / 2);
+    naaVist = true;
+  }
 
   document.querySelectorAll('.post').forEach(el => {
     const s = parseFloat(el.dataset.start), sl = parseFloat(el.dataset.slutt);
