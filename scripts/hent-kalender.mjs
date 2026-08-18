@@ -20,19 +20,45 @@ const PLAN_DAGER = 42;                 // seks uker fram, men bare det som skill
 const VID_VINDU = 180;                 // hvor langt fram vi leter etter stengte dager
 const TIDSSONE = 'Europe/Oslo';
 
+/* barn: alt fra denne feeden tilhører det barnet, uansett hva
+   hendelsen heter. Det er løsningen på Spond: eksporten derfra
+   inneholder verken gruppe eller barn, bare tittel og eventuell
+   tekst. Peker du Spond mot en egen kalender, blir kilden nøkkelen. */
 const FEEDER = [
   { navn: 'familie',   url: process.env.ICAL_FAMILIE,   type: 'google' },
   { navn: 'jorgen',    url: process.env.ICAL_JORGEN,    type: 'google' },
+  { navn: 'sofia',     url: process.env.ICAL_SOFIA_SPOND, type: 'google', barn: 'sofia' },
   { navn: 'sebastian', url: process.env.ICAL_SEBASTIAN, type: 'mykid' },
   { navn: 'ellie',     url: process.env.ICAL_ELLIE,     type: 'mykid' }
 ].filter(f => f.url);
 
-// Navn som identifiserer et barn, både i tittel og i stedsfelt
-const NAVN = {
-  sofia:     ['sofia'],
-  sebastian: ['sebastian'],
-  ellie:     ['ellie']
+/* ── RUTING ────────────────────────────────────────────────────
+   Ord som knytter en hendelse til et barn. Sjekkes først mot
+   tittelen, deretter mot sted og beskrivelse.
+
+   Spond er grunnen til at dette trengs. Kalendereksporten derfra
+   sier ingenting om hvilket barn arrangementet gjelder — den
+   eksporterer gruppens avtaler. Men gruppenavnet står som regel i
+   tittelen, og siden hvert barn er i sine egne grupper, holder det
+   som nøkkel.
+
+   Legg til lagnavn, gruppenavn eller trenernavn her etter hvert
+   som de dukker opp. Alt skrives med små bokstaver.             */
+const RUTING = {
+  sofia: [
+    'sofia'
+    // , 'try g2019'     ← lagnavnet slik det står i kalenderen
+  ],
+  sebastian: [
+    'sebastian'
+  ],
+  ellie: [
+    'ellie'
+  ]
 };
+
+// Beholdt navn for kompatibilitet med resten av skriptet
+const NAVN = RUTING;
 
 /* Måltider. Ordgrensene er ikke pynt: uten dem treffer «middag»
    inni «ettermiddag», og hele ettermiddagen blir gul. */
@@ -166,9 +192,15 @@ async function main() {
         const sted = ryddSted(kilde.location);
         const dato = tilDato(forekomst.start);
 
+        /* MyKid legger barnets navn i stedsfeltet. For Google-
+           kalendere leter vi først i tittelen, deretter i sted og
+           beskrivelse — Spond legger av og til gruppen der. */
         const barn = feed.type === 'mykid'
           ? (finnBarn(sted) || feed.navn)
-          : (finnBarn(kilde.summary) || 'familie');
+          : (feed.barn
+             || finnBarn(kilde.summary)
+             || finnBarn(`${sted} ${kilde.description || ''}`)
+             || 'familie');
 
         /* Stengte dager samles for hele halvåret. Å oppdage en
            planleggingsdag samme morgen er den dyreste feilen tavla
