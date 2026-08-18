@@ -1,0 +1,47 @@
+name: Hent familiekalender
+
+on:
+  schedule:
+    # Hvert 15. minutt mellom 05 og 21 norsk tid (UTC i cron)
+    - cron: '*/15 3-19 * * *'
+  workflow_dispatch:        # lar deg kjøre den manuelt fra Actions-fanen
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kalender
+  cancel-in-progress: true
+
+jobs:
+  hent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installer avhengigheter
+        run: npm install node-ical
+
+      - name: Hent kalender
+        env:
+          ICAL_FAMILIE: ${{ secrets.ICAL_FAMILIE }}
+          ICAL_JORGEN: ${{ secrets.ICAL_JORGEN }}
+          ICAL_SEBASTIAN: ${{ secrets.ICAL_SEBASTIAN }}
+          ICAL_ELLIE: ${{ secrets.ICAL_ELLIE }}
+        run: node scripts/hent-kalender.mjs
+
+      - name: Lagre hvis noe er endret
+        run: |
+          git config user.name "Familietavla"
+          git config user.email "actions@github.com"
+          git add data/kalender.json
+          if git diff --staged --quiet; then
+            echo "Ingen endringer."
+          else
+            git commit -m "Oppdatert kalender $(date -u +'%Y-%m-%d %H:%M')"
+            git push
+          fi
