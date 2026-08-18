@@ -269,6 +269,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em;
   text-transform: uppercase;
 }
+.kol-vaer .kv-ikon { font-size: 14px; line-height: 1; }
 .kol-vaer .kv-sted { color: var(--tekst-dus); opacity: 0.75; }
 .kol-vaer .kv-temp { color: var(--tekst); font-size: 13px; font-variant-numeric: tabular-nums; }
 .kol-vaer .kv-vaat { color: var(--regn); }
@@ -334,6 +335,11 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   font-size: 9.5px; font-weight: 600; letter-spacing: 0.06em;
   color: #BBD8F5;
 }
+.vt-ikon-time {
+  position: absolute; left: 50%; top: 2px; transform: translateX(-50%);
+  font-size: 12px; line-height: 1; opacity: 0.9;
+}
+.vt-ikon { font-size: 1.25em; line-height: 1; }
 
 /* ── Poster ── */
 
@@ -689,6 +695,17 @@ const VAERKODER = {
   95:'Torden',96:'Torden',99:'Torden'
 };
 
+const VAERIKON = {
+  0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',
+  51:'🌦️',53:'🌦️',55:'🌦️',56:'🌧️',57:'🌧️',
+  61:'🌧️',63:'🌧️',65:'🌧️',66:'🌨️',67:'🌨️',
+  71:'❄️',73:'❄️',75:'❄️',77:'❄️',
+  80:'🌦️',81:'🌦️',82:'⛈️',85:'🌨️',86:'🌨️',
+  95:'⛈️',96:'⛈️',99:'⛈️'
+};
+
+const ikon = kode => VAERIKON[kode] || '';
+
 let vaerData = null;
 
 async function hentVaer() {
@@ -735,11 +752,25 @@ function dagsvaer(stedIndeks, noekkel) {
     });
   if (!timer.length) return null;
 
+  const mm = timer.reduce((s, t) => s + (t.mm || 0), 0);
+
+  /* Hvilket symbol representerer dagen: kommer det nedbør, er den
+     våteste timen mest verdt å vite om. Ellers det som varer lengst. */
+  let kode;
+  if (mm >= 0.2) {
+    kode = timer.reduce((a, b) => (b.mm || 0) > (a.mm || 0) ? b : a).kode;
+  } else {
+    const tell = new Map();
+    timer.forEach(t => tell.set(t.kode, (tell.get(t.kode) || 0) + 1));
+    kode = [...tell.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  }
+
   return {
     min: Math.round(Math.min(...timer.map(t => t.temp))),
     maks: Math.round(Math.max(...timer.map(t => t.temp))),
-    mm: timer.reduce((s, t) => s + (t.mm || 0), 0),
-    sannsyn: Math.max(...timer.map(t => t.sannsyn || 0))
+    mm,
+    sannsyn: Math.max(...timer.map(t => t.sannsyn || 0)),
+    kode
   };
 }
 
@@ -760,11 +791,14 @@ function tegnVaertopp() {
 
   let start = '';
   if (dagOffset === 0) {
-    start = `<span class="grader">${Math.round(vaerData[0].naa.temperature_2m)}°</span>`
-          + `<span>${VAERKODER[vaerData[0].naa.weather_code] || ''}</span>`;
+    const k = vaerData[0].naa.weather_code;
+    start = `<span class="vt-ikon">${ikon(k)}</span>`
+          + `<span class="grader">${Math.round(vaerData[0].naa.temperature_2m)}°</span>`
+          + `<span>${VAERKODER[k] || ''}</span>`;
   } else {
     const midt = timer[Math.floor(timer.length / 2)];
-    start = `<span class="grader">${Math.round(midt.temp)}°</span>`
+    start = `<span class="vt-ikon">${ikon(midt.kode)}</span>`
+          + `<span class="grader">${Math.round(midt.temp)}°</span>`
           + `<span>${VAERKODER[midt.kode] || ''}</span>`;
   }
 
@@ -794,6 +828,8 @@ function lagVaerkolonne(noekkel) {
   const b = timerForDag(vaerData[1], noekkel);
   if (!a.length) return kol;
 
+  let forrigeKode = null;
+
   for (let t = Math.floor(CONFIG.dagStart); t < Math.ceil(CONFIG.dagSlutt); t++) {
     const ta = a.find(x => +x.tid.slice(11,13) === t);
     if (!ta) continue;
@@ -812,8 +848,14 @@ function lagVaerkolonne(noekkel) {
     const fyll = Math.min(mm / 2, 1);      // 2 mm i timen fyller hele
     const alfa = mm > 0 ? 0.18 + fyll * 0.45 : 0;
 
+    /* Symbol bare når været faktisk skifter. Ett per time blir en
+       vegg av skyer; ett ved skiftet er det du trenger å se. */
+    const skifte = ta.kode !== forrigeKode;
+    forrigeKode = ta.kode;
+
     rad.innerHTML = `
       ${mm > 0 ? `<div class="vaat-fyll" style="height:${Math.max(fyll * 100, 12)}%;opacity:${alfa}"></div>` : ''}
+      ${skifte ? `<span class="vt-ikon-time">${ikon(ta.kode)}</span>` : ''}
       <span class="vt-a">${Math.round(ta.temp)}°</span>
       <span class="vt-b">${tb ? Math.round(tb.temp) + '°' : ''}</span>
       ${mm >= 0.2 ? `<span class="vt-mm">${mm.toFixed(1)}</span>` : ''}`;
@@ -898,6 +940,7 @@ function kolonneVaer(barn, noekkel) {
   const vaatt = v.mm >= 0.2;
 
   return `<div class="kol-vaer">
+    <span class="kv-ikon">${ikon(v.kode)}</span>
     <span class="kv-sted">${sted.kort}</span>
     <span class="kv-temp">${v.min}–${v.maks}°</span>
     ${vaatt ? `<span class="kv-vaat">${v.mm.toFixed(1)} mm</span>` : ''}
