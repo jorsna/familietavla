@@ -1,6 +1,25 @@
 {
-  "generert": "2026-08-18T10:23:16.089Z",
+  "generert": "2026-08-18T10:53:55.560Z",
   "dager": {
+    "2026-08-22": [
+      {
+        "barn": "familie",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
+        "kilde": "kalender",
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "familie",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-08-24": [
       {
         "barn": "sebastian",
@@ -129,25 +148,6 @@
         "sted": "Rush",
         "start": "17:00",
         "slutt": "18:45",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
         "type": "spesiell"
       }
     ],
