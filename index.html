@@ -42,6 +42,18 @@ const CONFIG = {
   // Etter dette klokkeslettet åpner tavla på morgendagen
   morgendagFra: 18,
 
+  /* Vinduet værsammendraget regnes over. Skilt fra dagStart/dagSlutt,
+     som styrer hvor langt tidslinjen strekker seg. Her vil vi ha
+     timene barna faktisk er ute, ikke tidlig morgen og sen ettermiddag. */
+  vaerFra: 8,
+  vaerTil: 16,
+
+  // Når middagen vises i familiekolonnen
+  middagTid: ['16:45', '17:45'],
+
+  // Hvor mange dager fram et varsel om stengt barnehage skal vises
+  stengtVarselDager: 30,
+
   // Piksler per time når tavla vises på telefon. Høyere = mer luft.
   pxPerTimeSmal: 92,
 
@@ -259,7 +271,9 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 .kol-vaer .kv-ikon { font-size: 14px; line-height: 1; }
 .kol-vaer .kv-sted { color: var(--tekst-dus); opacity: 0.75; }
 .kol-vaer .kv-temp { color: var(--tekst); font-size: 13px; font-variant-numeric: tabular-nums; }
+.kol-vaer .kv-foles { color: #8FB8E8; }
 .kol-vaer .kv-vaat { color: var(--regn); }
+.vaertopp .foles { color: #8FB8E8; }
 
 .mangler {
   margin-top: 6px; padding: 3px 7px; border-radius: 3px;
@@ -455,6 +469,89 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 .status { position: fixed; right: 7px; bottom: 6px; width: 5px; height: 5px; border-radius: 50%; background: #3FB8A5; opacity: 0.3; z-index: 50; }
 .status.feil { background: var(--naa); opacity: 0.8; }
 
+/* ══════════════════════════════════════════════════════════
+   UKESVISNING — søndagsverktøyet
+   ══════════════════════════════════════════════════════════ */
+
+.uke {
+  overflow: auto; padding: 0 0 4px;
+  display: grid;
+  grid-template-columns: 96px repeat(7, minmax(132px, 1fr));
+}
+.uke[hidden] { display: none; }
+
+.uke-celle {
+  border-right: 1px solid var(--line-svak);
+  border-bottom: 1px solid var(--line-svak);
+  padding: 8px 9px; min-width: 0;
+}
+
+.uke-hode {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding: 9px;
+}
+.uke-hode .ud {
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em;
+  line-height: 1;
+}
+.uke-hode .ud-dato {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--tekst-dus); margin-top: 3px;
+}
+.uke-hode.idag .ud { color: var(--naa); }
+.uke-hode.helg .ud { color: var(--tekst-dus); }
+
+.uke-navn {
+  position: sticky; left: 0; z-index: 12;
+  background: var(--ink);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-svak);
+  padding: 8px 9px;
+  display: flex; align-items: center;
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--f);
+}
+.uke-hjorne {
+  position: sticky; left: 0; z-index: 14; background: var(--ink);
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+
+.ue {
+  font-size: 13px; font-weight: 600; line-height: 1.2;
+  padding: 2px 0 2px 7px; border-left: 2px solid var(--f);
+  margin-bottom: 5px;
+}
+.ue small {
+  display: block; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--tekst-dus); margin-top: 1px;
+}
+.ue.stengt { border-left-color: var(--naa); color: #FFD3D7; }
+.ue.middag { border-left-color: var(--mat); color: #F2DC9A; }
+
+.uke-rad-middag .uke-navn { color: var(--mat); }
+
+/* ── Varsel om stengte dager ── */
+
+.stengtstripe {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 22px;
+  border-top: 1px solid color-mix(in srgb, var(--naa) 40%, transparent);
+  background: color-mix(in srgb, var(--naa) 14%, var(--panel));
+}
+.stengtstripe[hidden] { display: none; }
+.stengtstripe b {
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--naa); flex-shrink: 0;
+}
+.stengtstripe span { font-size: 14.5px; font-weight: 500; color: #FFD9DD; }
+
 .helg-melding {
   grid-column: 3 / -1; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 10px; color: var(--tekst-dus);
@@ -588,6 +685,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
     <div class="dagvalg">
       <button id="knappIdag" class="aktiv">I dag</button>
       <button id="knappImorgen">I morgen</button>
+      <button id="knappUke">Uke</button>
     </div>
 
     <div class="hoyre">
@@ -597,6 +695,9 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   </header>
 
   <main class="rutenett" id="rutenett"></main>
+  <div class="uke" id="uke" hidden></div>
+
+  <div class="stengtstripe" id="stengtstripe" hidden></div>
   <div class="varsel" id="varsel" hidden></div>
 
   <footer class="husk">
@@ -637,11 +738,14 @@ function ukenummer(d) {
 /* Hvilken dag vises: 0 = i dag, 1 = i morgen */
 let dagOffset = new Date().getHours() >= CONFIG.morgendagFra ? 1 : 0;
 
-const valgtDato = () => {
+const valgtDato = (offset = dagOffset) => {
   const d = new Date();
-  d.setDate(d.getDate() + dagOffset);
+  d.setDate(d.getDate() + offset);
   return d;
 };
+
+// Ukedag som ISO-tall: mandag = 1, søndag = 7
+const isoDag = d => d.getDay() === 0 ? 7 : d.getDay();
 
 
 /* ══════════════════════════════════════════════════════════
@@ -651,7 +755,17 @@ const valgtDato = () => {
 let kalenderFil = null;
 let paaminnelserFil = null;
 let aksFil = null;
+let middagFil = null;
+let stengtFil = null;
 let kalenderFeil = null;
+
+async function hentValgfri(sti) {
+  try {
+    const svar = await fetch(sti + '?v=' + Date.now());
+    if (svar.ok) return await svar.json();
+  } catch (e) { /* valgfri fil */ }
+  return null;
+}
 
 async function hentKalenderfil() {
   try {
@@ -663,22 +777,15 @@ async function hentKalenderfil() {
       ? 'Åpne tavla via nettadressen, ikke som lokal fil'
       : 'Får ikke kontakt med data/kalender.json';
   }
-  try {
-    const svar = await fetch('data/aks.json?v=' + Date.now());
-    if (svar.ok) aksFil = await svar.json();
-  } catch (e) {
-    /* AKS er valgfritt */
-  }
-  try {
-    const svar = await fetch('data/paaminnelser.json?v=' + Date.now());
-    if (svar.ok) paaminnelserFil = await svar.json();
-  } catch (e) {
-    /* påminnelser er valgfritt */
-  }
+
+  aksFil         = await hentValgfri('data/aks.json');
+  middagFil      = await hentValgfri('data/middager.json');
+  stengtFil      = await hentValgfri('data/stengt.json');
+  paaminnelserFil = await hentValgfri('data/paaminnelser.json');
 }
 
-function byggDag() {
-  const dato = valgtDato();
+function byggDag(offset = dagOffset) {
+  const dato = valgtDato(offset);
   const noekkel = datoNoekkel(dato);
   const ukedag = dato.getDay();
   const uke = ukenummer(dato);
@@ -727,6 +834,20 @@ function byggDag() {
     if (!husk.some(h => h.tekst === 'Gymtøy')) husk.unshift({ barn: p.barn, tekst: 'Gymtøy' });
   });
 
+  // Middagen ligger i familiekolonnen
+  const middag = middagFil?.[String(uke)]?.[String(isoDag(dato))];
+  if (middag?.rett) {
+    poster.push({
+      barn: 'familie',
+      tittel: 'Middag: ' + middag.rett,
+      sted: middag.tid || '',
+      start: CONFIG.middagTid[0],
+      slutt: CONFIG.middagTid[1],
+      type: 'mat',
+      kilde: 'middag'
+    });
+  }
+
   return { rammer, poster, heldags, husk, dato, noekkel, uke, ukedag,
            aksMangler: ukedag >= 1 && ukedag <= 5
              && !(aksFil?.[String(uke)]?.[String(ukedag)] || []).filter(Boolean).length };
@@ -762,8 +883,8 @@ async function hentVaer() {
   const lat = CONFIG.steder.map(s => s.lat).join(',');
   const lon = CONFIG.steder.map(s => s.lon).join(',');
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}`
-    + `&current=temperature_2m,weather_code`
-    + `&hourly=temperature_2m,precipitation,precipitation_probability,weather_code`
+    + `&current=temperature_2m,apparent_temperature,weather_code`
+    + `&hourly=temperature_2m,apparent_temperature,precipitation,precipitation_probability,weather_code`
     + `&timezone=Europe%2FOslo&forecast_days=3`;
 
   try {
@@ -776,6 +897,7 @@ async function hentVaer() {
       timer: d.hourly.time.map((t, j) => ({
         tid: t,
         temp: d.hourly.temperature_2m[j],
+        foles: d.hourly.apparent_temperature[j],
         mm: d.hourly.precipitation[j],
         sannsyn: d.hourly.precipitation_probability[j],
         kode: d.hourly.weather_code[j]
@@ -798,7 +920,7 @@ function dagsvaer(stedIndeks, noekkel) {
   const timer = timerForDag(vaerData[stedIndeks], noekkel)
     .filter(t => {
       const h = +t.tid.slice(11, 13);
-      return h >= CONFIG.dagStart && h <= CONFIG.dagSlutt;
+      return h >= CONFIG.vaerFra && h <= CONFIG.vaerTil;
     });
   if (!timer.length) return null;
 
@@ -818,11 +940,17 @@ function dagsvaer(stedIndeks, noekkel) {
   return {
     min: Math.round(Math.min(...timer.map(t => t.temp))),
     maks: Math.round(Math.max(...timer.map(t => t.temp))),
+    folesMin: Math.round(Math.min(...timer.map(t => t.foles ?? t.temp))),
+    folesMaks: Math.round(Math.max(...timer.map(t => t.foles ?? t.temp))),
     mm,
     sannsyn: Math.max(...timer.map(t => t.sannsyn || 0)),
     kode
   };
 }
+
+/* Vises bare når den avviker nok til å endre hva man tar på seg.
+   Ellers står det to tall som sier det samme, overalt. */
+const FOLES_GRENSE = 3;
 
 function tegnVaertopp() {
   const boks = document.getElementById('vaertopp');
@@ -830,7 +958,7 @@ function tegnVaertopp() {
 
   const noekkel = datoNoekkel(valgtDato());
   const timer = timerForDag(vaerData[0], noekkel)
-    .filter(t => { const h = +t.tid.slice(11,13); return h >= CONFIG.dagStart && h <= CONFIG.dagSlutt; });
+    .filter(t => { const h = +t.tid.slice(11,13); return h >= CONFIG.vaerFra && h <= CONFIG.vaerTil; });
 
   if (!timer.length) { boks.innerHTML = '<span>Ingen varsel</span>'; return; }
 
@@ -842,8 +970,11 @@ function tegnVaertopp() {
   let start = '';
   if (dagOffset === 0) {
     const k = vaerData[0].naa.weather_code;
+    const t = Math.round(vaerData[0].naa.temperature_2m);
+    const f = Math.round(vaerData[0].naa.apparent_temperature ?? vaerData[0].naa.temperature_2m);
     start = `<span class="vt-ikon">${ikon(k)}</span>`
-          + `<span class="grader">${Math.round(vaerData[0].naa.temperature_2m)}°</span>`
+          + `<span class="grader">${t}°</span>`
+          + (Math.abs(f - t) >= FOLES_GRENSE ? `<span class="foles">føles ${f}°</span>` : '')
           + `<span>${VAERKODER[k] || ''}</span>`;
   } else {
     const midt = timer[Math.floor(timer.length / 2)];
@@ -994,10 +1125,15 @@ function kolonneVaer(barn, noekkel) {
   const sted = CONFIG.steder[barn.vaersted];
   const vaatt = v.mm >= 0.2;
 
+  // Kaldeste følte time er det som avgjør påkledningen
+  const avvik = v.folesMin - v.min;
+  const visFoles = Math.abs(avvik) >= FOLES_GRENSE;
+
   return `<div class="kol-vaer">
     <span class="kv-ikon">${ikon(v.kode)}</span>
     <span class="kv-sted">${sted.kort}</span>
     <span class="kv-temp">${v.min}–${v.maks}°</span>
+    ${visFoles ? `<span class="kv-foles">føles ${v.folesMin}°</span>` : ''}
     ${vaatt ? `<span class="kv-vaat">${v.mm.toFixed(1)} mm</span>` : ''}
   </div>`;
 }
@@ -1104,12 +1240,21 @@ function tegnHusk(husk) {
 }
 
 function tegnDato() {
-  const d = valgtDato();
-  document.getElementById('ukedag').textContent = UKEDAGER[d.getDay()];
-  document.getElementById('datorest').textContent =
-    `${d.getDate()}. ${MAANEDER[d.getMonth()]} · Uke ${ukenummer(d)}`;
-  document.getElementById('knappIdag').classList.toggle('aktiv', dagOffset === 0);
-  document.getElementById('knappImorgen').classList.toggle('aktiv', dagOffset === 1);
+  if (visning === 'uke') {
+    const start = mandagIUka(ukeOffset);
+    const slutt = new Date(start); slutt.setDate(slutt.getDate() + 6);
+    document.getElementById('ukedag').textContent = `Uke ${ukenummer(start)}`;
+    document.getElementById('datorest').textContent =
+      `${start.getDate()}. ${MAANEDER[start.getMonth()].slice(0,3)} – ${slutt.getDate()}. ${MAANEDER[slutt.getMonth()].slice(0,3)}`;
+  } else {
+    const d = valgtDato();
+    document.getElementById('ukedag').textContent = UKEDAGER[d.getDay()];
+    document.getElementById('datorest').textContent =
+      `${d.getDate()}. ${MAANEDER[d.getMonth()]} · Uke ${ukenummer(d)}`;
+  }
+  document.getElementById('knappIdag').classList.toggle('aktiv', visning === 'dag' && dagOffset === 0);
+  document.getElementById('knappImorgen').classList.toggle('aktiv', visning === 'dag' && dagOffset === 1);
+  document.getElementById('knappUke').classList.toggle('aktiv', visning === 'uke');
 }
 
 
@@ -1138,7 +1283,136 @@ function oppdaterKlokke() {
 
 /* ── Oppstart ── */
 
+/* ══════════════════════════════════════════════════════════
+   UKESVISNING
+   Bare det som skiller dagene fra hverandre. Norsk fem dager
+   på rad er ikke informasjon.
+   ══════════════════════════════════════════════════════════ */
+
+function mandagIUka(offset = 0) {
+  const d = new Date();
+  d.setDate(d.getDate() - (isoDag(d) - 1) + offset * 7);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+let ukeOffset = 0;
+
+function verdtAaVise(p) {
+  if (p.type === 'rutine') return false;
+  if (p.kilde === 'middag') return false;          // egen rad
+  if (p.type === 'mat') return false;              // måltider i barnehagen
+  if (p.type === 'spesiell') return true;
+  return p.kilde === 'fast' && p.barn === 'sofia' && p.start >= '13:30'; // AKS
+}
+
+function tegnUke() {
+  const boks = document.getElementById('uke');
+  const start = mandagIUka(ukeOffset);
+  const idagN = datoNoekkel(new Date());
+
+  const dager = [...Array(7)].map((_, i) => {
+    const d = new Date(start);
+    d.setDate(d.getDate() + i);
+    const diff = Math.round((d - new Date(new Date().setHours(0,0,0,0))) / 86400000);
+    return { dato: d, noekkel: datoNoekkel(d), data: byggDag(diff) };
+  });
+
+  const KORT = ['Man','Tir','Ons','Tor','Fre','Lør','Søn'];
+
+  let html = '<div class="uke-hjorne uke-hode"></div>';
+
+  dager.forEach((dag, i) => {
+    const erIdag = dag.noekkel === idagN;
+    const helg = i >= 5;
+    html += `<div class="uke-hode ${erIdag ? 'idag' : ''} ${helg ? 'helg' : ''}">
+      <div class="ud">${KORT[i]}</div>
+      <div class="ud-dato">${dag.dato.getDate()}. ${MAANEDER[dag.dato.getMonth()].slice(0,3)}</div>
+    </div>`;
+  });
+
+  [...CONFIG.barn, { id: 'familie', navn: CONFIG.familie.navn, farge: CONFIG.familie.farge }]
+    .forEach(barn => {
+      html += `<div class="uke-navn" style="--f:${barn.farge}">${barn.navn}</div>`;
+
+      dager.forEach(dag => {
+        const heldags = dag.data.heldags.filter(h => h.barn === barn.id);
+        const poster = dag.data.poster.filter(p => p.barn === barn.id && verdtAaVise(p));
+
+        const innhold =
+          heldags.map(h =>
+            `<div class="ue ${h.stengt ? 'stengt' : ''}" style="--f:${barn.farge}">${h.tittel}</div>`).join('')
+          + poster.map(p =>
+            `<div class="ue" style="--f:${barn.farge}">${p.tittel}<small>${p.start}</small></div>`).join('');
+
+        html += `<div class="uke-celle">${innhold}</div>`;
+      });
+    });
+
+  // Middagsraden
+  html += `<div class="uke-navn uke-rad-middag" style="--f:var(--mat)">Middag</div>`;
+  dager.forEach(dag => {
+    const uke = ukenummer(dag.dato);
+    const m = middagFil?.[String(uke)]?.[String(isoDag(dag.dato))];
+    html += `<div class="uke-celle">${
+      m?.rett
+        ? `<div class="ue middag">${m.rett}${m.tid ? `<small>${m.tid}</small>` : ''}${m.notat ? `<small>${m.notat}</small>` : ''}</div>`
+        : ''
+    }</div>`;
+  });
+
+  boks.innerHTML = html;
+}
+
+
+/* ── Varsel om stengte dager ── */
+
+function tegnStengtvarsel() {
+  const stripe = document.getElementById('stengtstripe');
+  const idag = new Date(new Date().setHours(0, 0, 0, 0));
+
+  const kommende = (stengtFil?.dager || [])
+    .map(s => {
+      const [aa, mm, dd] = s.dato.split('-').map(Number);
+      const d = new Date(aa, mm - 1, dd);
+      return { ...s, d, dager: Math.round((d - idag) / 86400000) };
+    })
+    .filter(s => s.dager >= 0 && s.dager <= CONFIG.stengtVarselDager)
+    .sort((a, b) => a.dager - b.dager);
+
+  if (!kommende.length) { stripe.hidden = true; return; }
+
+  const s = kommende[0];
+  const naar = s.dager === 0 ? 'i dag'
+             : s.dager === 1 ? 'i morgen'
+             : `om ${s.dager} dager`;
+
+  stripe.innerHTML = `<b>Stengt</b><span>Barnehagen er stengt `
+    + `${UKEDAGER[s.d.getDay()].toLowerCase()} ${s.d.getDate()}. ${MAANEDER[s.d.getMonth()]} — ${naar}</span>`;
+  stripe.hidden = false;
+}
+
 function tegnAlt() {
+  const rutenett = document.getElementById('rutenett');
+  const ukeboks = document.getElementById('uke');
+
+  tegnStengtvarsel();
+
+  if (visning === 'uke') {
+    rutenett.style.display = 'none';
+    ukeboks.hidden = false;
+    document.querySelector('.naa-linje')?.remove();
+    tegnUke();
+    tegnDato();
+    tegnHusk([]);
+    document.getElementById('varsel').hidden = !kalenderFeil;
+    if (kalenderFeil) document.getElementById('varsel').textContent = `Bare Sofia vises: ${kalenderFeil}`;
+    return;
+  }
+
+  rutenett.style.display = '';
+  ukeboks.hidden = true;
+
   sisteData = byggDag();
   tegnDato();
   tegnRutenett(sisteData);
@@ -1163,11 +1437,16 @@ async function last() {
   } catch (e) { console.error(e); status.classList.add('feil'); }
 }
 
+let visning = 'dag';
+
 document.getElementById('knappIdag').addEventListener('click', () => {
-  dagOffset = 0; tegnAlt();
+  visning = 'dag'; dagOffset = 0; tegnAlt();
 });
 document.getElementById('knappImorgen').addEventListener('click', () => {
-  dagOffset = 1; tegnAlt();
+  visning = 'dag'; dagOffset = 1; tegnAlt();
+});
+document.getElementById('knappUke').addEventListener('click', () => {
+  visning = 'uke'; tegnAlt();
 });
 
 oppdaterKlokke();
