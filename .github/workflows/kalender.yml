@@ -30,6 +30,7 @@ jobs:
         env:
           ICAL_FAMILIE: ${{ secrets.ICAL_FAMILIE }}
           ICAL_JORGEN: ${{ secrets.ICAL_JORGEN }}
+          ICAL_SOFIA_SPOND: ${{ secrets.ICAL_SOFIA_SPOND }}
           ICAL_SEBASTIAN: ${{ secrets.ICAL_SEBASTIAN }}
           ICAL_ELLIE: ${{ secrets.ICAL_ELLIE }}
         run: node scripts/hent-kalender.mjs
