@@ -1,0 +1,28 @@
+{
+  "_lesmeg": "Ting som ikke finnes i noen kalender. Lages av Claude fra e-poster og beskjeder, lastes opp til data-branchen. Gamle datoer kan bli liggende — tavla viser bare dagens.",
+
+  "hendelser": [
+    {
+      "dato": "2026-08-20",
+      "barn": "sofia",
+      "start": "08:30",
+      "slutt": "13:30",
+      "tittel": "Tur til Strømsdammen",
+      "sted": "Hele 2. trinn",
+      "type": "spesiell"
+    }
+  ],
+
+  "husk": [
+    {
+      "dato": "2026-08-20",
+      "barn": "sofia",
+      "tekst": "Niste, drikke og klær etter vær"
+    },
+    {
+      "dato": "2026-08-20",
+      "barn": "sofia",
+      "tekst": "Presis til 08:30"
+    }
+  ]
+}
