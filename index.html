@@ -485,7 +485,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 
   .rutenett {
     overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x proximity;
+    scroll-padding-left: 44px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -497,7 +497,6 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
     background: var(--ink);
     border-right: 1px solid var(--line);
   }
-  .rutenett > .kol:not(:first-child) { scroll-snap-align: start; }
 
   .kol-navn { font-size: 16px; }
   .kol-under { font-size: 10px; letter-spacing: 0.1em; }
@@ -1059,11 +1058,12 @@ function tegnNaaLinje() {
   if (naa < CONFIG.dagStart || naa > CONFIG.dagSlutt) return;
 
   const rutenett = document.getElementById('rutenett');
-  const spor = document.querySelector('.spor');
-  if (!spor) return;
 
-  /* Regnes ut fra elementenes egen plassering, ikke fra skjermbildet.
-     Ellers havner linja feil så snart tavla scrolles på telefon. */
+  /* Må måle mot en synlig kolonne. Værkolonnen er skjult på telefon,
+     og et skjult element er null piksler høyt. */
+  const spor = document.querySelector('.kol:not(.vaerkol) .spor');
+  if (!spor || !spor.offsetHeight) return;
+
   const kol = spor.parentElement;
   const topp = kol.offsetTop + spor.offsetTop + spor.offsetHeight * (posisjon(naa) / 100);
 
@@ -1073,6 +1073,9 @@ function tegnNaaLinje() {
   const linje = document.createElement('div');
   linje.className = 'naa-linje';
   linje.style.top = topp + 'px';
+  // Strekken skal nå tvers over alle kolonnene, også de som er scrollet vekk
+  linje.style.width = rutenett.scrollWidth + 'px';
+  linje.style.right = 'auto';
   linje.innerHTML = `<div class="etikett">${klokke}</div><div class="bjelke"></div><div class="kule"></div>`;
   rutenett.appendChild(linje);
 
