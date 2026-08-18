@@ -67,6 +67,11 @@ const CONFIG = {
   // Stjerner per barn per uke før belønningen er nådd
   ukesmaal: 15,
 
+  /* Datafilene hentes fra data-branchen, ikke fra selve nettsiden.
+     Da utløser ikke robotens oppdateringer noen ny publisering,
+     og dine egne opplastinger går ut med én gang. */
+  dataKilde: 'https://raw.githubusercontent.com/jorsna/familietavla/data/',
+
   /* Supabase lagrer stjernene så iPaden og telefonene ser det samme.
      Står url tom, brukes bare lokal lagring på hver enhet.
      familie er en tilfeldig kode som skiller deres data fra andres. */
@@ -266,6 +271,11 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   margin-left: 4px;
 }
 .dagvalg button.stjerneknapp:active { transform: scale(0.96); }
+
+/* Vises bare der nettleseren faktisk støtter fullskjerm.
+   På iPad er Legg til på Hjem-skjerm den riktige veien. */
+.dagvalg button.fullskjerm { padding: 5px 10px; font-size: 14px; letter-spacing: 0; }
+.dagvalg button.fullskjerm[hidden] { display: none; }
 
 .hoyre { display: flex; align-items: center; gap: 18px; }
 .vaertopp {
@@ -923,6 +933,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
       <button id="knappImorgen">I morgen</button>
       <button id="knappUke">Uke</button>
       <button id="knappOppgaver" class="stjerneknapp">⭐ Stjerner</button>
+      <button id="knappFullskjerm" class="fullskjerm" title="Fullskjerm">⛶</button>
     </div>
 
     <div class="hoyre">
@@ -997,9 +1008,9 @@ let middagFil = null;
 let stengtFil = null;
 let kalenderFeil = null;
 
-async function hentValgfri(sti) {
+async function hentValgfri(navn) {
   try {
-    const svar = await fetch(sti + '?v=' + Date.now());
+    const svar = await fetch(CONFIG.dataKilde + navn + '?v=' + Date.now());
     if (svar.ok) return await svar.json();
   } catch (e) { /* valgfri fil */ }
   return null;
@@ -1007,19 +1018,19 @@ async function hentValgfri(sti) {
 
 async function hentKalenderfil() {
   try {
-    const svar = await fetch('data/kalender.json?v=' + Date.now());
+    const svar = await fetch(CONFIG.dataKilde + 'kalender.json?v=' + Date.now());
     if (svar.ok) { kalenderFil = await svar.json(); kalenderFeil = null; }
-    else kalenderFeil = `Fant ikke data/kalender.json (${svar.status})`;
+    else kalenderFeil = svar.status === 404
+      ? 'Kjør workflowen i GitHub for å lage kalenderdataene'
+      : `Fikk ikke kalender.json (${svar.status})`;
   } catch (e) {
-    kalenderFeil = location.protocol === 'file:'
-      ? 'Åpne tavla via nettadressen, ikke som lokal fil'
-      : 'Får ikke kontakt med data/kalender.json';
+    kalenderFeil = 'Får ikke kontakt med data-branchen';
   }
 
-  aksFil         = await hentValgfri('data/aks.json');
-  middagFil      = await hentValgfri('data/middager.json');
-  stengtFil      = await hentValgfri('data/stengt.json');
-  paaminnelserFil = await hentValgfri('data/paaminnelser.json');
+  aksFil          = await hentValgfri('aks.json');
+  middagFil       = await hentValgfri('middager.json');
+  stengtFil       = await hentValgfri('stengt.json');
+  paaminnelserFil = await hentValgfri('paaminnelser.json');
 }
 
 function byggDag(offset = dagOffset) {
@@ -1032,9 +1043,10 @@ function byggDag(offset = dagOffset) {
   const fraFil = kalenderFil?.dager?.[noekkel] || [];
   const manuelle = MANUELT.hendelser.filter(h => h.dato === noekkel);
 
-  const dagens  = [...fraFil.filter(p => !p.heldags), ...manuelle];
+  const dagens  = [...fraFil.filter(p => !p.heldags && p.type !== 'husk'), ...manuelle];
   const heldags = fraFil.filter(p => p.heldags);
   const husk    = [
+    ...fraFil.filter(p => p.type === 'husk').map(p => ({ barn: p.barn, tekst: p.tittel })),
     ...MANUELT.husk.filter(h => h.dato === noekkel),
     ...(paaminnelserFil?.dager?.[noekkel]?.paaminnelser || [])
   ];
@@ -2075,6 +2087,28 @@ document.getElementById('knappUke').addEventListener('click', () => {
   visning = 'uke'; tegnAlt();
 });
 document.getElementById('knappOppgaver').addEventListener('click', aapneStjerner);
+
+/* Fullskjerm. Støttes ikke på iPhone og er unødvendig når tavla
+   åpnes fra Hjem-skjermen, så knappen skjules der den ikke virker. */
+(function () {
+  const knapp = document.getElementById('knappFullskjerm');
+  const staaende = window.navigator.standalone
+    || window.matchMedia('(display-mode: standalone)').matches;
+
+  if (staaende || !document.documentElement.requestFullscreen) {
+    knapp.hidden = true;
+    return;
+  }
+
+  knapp.addEventListener('click', () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(() => {});
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    knapp.textContent = document.fullscreenElement ? '⤡' : '⛶';
+  });
+})();
 
 oppdaterKlokke();
 hentVaer().then(() => { if (sisteData) tegnAlt(); });
