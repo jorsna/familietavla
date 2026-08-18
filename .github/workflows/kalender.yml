@@ -52,30 +52,42 @@ jobs:
       # Da starter de ingen Pages-publisering, og opplastingene
       # dine slipper å stå i kø bak dem.
       #
-      # Branchen bygges på nytt hver gang. Det er trygt fordi alt
-      # den skal inneholde ligger i data/ her og nå — både det
-      # skriptet nettopp laget og det du har lastet opp til main.
+      # Roboten rører BARE filene den selv lager. Alt annet du har
+      # lastet opp til data-branchen — aks.json, middager.json,
+      # manuelt.json — blir stående urørt.
       # ────────────────────────────────────────────────────────────
       - name: Publiser til data-branchen
         run: |
-          if [ -z "$(ls -A data 2>/dev/null)" ]; then
-            echo "Ingen datafiler å publisere."
-            exit 0
-          fi
+          REPO="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
 
           rm -rf /tmp/datagren
           mkdir -p /tmp/datagren
-          cp data/* /tmp/datagren/
           cd /tmp/datagren
-
           git init -q
-          git checkout -q -b data
           git config user.name "Familietavla"
           git config user.email "actions@github.com"
-          git add -A
-          git commit -q -m "Data $(date -u +'%Y-%m-%d %H:%M')"
-          git push -q --force \
-            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
-            data
+          git remote add origin "$REPO"
 
-          echo "Publiserte $(ls -1 | wc -l) filer til data-branchen."
+          if git fetch -q --depth 1 origin data 2>/dev/null; then
+            git checkout -q -b data FETCH_HEAD
+            echo "Bygger videre på eksisterende data-branch."
+          else
+            git checkout -q -b data
+            echo "Oppretter data-branchen."
+          fi
+
+          # Bare robotens egne filer kopieres over
+          for f in kalender.json stengt.json paaminnelser.json; do
+            if [ -f "$GITHUB_WORKSPACE/data/$f" ]; then
+              cp "$GITHUB_WORKSPACE/data/$f" .
+            fi
+          done
+
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Ingen endringer."
+          else
+            git commit -q -m "Data $(date -u +'%Y-%m-%d %H:%M')"
+            git push -q origin data
+            echo "Publiserte til data-branchen. Filer nå: $(ls -1 | wc -l)"
+          fi
