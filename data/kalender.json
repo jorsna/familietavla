@@ -1,32 +1,7 @@
 {
-  "generert": "2026-08-18T11:17:45.629Z",
+  "generert": "2026-08-18T11:48:07.933Z",
   "dager": {
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-25": [
-      {
-        "barn": "familie",
-        "tittel": "Vermox",
-        "kilde": "kalender",
-        "heldags": true
-      },
+    "2026-08-24": [
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -69,11 +44,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur: Ned Heftyebakken til Midtstuen",
+        "tittel": "De eldste på tur",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "spesiell"
+        "type": "okt"
       },
       {
         "barn": "ellie",
@@ -146,6 +121,34 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Sofia bursdag til Victoria",
+        "kilde": "kalender",
+        "sted": "Rush",
+        "start": "17:00",
+        "slutt": "18:45",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-22": [
+      {
+        "barn": "familie",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
+        "kilde": "kalender",
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "familie",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
       }
     ],
     "2026-08-21": [
@@ -414,7 +417,13 @@
         "type": "spesiell"
       }
     ],
-    "2026-08-24": [
+    "2026-08-25": [
+      {
+        "barn": "familie",
+        "tittel": "Vermox",
+        "kilde": "kalender",
+        "heldags": true
+      },
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -457,11 +466,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "De eldste på tur",
+        "tittel": "Felles tur: Ned Heftyebakken til Midtstuen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "okt"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -534,15 +543,6 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Sofia bursdag til Victoria",
-        "kilde": "kalender",
-        "sted": "Rush",
-        "start": "17:00",
-        "slutt": "18:45",
-        "type": "spesiell"
       }
     ],
     "2026-08-18": [
