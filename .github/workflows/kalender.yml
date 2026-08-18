@@ -34,10 +34,18 @@ jobs:
           ICAL_ELLIE: ${{ secrets.ICAL_ELLIE }}
         run: node scripts/hent-kalender.mjs
 
+      # Valgfritt: krever både scripts/paaminnelser.mjs og en
+      # ANTHROPIC_API_KEY. Mangler noen av delene, hoppes steget over
+      # uten å stoppe resten av jobben.
       - name: Lag påminnelser
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node scripts/paaminnelser.mjs
+        run: |
+          if [ -f scripts/paaminnelser.mjs ]; then
+            node scripts/paaminnelser.mjs
+          else
+            echo "scripts/paaminnelser.mjs finnes ikke. Hopper over."
+          fi
 
       # ────────────────────────────────────────────────────────────
       # Datafilene legges på en egen branch, ikke på main.
