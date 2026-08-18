@@ -19,12 +19,22 @@
 const CONFIG = {
   /* vaersted peker inn i CONFIG.steder under.
      Sofia er på skolen, de to andre i barnehagen. */
+  /* Hvert barn har to farger. De mørke er tunet for mørk bakgrunn
+     og blir for lyse mot papirtonen, så den lyse paletten bruker
+     mettede varianter med nok kontrast til å leses på avstand. */
   barn: [
-    { id: 'sofia',     navn: 'Sofia',     farge: '#F0A93C', undertekst: '2C · AKS',   vaersted: 1 },
-    { id: 'sebastian', navn: 'Sebastian', farge: '#E8674A', undertekst: 'Barnehage',  vaersted: 0 },
-    { id: 'ellie',     navn: 'Ellie',     farge: '#3FB8A5', undertekst: 'Småbarn',    vaersted: 0 }
+    { id: 'sofia',     navn: 'Sofia',     fargeMork: '#F0A93C', fargeLys: '#96610F',
+      undertekst: '2C · AKS',  vaersted: 1 },
+    { id: 'sebastian', navn: 'Sebastian', fargeMork: '#E8674A', fargeLys: '#BC4426',
+      undertekst: 'Barnehage', vaersted: 0 },
+    { id: 'ellie',     navn: 'Ellie',     fargeMork: '#3FB8A5', fargeLys: '#127365',
+      undertekst: 'Småbarn',   vaersted: 0 }
   ],
-  familie: { navn: 'Familien', farge: '#9C8CE0' },
+  familie: { navn: 'Familien', fargeMork: '#9C8CE0', fargeLys: '#5A46AB' },
+
+  /* 'lys', 'mork' eller 'auto'. Auto er lys om dagen og mørk om
+     kvelden, styrt av nattFra og nattTil lenger nede. */
+  tema: 'auto',
 
   dagStart: 7,
   dagSlutt: 18.5,
@@ -195,6 +205,7 @@ const RUTINER = {
 
 <style>
 :root {
+  /* Mørk palett — brukes om kvelden */
   --ink:       #0E121A;
   --panel:     #171E2A;
   --line:      #2B3547;
@@ -204,6 +215,35 @@ const RUTINER = {
   --naa:       #FF5E6C;
   --mat:       #C9A227;
   --regn:      #4B8FD6;
+
+  --mat-tekst:  var(--mat-tekst);
+  --regn-tekst: var(--regn-tekst);
+  --naa-tekst:  var(--naa-tekst);
+  --glitter:    var(--glitter);
+}
+
+/* ══════════════════════════════════════════════════════════
+   LYS PALETT — standard
+   Ikke ren hvit. Et kjøkken har varmt lys, og #FFF blir hardt
+   mot veggen. Barnefargene byttes samtidig i JavaScript, siden
+   de mørke variantene ikke har nok kontrast mot lys bakgrunn.
+   ══════════════════════════════════════════════════════════ */
+
+body.lys {
+  --ink:       #F4F2ED;
+  --panel:     #FFFFFF;
+  --line:      #DCD7CD;
+  --line-svak: #E9E5DD;
+  --tekst:     #191D25;
+  --tekst-dus: #6C7482;
+  --naa:       #D2334A;
+  --mat:       #9C7407;
+  --regn:      #2B6AB4;
+
+  --mat-tekst:  #7A5A00;
+  --regn-tekst: #1E5799;
+  --naa-tekst:  #8E1B2C;
+  --glitter:    #E0A81E;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -217,7 +257,7 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 
-body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; }
+body { transition: background-color 1.2s ease, color 1.2s ease; }
 
 .tavle {
   height: 100vh; height: 100dvh;
@@ -265,6 +305,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 
 /* Vises bare der nettleseren faktisk støtter fullskjerm.
    På iPad er Legg til på Hjem-skjerm den riktige veien. */
+.dagvalg button.temaknapp { padding: 5px 10px; font-size: 15px; letter-spacing: 0; }
 .dagvalg button.fullskjerm { padding: 5px 10px; font-size: 14px; letter-spacing: 0; }
 .dagvalg button.fullskjerm[hidden] { display: none; }
 
@@ -319,9 +360,9 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 .kol-vaer .kv-ikon { font-size: 14px; line-height: 1; }
 .kol-vaer .kv-sted { color: var(--tekst-dus); opacity: 0.75; }
 .kol-vaer .kv-temp { color: var(--tekst); font-size: 13px; font-variant-numeric: tabular-nums; }
-.kol-vaer .kv-foles { color: #8FB8E8; }
+.kol-vaer .kv-foles { color: var(--regn-tekst); }
 .kol-vaer .kv-vaat { color: var(--regn); }
-.vaertopp .foles { color: #8FB8E8; }
+.vaertopp .foles { color: var(--regn-tekst); }
 
 .mangler {
   margin-top: 6px; padding: 3px 7px; border-radius: 3px;
@@ -341,7 +382,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 }
 .heldags span.stengt {
   background: color-mix(in srgb, var(--naa) 30%, transparent);
-  color: #FFD3D7; letter-spacing: 0.1em;
+  color: var(--naa-tekst); letter-spacing: 0.1em;
 }
 
 .akse { position: relative; }
@@ -391,7 +432,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   position: absolute; left: 8px; bottom: 2px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 9.5px; font-weight: 600; letter-spacing: 0.06em;
-  color: #BBD8F5;
+  color: var(--regn-tekst);
 }
 .vt-ikon-time {
   position: absolute; left: 50%; top: 2px; transform: translateX(-50%);
@@ -446,7 +487,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   background: color-mix(in srgb, var(--mat) 13%, var(--panel));
   border-left: 2px solid var(--mat);
 }
-.post.mat .p-tittel { color: #F2DC9A; }
+.post.mat .p-tittel { color: var(--mat-tekst); }
 
 .post.spesiell {
   left: 6px;
@@ -579,8 +620,8 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   font-size: 10.5px; font-weight: 500; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--tekst-dus); margin-top: 1px;
 }
-.ue.stengt { border-left-color: var(--naa); color: #FFD3D7; }
-.ue.middag { border-left-color: var(--mat); color: #F2DC9A; }
+.ue.stengt { border-left-color: var(--naa); color: var(--naa-tekst); }
+.ue.middag { border-left-color: var(--mat); color: var(--mat-tekst); }
 
 .uke-rad-middag .uke-navn { color: var(--mat); }
 
@@ -598,7 +639,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--naa); flex-shrink: 0;
 }
-.stengtstripe span { font-size: 14.5px; font-weight: 500; color: #FFD9DD; }
+.stengtstripe span { font-size: 14.5px; font-weight: 500; color: var(--naa-tekst); }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -750,7 +791,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   font-size: 12.5px; font-weight: 700; color: var(--tekst-dus);
 }
 .ss-dag.noe { background: color-mix(in srgb, var(--f) 30%, var(--panel)); color: var(--tekst); }
-.ss-dag.full { background: color-mix(in srgb, var(--mat) 40%, var(--panel)); color: #FFF3CE; }
+.ss-dag.full { background: color-mix(in srgb, var(--mat) 40%, var(--panel)); color: var(--glitter); }
 .ss-sum {
   text-align: center; font-weight: 700; font-size: 15px; color: var(--mat);
   font-variant-numeric: tabular-nums;
@@ -764,7 +805,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
 
 .kol-navn.glitrer {
   background: linear-gradient(100deg,
-    var(--f) 0%, #FFF3CE 42%, var(--mat) 55%, var(--f) 100%);
+    var(--f) 0%, var(--glitter) 42%, var(--mat) 55%, var(--f) 100%);
   background-size: 260% 100%;
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
@@ -859,7 +900,7 @@ body.natt { filter: brightness(0.45) saturate(0.8); transition: filter 4s ease; 
   border: 1px solid color-mix(in srgb, var(--naa) 45%, transparent);
   border-radius: 6px; padding: 9px 15px;
   font-size: 14px; font-weight: 500; text-align: center;
-  color: #FFD9DD;
+  color: var(--naa-tekst);
 }
 .varsel[hidden] { display: none; }
 /* ══════════════════════════════════════════════════════════
@@ -973,6 +1014,42 @@ function ukenummer(d) {
   t.setUTCDate(t.getUTCDate() + 4 - dag);
   const start = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
   return Math.ceil(((t - start) / 86400000 + 1) / 7);
+}
+
+/* ══════════════════════════════════════════════════════════
+   TEMA
+   Byttet gjøres ved å skifte palett, ikke ved å dempe skjermen
+   med et filter. Et filter gjør bildet grumsete; en egen palett
+   holder kontrastene like gode i begge tilstander.
+   ══════════════════════════════════════════════════════════ */
+
+const KONFETTI_MORK = ['#F0A93C', '#E8674A', '#3FB8A5', '#9C8CE0', '#C9A227', '#EBF0F8'];
+const KONFETTI_LYS  = ['#96610F', '#BC4426', '#127365', '#5A46AB', '#9C7407', '#2B6AB4'];
+
+let temaValg = CONFIG.tema;      // 'lys', 'mork' eller 'auto'
+let aktivtTema = null;
+
+function onskerLys() {
+  if (temaValg === 'lys') return true;
+  if (temaValg === 'mork') return false;
+  const t = new Date().getHours();
+  return !(t >= CONFIG.nattFra || t < CONFIG.nattTil);
+}
+
+function settTema(force = false) {
+  const lys = onskerLys();
+  const nytt = lys ? 'lys' : 'mork';
+  if (nytt === aktivtTema && !force) return false;
+
+  aktivtTema = nytt;
+  document.body.classList.toggle('lys', lys);
+
+  CONFIG.barn.forEach(b => { b.farge = lys ? b.fargeLys : b.fargeMork; });
+  CONFIG.familie.farge = lys ? CONFIG.familie.fargeLys : CONFIG.familie.fargeMork;
+
+  const knapp = document.getElementById('knappTema');
+  if (knapp) knapp.textContent = lys ? '\u263C' : '\u263E';
+  return true;
 }
 
 /* Hvilken dag vises: 0 = i dag, 1 = i morgen */
@@ -1511,8 +1588,7 @@ function oppdaterKlokke() {
   document.getElementById('klokke').textContent =
     `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
 
-  const time = n.getHours();
-  document.body.classList.toggle('natt', time >= CONFIG.nattFra || time < CONFIG.nattTil);
+  if (settTema() && sisteData) tegnAlt();
 
   const noekkel = n.toDateString();
   if (sisteDatoNokkel && sisteDatoNokkel !== noekkel) {
@@ -1800,8 +1876,6 @@ function oppgaveKolonner() {
 
 /* ── Konfetti ── */
 
-const KONFETTIFARGER = ['#F0A93C', '#E8674A', '#3FB8A5', '#9C8CE0', '#C9A227', '#EBF0F8'];
-
 function konfetti(vert) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -1815,7 +1889,8 @@ function konfetti(vert) {
     bit.style.setProperty('--dx', Math.cos(vinkel) * lengde + 'px');
     bit.style.setProperty('--dy', Math.sin(vinkel) * lengde + 'px');
     bit.style.setProperty('--rot', Math.round(Math.random() * 720 - 360) + 'deg');
-    bit.style.background = KONFETTIFARGER[i % KONFETTIFARGER.length];
+    const farger = aktivtTema === 'lys' ? KONFETTI_LYS : KONFETTI_MORK;
+    bit.style.background = farger[i % farger.length];
     bit.style.animationDelay = (Math.random() * 0.08).toFixed(2) + 's';
     boks.appendChild(bit);
   }
@@ -2081,6 +2156,21 @@ document.getElementById('knappUke').addEventListener('click', () => {
 });
 document.getElementById('knappOppgaver').addEventListener('click', aapneStjerner);
 
+/* Knappen sykler lys, mørk, auto. Auto er lys om dagen og mørk
+   om kvelden. Valget lagres på denne skjermen, så iPaden kan stå
+   lyst mens telefonen står mørkt. */
+document.getElementById('knappTema').addEventListener('click', () => {
+  temaValg = temaValg === 'lys' ? 'mork' : (temaValg === 'mork' ? 'auto' : 'lys');
+  try { localStorage.setItem('familietavla-tema', temaValg); } catch (e) {}
+  settTema(true);
+  tegnAlt();
+});
+
+try {
+  const lagret = localStorage.getItem('familietavla-tema');
+  if (lagret) temaValg = lagret;
+} catch (e) {}
+
 /* Fullskjerm. Støttes ikke på iPhone og er unødvendig når tavla
    åpnes fra Hjem-skjermen, så knappen skjules der den ikke virker. */
 (function () {
@@ -2103,6 +2193,7 @@ document.getElementById('knappOppgaver').addEventListener('click', aapneStjerner
   });
 })();
 
+settTema(true);
 oppdaterKlokke();
 hentVaer().then(() => { if (sisteData) tegnAlt(); });
 last().then(() => {
