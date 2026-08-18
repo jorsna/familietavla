@@ -36,8 +36,8 @@ const CONFIG = {
      kvelden, styrt av nattFra og nattTil lenger nede. */
   tema: 'auto',
 
-  dagStart: 7,
-  dagSlutt: 18.5,
+  dagStart: 7.5,
+  dagSlutt: 18,
 
   aksTider: [['14:00', '15:00'], ['15:15', '16:15']],
 
@@ -246,6 +246,36 @@ body.lys {
   --glitter:    #E0A81E;
 }
 
+/* Mot papir må skillene være tydeligere enn mot mørk bakgrunn.
+   En svak strek som fungerer på #0E121A forsvinner på #F4F2ED. */
+
+body.lys .kol { border-right-color: var(--line); }
+body.lys .strek { background: #EDEAE3; }
+
+body.lys .post.okt {
+  border: 1px solid color-mix(in srgb, var(--f) 30%, transparent);
+  border-left-width: 3px;
+}
+body.lys .post.mat {
+  border: 1px solid color-mix(in srgb, var(--mat) 32%, transparent);
+  border-left-width: 3px;
+}
+body.lys .post.rutine {
+  border: 1px solid var(--line);
+  border-left: 3px solid #CFCABF;
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+}
+body.lys .post.spesiell {
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--f) 55%, transparent),
+              0 1px 3px rgba(30, 26, 18, 0.08);
+}
+body.lys .ramme {
+  background: color-mix(in srgb, var(--f) 5%, transparent);
+  border-color: color-mix(in srgb, var(--f) 22%, transparent);
+}
+body.lys .kol-topp { border-bottom-color: var(--line); }
+body.lys .vaertime { border-bottom-color: #EAE6DE; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
@@ -449,7 +479,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   z-index: 1;
 }
 .ramme .r-navn {
-  position: absolute; top: 3px; left: 8px;
+  position: absolute; top: 3px; right: 9px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1481,8 +1511,16 @@ function lagPost(p) {
   el.dataset.start = start;
   el.dataset.slutt = slutt;
   el.style.top = posisjon(start) + '%';
-  el.style.height = hoyde + '%';
-  if (hoyde < 4) el.classList.add('smal');
+
+  /* To piksler trekkes fra så nabobokser får en synlig fuge
+     i stedet for å stå limt sammen. */
+  el.style.height = `calc(${hoyde}% - 2px)`;
+
+  /* Under 40 minutter er det ikke plass til tittel og klokkeslett
+     under hverandre. Da settes de på én linje i stedet for å
+     klippes på midten. */
+  const smalGrense = ((40 / 60) / (CONFIG.dagSlutt - CONFIG.dagStart)) * 100;
+  if (hoyde < smalGrense) el.classList.add('smal');
 
   const tid = `${p.start}–${p.slutt}`;
   const meta = p.sted ? `${tid} · ${p.sted}` : tid;
