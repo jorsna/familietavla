@@ -1,24 +1,29 @@
 {
-  "generert": "2026-08-19T09:01:53.222Z",
+  "generert": "2026-08-19T09:55:57.954Z",
   "dager": {
-    "2026-09-05": [
+    "2026-08-22": [
       {
         "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
         "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-09-01": [
-      {
-        "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
-        "kilde": "kalender",
-        "heldags": true
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
       },
       {
+        "barn": "sofia",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-25": [
+      {
         "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Vermox",
         "kilde": "kalender",
         "heldags": true
       },
@@ -64,11 +69,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur",
+        "tittel": "Felles tur: Vidsyn",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "rutine"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -143,37 +148,16 @@
         "type": "rutine"
       }
     ],
-    "2026-09-26": [
+    "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
+        "tittel": "Søke prøvingsattest",
         "kilde": "kalender",
         "heldags": true
-      }
-    ],
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
       },
       {
-        "barn": "sofia",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-25": [
-      {
         "barn": "familie",
-        "tittel": "Vermox",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
       },
@@ -219,11 +203,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur: Vidsyn",
+        "tittel": "Felles tur",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "spesiell"
+        "type": "rutine"
       },
       {
         "barn": "ellie",
@@ -733,6 +717,22 @@
         "start": "15:30",
         "slutt": "16:30",
         "type": "spesiell"
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-09-26": [
+      {
+        "barn": "familie",
+        "tittel": "Girlsnight hos Bjørr!",
+        "kilde": "kalender",
+        "heldags": true
       }
     ],
     "2026-09-14": [
