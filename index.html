@@ -58,18 +58,24 @@ const CONFIG = {
      Stjerner kan bare legges til, aldri trekkes fra. */
   oppgaver: {
     sofia: [
+      { id: 'stell',     tekst: 'Pusse tenner',   emoji: '🪥', naar: 'morgen' },
+      { id: 'kle',       tekst: 'Kle på seg',     emoji: '👕', naar: 'morgen' },
       { id: 'hender',    tekst: 'Vaske hender',   emoji: '🧼', naar: 'hjem' },
       { id: 'sekk',      tekst: 'Flaske og matboks', emoji: '🎒', naar: 'hjem' },
       { id: 'rydde',     tekst: 'Rydde rommet',   emoji: '🧹', naar: 'hjem' },
       { id: 'tallerken', tekst: 'Rydde tallerken', emoji: '🍽️', naar: 'middag' }
     ],
     sebastian: [
+      { id: 'stell',     tekst: 'Pusse tenner',   emoji: '🪥', naar: 'morgen' },
+      { id: 'kle',       tekst: 'Kle på seg',     emoji: '👕', naar: 'morgen' },
       { id: 'hender',    tekst: 'Vaske hender',   emoji: '🧼', naar: 'hjem' },
       { id: 'sekk',      tekst: 'Flaske og matboks', emoji: '🎒', naar: 'hjem' },
       { id: 'rydde',     tekst: 'Rydde leker',    emoji: '🧹', naar: 'hjem' },
       { id: 'tallerken', tekst: 'Rydde tallerken', emoji: '🍽️', naar: 'middag' }
     ],
     ellie: [
+      { id: 'stell',     tekst: 'Pusse tenner',   emoji: '🪥', naar: 'morgen' },
+      { id: 'kle',       tekst: 'Kle på seg',     emoji: '👕', naar: 'morgen' },
       { id: 'hender',    tekst: 'Vaske hender',   emoji: '🧼', naar: 'hjem' },
       { id: 'sekk',      tekst: 'Flaske og matboks', emoji: '🎒', naar: 'hjem' },
       { id: 'tallerken', tekst: 'Rydde tallerken', emoji: '🍽️', naar: 'middag' }
@@ -85,15 +91,15 @@ const CONFIG = {
     ]
   },
 
-  /* Ukesmål per barn. Sofia har fire daglige oppgaver pluss fire
-     ukesoppgaver, altså 32 mulige. Sebastian har 28, Ellie 21.
+  /* Ukesmål per barn. Sofia har seks daglige oppgaver pluss fire
+     ukesoppgaver, altså 46 mulige. Sebastian har 42, Ellie 35.
      Målene ligger rundt tre fjerdedeler av det mulige — nok til at
      en slapp dag ikke ødelegger uka, men ikke gratis.
 
      Poenget er at hver måler seg mot sitt eget tall. Å sammenligne
      stjerneantall på tvers av en seksåring og en ettåring blir
      urettferdig uansett hvordan man vrir på det. */
-  ukesmaal: { sofia: 24, sebastian: 21, ellie: 16 },
+  ukesmaal: { sofia: 34, sebastian: 31, ellie: 26 },
 
   /* Datafilene hentes fra data-branchen, ikke fra selve nettsiden.
      Da utløser ikke robotens oppdateringer noen ny publisering,
@@ -911,6 +917,24 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 
 .ss-melding {
   padding: 14px 18px; color: var(--tekst-dus); font-size: 14px;
+}
+
+/* Seks kolonner får ikke plass på en telefon uten å krympe.
+   Navnet flyttes over rutene, og rutene blir mindre. */
+@media (max-width: 700px) {
+  .ss-rutenett {
+    grid-template-columns: repeat(var(--oppgaver, 3), minmax(52px, 1fr));
+    gap: 6px 7px; padding: 12px 12px 8px;
+  }
+  .ss-rutenett > .ss-navncelle {
+    grid-column: 1 / -1;
+    flex-direction: row; align-items: baseline; gap: 10px;
+    padding: 12px 2px 2px;
+  }
+  .ss-hodecelle .ht { display: none; }
+  .ss-hodecelle .he { font-size: 24px; }
+  .orute { max-width: none; border-radius: 11px; font-size: 26px; }
+  .uo-navn { min-width: 100%; }
 }
 
 /* Glitrende navn i dagsvisningen når alt er gjort */
@@ -2019,7 +2043,7 @@ function erAktuell(oppgave) {
   const t = new Date().getHours();
   if (oppgave.naar === 'hjem') return t >= CONFIG.hjemFra;
   if (oppgave.naar === 'middag') return t >= CONFIG.middagFra;
-  return true;
+  return true;      // morgen og alltid: kan hukes av når som helst
 }
 
 /* Alle oppgavekolonnene som finnes, i rekkefølge */
