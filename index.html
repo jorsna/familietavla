@@ -58,24 +58,21 @@ const CONFIG = {
      Stjerner kan bare legges til, aldri trekkes fra. */
   oppgaver: {
     sofia: [
-      { id: 'stell',     tekst: 'Pusse tenner',   emoji: '🪥', naar: 'morgen' },
-      { id: 'kle',       tekst: 'Kle på seg',     emoji: '👕', naar: 'morgen' },
+      { id: 'morgen',    tekst: 'Morgenstell',   emoji: '🪥👕', naar: 'morgen' },
       { id: 'hender',    tekst: 'Vaske hender',   emoji: '🧼', naar: 'hjem' },
       { id: 'sekk',      tekst: 'Flaske og matboks', emoji: '🎒', naar: 'hjem' },
       { id: 'rydde',     tekst: 'Rydde rommet',   emoji: '🧹', naar: 'hjem' },
       { id: 'tallerken', tekst: 'Rydde tallerken', emoji: '🍽️', naar: 'middag' }
     ],
     sebastian: [
-      { id: 'stell',     tekst: 'Pusse tenner',   emoji: '🪥', naar: 'morgen' },
-      { id: 'kle',       tekst: 'Kle på seg',     emoji: '👕', naar: 'morgen' },
+      { id: 'morgen',    tekst: 'Morgenstell',   emoji: '🪥👕', naar: 'morgen' },
       { id: 'hender',    tekst: 'Vaske hender',   emoji: '🧼', naar: 'hjem' },
       { id: 'sekk',      tekst: 'Flaske og matboks', emoji: '🎒', naar: 'hjem' },
       { id: 'rydde',     tekst: 'Rydde leker',    emoji: '🧹', naar: 'hjem' },
       { id: 'tallerken', tekst: 'Rydde tallerken', emoji: '🍽️', naar: 'middag' }
     ],
     ellie: [
-      { id: 'stell',     tekst: 'Pusse tenner',   emoji: '🪥', naar: 'morgen' },
-      { id: 'kle',       tekst: 'Kle på seg',     emoji: '👕', naar: 'morgen' },
+      { id: 'morgen',    tekst: 'Morgenstell',   emoji: '🪥👕', naar: 'morgen' },
       { id: 'hender',    tekst: 'Vaske hender',   emoji: '🧼', naar: 'hjem' },
       { id: 'sekk',      tekst: 'Flaske og matboks', emoji: '🎒', naar: 'hjem' },
       { id: 'tallerken', tekst: 'Rydde tallerken', emoji: '🍽️', naar: 'middag' }
@@ -91,15 +88,15 @@ const CONFIG = {
     ]
   },
 
-  /* Ukesmål per barn. Sofia har seks daglige oppgaver pluss fire
-     ukesoppgaver, altså 46 mulige. Sebastian har 42, Ellie 35.
+  /* Ukesmål per barn. Sofia har fem daglige oppgaver pluss fire
+     ukesoppgaver, altså 39 mulige. Sebastian har 35, Ellie 28.
      Målene ligger rundt tre fjerdedeler av det mulige — nok til at
      en slapp dag ikke ødelegger uka, men ikke gratis.
 
      Poenget er at hver måler seg mot sitt eget tall. Å sammenligne
      stjerneantall på tvers av en seksåring og en ettåring blir
      urettferdig uansett hvordan man vrir på det. */
-  ukesmaal: { sofia: 34, sebastian: 31, ellie: 26 },
+  ukesmaal: { sofia: 29, sebastian: 26, ellie: 21 },
 
   /* Datafilene hentes fra data-branchen, ikke fra selve nettsiden.
      Da utløser ikke robotens oppdateringer noen ny publisering,
@@ -803,6 +800,8 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 }
 .orute:active { transform: scale(0.94); }
 .orute .sym { opacity: 0.3; transition: opacity 0.25s ease; }
+.orute .sym.flere { font-size: 0.62em; letter-spacing: -0.04em; }
+.ss-hodecelle .he.flere { font-size: clamp(21px, 2.5vw, 30px); letter-spacing: -0.04em; }
 .orute .hake {
   position: absolute; font-size: 0.86em; line-height: 1;
   opacity: 0; transform: scale(0.4) rotate(-25deg);
@@ -2046,6 +2045,10 @@ function erAktuell(oppgave) {
   return true;      // morgen og alltid: kan hukes av når som helst
 }
 
+/* Teller symboler, ikke tegn. 🍽️ er ett symbol men to kodepunkter,
+   så variantvelgeren må strippes før vi teller. */
+const flereTegn = e => [...(e || '').replace(/\uFE0F/g, '')].length > 1;
+
 /* Alle oppgavekolonnene som finnes, i rekkefølge */
 function oppgaveKolonner() {
   const sett = [];
@@ -2105,7 +2108,7 @@ function tegnStjerneside() {
   html += `<div class="ss-rutenett" style="--oppgaver:${kolonner.length}">`;
   html += `<div></div>`;
   kolonner.forEach(o => {
-    html += `<div class="ss-hodecelle"><span class="he">${o.emoji}</span>
+    html += `<div class="ss-hodecelle"><span class="he${flereTegn(o.emoji) ? ' flere' : ''}">${o.emoji}</span>
       <span class="ht">${o.tekst}</span></div>`;
   });
 
@@ -2125,7 +2128,7 @@ function tegnStjerneside() {
       html += `<div class="orute ${erGjort ? 'gjort' : ''} ${senere ? 'senere' : ''}"
                  style="--f:${barn.farge}"
                  data-barn="${barn.id}" data-oppgave="${o.id}">
-          <span class="sym">${o.emoji}</span>
+          <span class="sym${flereTegn(o.emoji) ? ' flere' : ''}">${o.emoji}</span>
           <span class="hake">⭐</span>
         </div>`;
     });
