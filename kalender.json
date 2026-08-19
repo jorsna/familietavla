@@ -1,6 +1,14 @@
 {
-  "generert": "2026-08-19T08:00:11.319Z",
+  "generert": "2026-08-19T09:01:53.222Z",
   "dager": {
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
     "2026-09-01": [
       {
         "barn": "familie",
@@ -135,6 +143,33 @@
         "type": "rutine"
       }
     ],
+    "2026-09-26": [
+      {
+        "barn": "familie",
+        "tittel": "Girlsnight hos Bjørr!",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-08-22": [
+      {
+        "barn": "familie",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
+        "kilde": "kalender",
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-08-25": [
       {
         "barn": "familie",
@@ -184,7 +219,7 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur: Ned Heftyebakken til Midtstuen",
+        "tittel": "Felles tur: Vidsyn",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
@@ -263,51 +298,6 @@
         "type": "rutine"
       }
     ],
-    "2026-09-14": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-05": [
-      {
-        "barn": "familie",
-        "tittel": "Stiatlon",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
     "2026-08-24": [
       {
         "barn": "sebastian",
@@ -351,11 +341,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "De eldste på tur",
+        "tittel": "De eldste på tur: Strømsdammen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "rutine"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -492,7 +482,7 @@
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "okt"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -618,11 +608,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur: Holmenkollen",
+        "tittel": "Felles tur: Tøyen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "okt"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -745,6 +735,16 @@
         "type": "spesiell"
       }
     ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
+      }
+    ],
     "2026-08-27": [
       {
         "barn": "sebastian",
@@ -788,11 +788,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Dagens aktivitet: Introduksjon av årstema - Kardemomme by",
+        "tittel": "Dagens aktivitet: Kardemomme by - Forming",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "okt"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -1029,7 +1029,7 @@
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "okt"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -1146,6 +1146,14 @@
         "type": "rutine"
       },
       {
+        "barn": "sebastian",
+        "tittel": "Felles tur: Botanisk Hage",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "13:30",
+        "type": "spesiell"
+      },
+      {
         "barn": "ellie",
         "tittel": "Felles oppdagelsestur!",
         "kilde": "mykid",
@@ -1174,6 +1182,14 @@
         "tittel": "Hvilestund",
         "kilde": "mykid",
         "start": "12:00",
+        "slutt": "14:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Dorunde/tømme sekk etter tur/klargjøre for 2-maten",
+        "kilde": "mykid",
+        "start": "13:30",
         "slutt": "14:00",
         "type": "rutine"
       },
