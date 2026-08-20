@@ -1,35 +1,16 @@
 {
-  "generert": "2026-08-20T10:25:30.315Z",
+  "generert": "2026-08-20T10:55:17.932Z",
   "dager": {
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
-        "type": "spesiell"
-      }
-    ],
     "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
+        "tittel": "Søke prøvingsattest",
         "kilde": "kalender",
         "heldags": true
       },
       {
         "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
       },
@@ -152,6 +133,25 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      }
+    ],
+    "2026-08-22": [
+      {
+        "barn": "familie",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
+        "kilde": "kalender",
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
       }
     ],
     "2026-08-25": [
@@ -280,6 +280,14 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
       }
     ],
     "2026-08-21": [
@@ -588,14 +596,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
     "2026-09-14": [
       {
         "barn": "familie",
@@ -737,10 +737,10 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-05": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
       }
