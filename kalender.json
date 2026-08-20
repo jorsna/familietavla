@@ -1,6 +1,14 @@
 {
-  "generert": "2026-08-20T10:55:17.932Z",
+  "generert": "2026-08-20T11:17:55.489Z",
   "dager": {
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
     "2026-09-01": [
       {
         "barn": "familie",
@@ -135,25 +143,6 @@
         "type": "rutine"
       }
     ],
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
-        "type": "spesiell"
-      }
-    ],
     "2026-08-25": [
       {
         "barn": "familie",
@@ -282,12 +271,41 @@
         "type": "rutine"
       }
     ],
-    "2026-09-05": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
+      }
+    ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-22": [
+      {
+        "barn": "familie",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
+        "kilde": "kalender",
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
       }
     ],
     "2026-08-21": [
@@ -596,16 +614,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-14": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-08-24": [
       {
         "barn": "sebastian",
@@ -735,14 +743,6 @@
         "start": "17:00",
         "slutt": "18:45",
         "type": "spesiell"
-      }
-    ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
       }
     ],
     "2026-08-27": [
