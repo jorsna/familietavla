@@ -79,7 +79,7 @@ const CONFIG = {
     ]
   },
 
-  /* Ukesoppgaver gjøres et bestemt antall ganger i uka, men barnet
+  /* Ukesoppgaver gjøres et bestemt antall ganger i uken, men barnet
      velger selv hvilke dager. Trykk registrerer at det er gjort i dag. */
   ukesoppgaver: {
     sofia: [
@@ -91,7 +91,7 @@ const CONFIG = {
   /* Ukesmål per barn. Sofia har fem daglige oppgaver pluss fire
      ukesoppgaver, altså 39 mulige. Sebastian har 35, Ellie 28.
      Målene ligger rundt tre fjerdedeler av det mulige — nok til at
-     en slapp dag ikke ødelegger uka, men ikke gratis.
+     en slapp dag ikke ødelegger uken, men ikke gratis.
 
      Poenget er at hver måler seg mot sitt eget tall. Å sammenligne
      stjerneantall på tvers av en seksåring og en ettåring blir
@@ -511,9 +511,11 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   color: var(--regn-tekst);
 }
 .vt-ikon-time {
-  position: absolute; left: 50%; top: 2px; transform: translateX(-50%);
-  font-size: 12px; line-height: 1; opacity: 0.9;
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px; line-height: 1; opacity: 0.42;
 }
+.vt-ikon-time.skifte { opacity: 1; font-size: 15px; }
 .vt-ikon { font-size: 1.25em; line-height: 1; }
 
 /* ── Poster ── */
@@ -819,6 +821,24 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   cursor: pointer; user-select: none;
 }
 .ss-bank b { color: var(--mat); font-size: 16px; }
+
+.ss-bar {
+  display: block; height: 6px; border-radius: 3px;
+  background: var(--line-svak); overflow: hidden; margin-top: 3px;
+}
+.ss-bar i {
+  display: block; height: 100%; border-radius: 3px; background: var(--f);
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.ss-bar.naadd i { background: var(--mat); }
+.ss-maal {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--tekst-dus);
+}
+.ss-maal.naadd { color: var(--mat); }
+
+@media (prefers-reduced-motion: reduce) { .ss-bar i { transition: none; } }
 
 /* Selve trykkflaten */
 
@@ -1539,14 +1559,14 @@ function lagVaerkolonne(noekkel) {
     const fyll = Math.min(mm / 2, 1);      // 2 mm i timen fyller hele
     const alfa = mm > 0 ? 0.18 + fyll * 0.45 : 0;
 
-    /* Symbol bare når været faktisk skifter. Ett per time blir en
-       vegg av skyer; ett ved skiftet er det du trenger å se. */
+    /* Symbol hver time. Timene der været skifter får full styrke,
+       de øvrige dempes litt så skiftet fortsatt er lett å se. */
     const skifte = ta.kode !== forrigeKode;
     forrigeKode = ta.kode;
 
     rad.innerHTML = `
       ${mm > 0 ? `<div class="vaat-fyll" style="height:${Math.max(fyll * 100, 12)}%;opacity:${alfa}"></div>` : ''}
-      ${skifte ? `<span class="vt-ikon-time">${ikon(ta.kode)}</span>` : ''}
+      <span class="vt-ikon-time${skifte ? ' skifte' : ''}">${ikon(ta.kode)}</span>
       <span class="vt-a">${Math.round(ta.temp)}°</span>
       <span class="vt-b">${tb ? Math.round(tb.temp) + '°' : ''}</span>
       ${mm >= 0.2 ? `<span class="vt-mm">${mm.toFixed(1)}</span>` : ''}`;
@@ -1765,7 +1785,7 @@ function tegnDato() {
   if (visning === 'uke') {
     const start = mandagIUka(ukeOffset);
     const slutt = new Date(start); slutt.setDate(slutt.getDate() + 6);
-    const naa = ukeOffset === 0 ? ' · denne uka'
+    const naa = ukeOffset === 0 ? ' · denne uken'
               : ukeOffset === 1 ? ' · neste uke' : '';
     document.getElementById('ukedag').textContent = `Uke ${ukenummer(start)}`;
     document.getElementById('datorest').textContent =
@@ -1835,7 +1855,7 @@ function verdtAaVise(p) {
   return p.kilde === 'fast' && p.barn === 'sofia' && p.start >= '13:30'; // AKS
 }
 
-/* Hvilke ukeplaner mangler for uka som vises. Sjekkes bare på
+/* Hvilke ukeplaner mangler for uken som vises. Sjekkes bare på
    hverdager — helgen har verken AKS eller lekser. */
 function manglerForUke(start) {
   const uke = ukenummer(start);
@@ -1925,7 +1945,7 @@ function tegnUke() {
 
   const noeIDetHeleTatt = dager.some(d => d.data.poster.length || d.data.heldags.length);
   if (!noeIDetHeleTatt) {
-    html += `<div class="uke-ingenting">Ingen data for denne uka ennå. `
+    html += `<div class="uke-ingenting">Ingen data for denne uken ennå. `
           + `Roboten henter seks uker fram.</div>`;
   }
 
@@ -2116,7 +2136,7 @@ function ukesStjerner(barnId, offset = 0) {
 const maalFor = barnId =>
   (typeof CONFIG.ukesmaal === 'object' ? CONFIG.ukesmaal[barnId] : CONFIG.ukesmaal) || 15;
 
-/* Hvor mange dager denne uka en ukesoppgave er utført */
+/* Hvor mange dager denne uken en ukesoppgave er utført */
 function ukesoppgaveGjort(barnId, oppgaveId) {
   const start = mandagIUka(0);
   const dager = [];
@@ -2214,9 +2234,17 @@ function tegnStjerneside() {
     const mine = CONFIG.oppgaver[barn.id].map(o => o.id);
     const gjort = gjortIDag(barn.id, noekkel);
 
+    const maalet = maalFor(barn.id);
+    const iUken = ukesStjerner(barn.id);
+    const naadd = iUken >= maalet;
+
     html += `<div class="ss-navncelle" style="--f:${barn.farge}">
       <span class="ss-navn">${barn.navn}</span>
       <span class="ss-bank" data-bank="${barn.id}"><b>${bank(barn.id)}</b> oppsparte</span>
+      <span class="ss-bar ${naadd ? 'naadd' : ''}" data-bar="${barn.id}">
+        <i style="width:${Math.min(iUken / maalet, 1) * 100}%"></i></span>
+      <span class="ss-maal ${naadd ? 'naadd' : ''}" data-maal="${barn.id}">
+        ${naadd ? 'Målet er nådd 🎉' : iUken + ' av ' + maalet + ' denne uken'}</span>
     </div>`;
 
     kolonner.forEach(o => {
@@ -2236,7 +2264,7 @@ function tegnStjerneside() {
   // Ukesoppgaver: velg selv hvilke dager, men et gitt antall ganger
   const medUkes = CONFIG.barn.filter(b => (CONFIG.ukesoppgaver?.[b.id] || []).length);
   if (medUkes.length) {
-    html += `<div class="ss-ukesoppgaver"><h3>Et par ganger i uka</h3>`;
+    html += `<div class="ss-ukesoppgaver"><h3>Et par ganger i uken</h3>`;
     medUkes.forEach(barn => {
       const kort = CONFIG.ukesoppgaver[barn.id].map(o => {
         const dager = ukesoppgaveGjort(barn.id, o.id);
@@ -2262,7 +2290,7 @@ function tegnStjerneside() {
   // Ukesoversikt
   const start = mandagIUka(0);
   const KORT = ['M','Ti','O','To','F','L','S'];
-  html += `<div class="ss-uke"><h3>Denne uka</h3><div class="ss-uketabell">`;
+  html += `<div class="ss-uke"><h3>Denne uken</h3><div class="ss-uketabell">`;
   html += `<div></div>`;
   for (let i = 0; i < 7; i++) {
     const d = new Date(start); d.setDate(d.getDate() + i);
@@ -2334,6 +2362,20 @@ function oppdaterTall() {
 
   document.querySelectorAll('.ss-bank').forEach(el => {
     el.querySelector('b').textContent = bank(el.dataset.bank);
+  });
+
+  document.querySelectorAll('.ss-bar').forEach(el => {
+    const id = el.dataset.bar;
+    const maalet = maalFor(id);
+    const iUken = ukesStjerner(id);
+    const naadd = iUken >= maalet;
+    el.querySelector('i').style.width = Math.min(iUken / maalet, 1) * 100 + '%';
+    el.classList.toggle('naadd', naadd);
+    const tekst = document.querySelector(`[data-maal="${id}"]`);
+    if (tekst) {
+      tekst.textContent = naadd ? 'Målet er nådd 🎉' : `${iUken} av ${maalet} denne uken`;
+      tekst.classList.toggle('naadd', naadd);
+    }
   });
 
   const side = document.getElementById('stjerneside');
