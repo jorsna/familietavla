@@ -326,9 +326,9 @@ html, body {
 body { transition: background-color 1.2s ease, color 1.2s ease; }
 
 /* Plass til iPadOS sin lukkeknapp i fullskjerm */
-body.fullskjerm .topp { padding-left: 66px; }
+body.fullskjerm .topp { padding-left: 112px; }
 body.fullskjerm .stjerneside .ss-topp,
-body.fullskjerm .lekseside .ss-topp { padding-left: 66px; }
+body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 
 .tavle {
   height: 100vh; height: 100dvh;
@@ -394,9 +394,19 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 66px; }
 
 /* Vises bare der nettleseren faktisk støtter fullskjerm.
    På iPad er Legg til på Hjem-skjerm den riktige veien. */
-.dagvalg button.temaknapp { padding: 7px 12px; font-size: 18px; letter-spacing: 0; }
-.dagvalg button.fullskjerm { padding: 7px 12px; font-size: 17px; letter-spacing: 0; }
-.dagvalg button.fullskjerm[hidden] { display: none; }
+/* Tema og fullskjerm brukes én gang og så aldri mer. De hører
+   ikke hjemme der man leser dagen, men de skal være å finne. */
+.hjornekontroller {
+  display: flex; gap: 6px; margin-left: auto; flex-shrink: 0;
+}
+.hjornekontroller button {
+  background: transparent; border: 1px solid var(--line);
+  color: var(--tekst-dus); border-radius: 6px;
+  width: 34px; height: 30px; line-height: 1; cursor: pointer;
+  font-size: 16px; font-family: inherit;
+}
+.hjornekontroller button:active { transform: scale(0.94); }
+.hjornekontroller button[hidden] { display: none; }
 
 .hoyre { display: flex; align-items: center; gap: 18px; }
 .vaertopp {
@@ -431,13 +441,13 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 66px; }
 .kol-topp { padding: 15px 10px 9px; border-bottom: 1px solid var(--line); }
 .kol-navn {
   font-family: 'Anton', Impact, sans-serif;
-  font-size: clamp(14px, 1.8vw, 21px);
+  font-size: clamp(17px, 2.3vw, 27px);
   text-transform: uppercase; letter-spacing: 0.03em;
   line-height: 1; color: var(--f);
 }
 .kol-under {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10.5px; font-weight: 500; letter-spacing: 0.13em;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.13em;
   text-transform: uppercase; color: var(--tekst-dus); margin-top: 4px;
 }
 .kol-vaer {
@@ -514,7 +524,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 66px; }
 /* ── Værkolonnen ── */
 
 .vaerkol .kol-topp { padding: 15px 8px 9px; }
-.vaerkol .kol-navn { color: var(--tekst-dus); font-size: clamp(12px, 1.5vw, 16px); }
+.vaerkol .kol-navn { color: var(--tekst-dus); font-size: clamp(13px, 1.7vw, 18px); }
 .vaer-merker {
   display: flex; justify-content: space-between; margin-top: 5px;
   font-family: 'Barlow Condensed', sans-serif;
@@ -1240,8 +1250,6 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 66px; }
       <button id="knappUke">Uke</button>
       <button id="knappLekser" class="lekseknapp">📖 Lekser</button>
       <button id="knappOppgaver" class="stjerneknapp">⭐ Stjerner</button>
-      <button id="knappTema" class="temaknapp" title="Lys eller mørk">☼</button>
-      <button id="knappFullskjerm" class="fullskjerm" title="Fullskjerm">⛶</button>
     </div>
 
     <div class="hoyre">
@@ -1262,6 +1270,10 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 66px; }
   <footer class="husk">
     <span class="husk-merkelapp" id="husklapp">Husk i dag</span>
     <div class="husk-liste" id="husk"></div>
+    <div class="hjornekontroller">
+      <button id="knappTema" class="temaknapp" title="Lys eller mørk">☼</button>
+      <button id="knappFullskjerm" class="fullskjerm" title="Fullskjerm">⛶</button>
+    </div>
   </footer>
 </div>
 <div class="status" id="status"></div>
