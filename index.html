@@ -142,6 +142,10 @@ const CONFIG = {
   // Piksler per time når tavla vises på telefon. Høyere = mer luft.
   pxPerTimeSmal: 92,
 
+  /* Fast høyde på kolonneoverskriften. Må romme navn, vær, stjerner
+     og to leksefelt. Settes den for lavt, klippes innholdet. */
+  topphoyde: 142,
+
   nattFra: 21,
   nattTil: 6,
   dataIntervallMin: 10
@@ -438,7 +442,12 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 }
 .kol:last-child { border-right: none; }
 
-.kol-topp { padding: 12px 10px 8px; border-bottom: 1px solid var(--line); }
+.kol-topp {
+  padding: 12px 10px 8px;
+  border-bottom: 1px solid var(--line);
+  height: var(--topphoyde, auto);
+  overflow: hidden;
+}
 
 /* Overskriften legges på tvers, ikke nedover. Hver linje den vokser
    spiser høyde fra timene under, og da klemmes de korte øktene. */
@@ -1225,7 +1234,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 
   .topp { padding: 8px 13px 6px; gap: 6px; }
   .dagvalg button { padding: 5px 0; font-size: 11.5px; }
-  .kol-topp { padding: 11px 9px 7px; }
+  .kol-topp { padding: 11px 9px 7px; height: auto; }
   .kol-navn { font-size: 15px; }
   .kol-under { font-size: 9.5px; margin-top: 3px; }
   .kol-vaer { margin-top: 3px; font-size: 11px; }
@@ -1720,6 +1729,11 @@ function tegnRutenett(data) {
   rutenett.style.setProperty('--kolonner', kolonner.length);
   rutenett.style.setProperty('--sporpx',
     Math.round((CONFIG.dagSlutt - CONFIG.dagStart) * CONFIG.pxPerTimeSmal) + 'px');
+
+  /* Fast høyde på overskriftene. Måler vi dem i stedet, endrer
+     tidslinjens skala seg fra dag til dag — en dag med lekser blir
+     smalere enn en uten. Klokka ni skal ligge samme sted uansett. */
+  rutenett.style.setProperty('--topphoyde', CONFIG.topphoyde + 'px');
   rutenett.innerHTML = '';
 
   const akseKol = document.createElement('div');
@@ -1777,16 +1791,6 @@ function tegnRutenett(data) {
 
     rutenett.appendChild(kol);
   });
-
-  /* Hver kolonne er sitt eget rutenett, så overskriftene får ulik
-     høyde og sporene under starter på ulike steder. Da glir
-     klokkeslettene fra timelinjene. Vi måler den høyeste og gir
-     alle den samme, så alt starter på samme strek. */
-  const topper = [...rutenett.querySelectorAll('.kol-topp')];
-  if (topper.length) {
-    const hoyeste = Math.max(...topper.map(e => e.offsetHeight));
-    topper.forEach(e => { e.style.height = hoyeste + 'px'; });
-  }
 
   tegnTidsakse();
   tegnNaaLinje();
