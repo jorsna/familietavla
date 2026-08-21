@@ -88,15 +88,16 @@ const CONFIG = {
     ]
   },
 
-  /* Ukesmål per barn. Sofia har fem daglige oppgaver pluss fire
-     ukesoppgaver, altså 39 mulige. Sebastian har 35, Ellie 28.
+  /* Ukesmål per barn. Sofia har fem daglige oppgaver, fire
+     ukesoppgaver og som regel to-tre lekser, altså rundt 42 mulige.
+     Sebastian har 35, Ellie 28.
      Målene ligger rundt tre fjerdedeler av det mulige — nok til at
      en slapp dag ikke ødelegger uken, men ikke gratis.
 
      Poenget er at hver måler seg mot sitt eget tall. Å sammenligne
      stjerneantall på tvers av en seksåring og en ettåring blir
      urettferdig uansett hvordan man vrir på det. */
-  ukesmaal: { sofia: 29, sebastian: 26, ellie: 21 },
+  ukesmaal: { sofia: 31, sebastian: 26, ellie: 21 },
 
   /* Datafilene hentes fra data-branchen, ikke fra selve nettsiden.
      Da utløser ikke robotens oppdateringer noen ny publisering,
@@ -479,6 +480,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 }
 .kl-linje.frist { font-weight: 600; }
 .kl-flere { color: var(--tekst-dus); font-size: 11.5px; }
+.kl-ferdig { color: var(--mat); font-weight: 600; }
 
 .heldags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .heldags span {
@@ -1029,6 +1031,15 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--naa);
 }
+.ls-post { cursor: pointer; position: relative; overflow: hidden; }
+.ls-post:active { transform: scale(0.99); }
+.ls-hake { font-size: 17px; line-height: 1; width: 20px; flex-shrink: 0; }
+.ls-post.gjort {
+  background: color-mix(in srgb, var(--f) 16%, var(--panel));
+  border-left-color: color-mix(in srgb, var(--f) 70%, transparent);
+}
+.ls-post.gjort .ls-tekst { text-decoration: line-through; opacity: 0.65; }
+.ls-post.gjort .ls-frist { color: var(--mat); }
 .ls-post.passert { opacity: 0.4; }
 .ls-post.passert .ls-frist { color: var(--tekst-dus); }
 .ls-info {
@@ -1256,6 +1267,18 @@ const DAGNAVN  = ['', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag'];
 
 /* En frist til torsdag betyr at leksen gjøres onsdag kveld.
    Derfor sier tavla "i kveld" dagen før, ikke "til torsdag". */
+/* Lekser kan skrives som ren tekst eller som objekt med egen id.
+   Uten id lages en av ukenummer og plassering — stabil så lenge
+   rekkefølgen i filen ikke endres. */
+function lekseListe(uke, noekkel) {
+  const raa = lekseFil?.[String(uke)]?.[noekkel] || [];
+  return raa.filter(Boolean).map((x, i) => typeof x === 'string'
+    ? { id: `lekse-${uke}-${noekkel}-${i}`, tekst: x }
+    : { id: x.id || `lekse-${uke}-${noekkel}-${i}`, tekst: x.tekst });
+}
+
+const lekseGjort = id => ukesoppgaveGjort('sofia', id).length > 0;
+
 function fristTekst(frist, ukedag) {
   if (frist === ukedag) return 'i dag';
   if (frist === ukedag + 1) return 'i kveld';
@@ -1445,14 +1468,14 @@ function byggDag(offset = dagOffset) {
   /* Lekser hører ikke til et klokkeslett. Skolen gir dem for uken,
      med eventuell frist. Derfor står de i kolonneoverskriften og på
      leksesiden, ikke som en boks i tidslinjen. */
-  const lekseUke = lekseFil?.[String(uke)] || {};
   const lekser = [];
   if (ukedag >= 1 && ukedag <= 5) {
-    (lekseUke.uken || []).filter(Boolean).forEach(x => lekser.push({ tekst: x }));
+    lekseListe(uke, 'uken').forEach(l =>
+      lekser.push({ ...l, gjort: lekseGjort(l.id) }));
     for (let d = 1; d <= 5; d++) {
       if (d < ukedag) continue;
-      (lekseUke[String(d)] || []).filter(Boolean).forEach(x =>
-        lekser.push({ tekst: x, frist: d, naar: fristTekst(d, ukedag) }));
+      lekseListe(uke, String(d)).forEach(l =>
+        lekser.push({ ...l, frist: d, naar: fristTekst(d, ukedag), gjort: lekseGjort(l.id) }));
     }
   }
 
@@ -1751,11 +1774,18 @@ function kolonneVaer(barn, noekkel) {
 function kolonneLekser(barn, data) {
   if (barn.id !== 'sofia' || !data.lekser?.length) return '';
 
-  const linjer = data.lekser.slice(0, 3).map(l =>
+  const igjen = data.lekser.filter(l => !l.gjort);
+  if (!igjen.length) {
+    return `<div class="kol-lekser">
+      <span class="kl-merke">Lekser</span>
+      <div class="kl-linje kl-ferdig">Alt er gjort</div></div>`;
+  }
+
+  const linjer = igjen.slice(0, 3).map(l =>
     `<div class="kl-linje${l.frist ? ' frist' : ''}">${l.tekst}`
     + (l.naar ? `<em>${l.naar}</em>` : '') + `</div>`).join('');
 
-  const flere = data.lekser.length - 3;
+  const flere = igjen.length - 3;
 
   return `<div class="kol-lekser">
     <span class="kl-merke">Lekser</span>
@@ -2530,10 +2560,10 @@ function tegnLekseside() {
       <span class="ls-uke">Uke ${uke}</span>
     </div>`;
 
-  const uken = (u.uken || []).filter(Boolean);
+  const uken = lekseListe(uke, 'uken');
   const frister = [];
   for (let d = 1; d <= 5; d++) {
-    (u[String(d)] || []).filter(Boolean).forEach(x => frister.push({ tekst: x, frist: d }));
+    lekseListe(uke, String(d)).forEach(l => frister.push({ ...l, frist: d }));
   }
 
   if (!uken.length && !frister.length) {
@@ -2543,10 +2573,13 @@ function tegnLekseside() {
   if (frister.length) {
     html += `<div class="ls-bolk"><h3>Med frist</h3>`;
     frister.forEach(f => {
-      const passert = f.frist < ukedag && ukedag <= 5;
-      html += `<div class="ls-post ${passert ? 'passert' : ''}" style="--f:${farge}">
+      const gjort = lekseGjort(f.id);
+      const passert = !gjort && f.frist < ukedag && ukedag <= 5;
+      html += `<div class="ls-post ${gjort ? 'gjort' : ''} ${passert ? 'passert' : ''}"
+                 style="--f:${farge}" data-lekse="${f.id}">
+        <span class="ls-hake">${gjort ? '⭐' : ''}</span>
         <span class="ls-tekst">${f.tekst}</span>
-        <span class="ls-frist">${passert ? 'passert' : fristTekst(f.frist, ukedag)}</span>
+        <span class="ls-frist">${gjort ? 'gjort' : (passert ? 'passert' : fristTekst(f.frist, ukedag))}</span>
       </div>`;
     });
     html += `</div>`;
@@ -2554,8 +2587,13 @@ function tegnLekseside() {
 
   if (uken.length) {
     html += `<div class="ls-bolk"><h3>I løpet av uken</h3>`;
-    uken.forEach(x => {
-      html += `<div class="ls-post" style="--f:${farge}"><span class="ls-tekst">${x}</span></div>`;
+    uken.forEach(l => {
+      const gjort = lekseGjort(l.id);
+      html += `<div class="ls-post ${gjort ? 'gjort' : ''}" style="--f:${farge}" data-lekse="${l.id}">
+        <span class="ls-hake">${gjort ? '⭐' : ''}</span>
+        <span class="ls-tekst">${l.tekst}</span>
+        ${gjort ? '<span class="ls-frist">gjort</span>' : ''}
+      </div>`;
     });
     html += `</div>`;
   }
@@ -2573,6 +2611,15 @@ function tegnLekseside() {
 
   side.innerHTML = html;
   document.getElementById('lsTilbake').addEventListener('click', tilbakeFraLekser);
+
+  const noekkel = datoNoekkel(idag);
+  side.querySelectorAll('[data-lekse]').forEach(post => {
+    post.addEventListener('click', () => {
+      const ble = vipp('sofia', post.dataset.lekse, noekkel);
+      if (ble) konfetti(post);
+      tegnLekseside();
+    });
+  });
 }
 
 function visLekser() {
