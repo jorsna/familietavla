@@ -130,6 +130,11 @@ const CONFIG = {
   // Når middagen vises i familiekolonnen
   middagTid: ['16:45', '17:45'],
 
+  /* Når leksene vises i Sofias kolonne. Lekser har ikke noe eget
+     klokkeslett — dette er når dere pleier å gjøre dem, ikke en
+     påstand om når de må gjøres. */
+  lekseTid: ['17:00', '17:45'],
+
   // Hvor mange dager fram et varsel om stengt barnehage skal vises
   stengtVarselDager: 30,
 
@@ -286,6 +291,10 @@ body.lys .post.mat {
   border: 1px solid color-mix(in srgb, var(--mat) 32%, transparent);
   border-left-width: 3px;
 }
+body.lys .post.lekse {
+  border: 1px solid color-mix(in srgb, var(--f) 28%, transparent);
+  border-left: 3px dashed color-mix(in srgb, var(--f) 65%, transparent);
+}
 body.lys .post.rutine {
   border: 1px solid var(--line);
   border-left: 3px solid #CFCABF;
@@ -406,7 +415,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 }
 .kol:last-child { border-right: none; }
 
-.kol-topp { padding: 9px 10px 7px; border-bottom: 1px solid var(--line); }
+.kol-topp { padding: 15px 10px 9px; border-bottom: 1px solid var(--line); }
 .kol-navn {
   font-family: 'Anton', Impact, sans-serif;
   font-size: clamp(14px, 1.8vw, 21px);
@@ -466,7 +475,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 
 /* ── Værkolonnen ── */
 
-.vaerkol .kol-topp { padding: 9px 8px 7px; }
+.vaerkol .kol-topp { padding: 15px 8px 9px; }
 .vaerkol .kol-navn { color: var(--tekst-dus); font-size: clamp(12px, 1.5vw, 16px); }
 .vaer-merker {
   display: flex; justify-content: space-between; margin-top: 5px;
@@ -549,6 +558,14 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 }
 .post.rutine { background: transparent; border-left: 2px solid var(--line); }
 .post.rutine .p-tittel { font-weight: 500; color: var(--tekst-dus); }
+
+/* Lekser er en oppgave, ikke en time på en timeplan. Den stiplede
+   kanten sier at klokkeslettet er en vane, ikke en avtale. */
+.post.lekse {
+  background: color-mix(in srgb, var(--f) 12%, var(--panel));
+  border-left: 3px dashed color-mix(in srgb, var(--f) 70%, transparent);
+}
+.post.lekse .p-tittel { white-space: normal; font-weight: 600; }
 
 .post.mat {
   background: color-mix(in srgb, var(--mat) 13%, var(--panel));
@@ -689,8 +706,25 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 }
 .ue.stengt { border-left-color: var(--naa); color: var(--naa-tekst); }
 .ue.middag { border-left-color: var(--mat); color: var(--mat-tekst); }
+.ue.lekse { border-left-style: dashed; font-weight: 500; }
 
 .uke-rad-middag .uke-navn { color: var(--mat); }
+
+/* ── Beskjed om ufylte ukeplaner ── */
+
+.ukemangler {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 22px;
+  border-top: 1px solid color-mix(in srgb, var(--mat) 40%, transparent);
+  background: color-mix(in srgb, var(--mat) 12%, var(--panel));
+}
+.ukemangler[hidden] { display: none; }
+.ukemangler b {
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mat); flex-shrink: 0;
+}
+.ukemangler span { font-size: 14.5px; font-weight: 500; color: var(--mat-tekst); }
 
 /* ── Varsel om stengte dager ── */
 
@@ -1069,7 +1103,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 
   .topp { padding: 8px 13px 6px; gap: 6px; }
   .dagvalg button { padding: 5px 0; font-size: 11.5px; }
-  .kol-topp { padding: 7px 9px 6px; }
+  .kol-topp { padding: 11px 9px 7px; }
   .kol-navn { font-size: 15px; }
   .kol-under { font-size: 9.5px; margin-top: 3px; }
   .kol-vaer { margin-top: 3px; font-size: 11px; }
@@ -1118,6 +1152,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   <div class="uke" id="uke" hidden></div>
   <div class="stjerneside" id="stjerneside" hidden></div>
 
+  <div class="ukemangler" id="ukemangler" hidden></div>
   <div class="stengtstripe" id="stengtstripe" hidden></div>
   <div class="varsel" id="varsel" hidden></div>
 
@@ -1213,6 +1248,7 @@ let kalenderFil = null;
 let paaminnelserFil = null;
 let aksFil = null;
 let middagFil = null;
+let lekseFil = null;
 let stengtFil = null;
 let manueltFil = null;
 let kalenderFeil = null;
@@ -1238,6 +1274,7 @@ async function hentKalenderfil() {
 
   aksFil          = await hentValgfri('aks.json');
   middagFil       = await hentValgfri('middager.json');
+  lekseFil        = await hentValgfri('lekser.json');
   stengtFil       = await hentValgfri('stengt.json');
   manueltFil      = await hentValgfri('manuelt.json');
   paaminnelserFil = await hentValgfri('paaminnelser.json');
@@ -1293,6 +1330,19 @@ function byggDag(offset = dagOffset) {
   poster.filter(p => p.tittel === 'Gym').forEach(p => {
     if (!husk.some(h => h.tekst === 'Gymtøy')) husk.unshift({ barn: p.barn, tekst: 'Gymtøy' });
   });
+
+  // Lekser i Sofias kolonne
+  const lekser = (lekseFil?.[String(uke)]?.[String(ukedag)] || []).filter(Boolean);
+  if (lekser.length) {
+    poster.push({
+      barn: 'sofia',
+      tittel: 'Lekser: ' + lekser.join(' · '),
+      start: CONFIG.lekseTid[0],
+      slutt: CONFIG.lekseTid[1],
+      type: 'lekse',
+      kilde: 'lekser'
+    });
+  }
 
   // Middagen ligger i familiekolonnen
   const middag = middagFil?.[String(uke)]?.[String(isoDag(dato))];
@@ -1785,6 +1835,28 @@ function verdtAaVise(p) {
   return p.kilde === 'fast' && p.barn === 'sofia' && p.start >= '13:30'; // AKS
 }
 
+/* Hvilke ukeplaner mangler for uka som vises. Sjekkes bare på
+   hverdager — helgen har verken AKS eller lekser. */
+function manglerForUke(start) {
+  const uke = ukenummer(start);
+  const harNoe = (fil) => {
+    const u = fil?.[String(uke)];
+    if (!u) return false;
+    return [1, 2, 3, 4, 5].some(d => (u[String(d)] || [])
+      .some(x => (typeof x === 'string' ? x.trim() : x)));
+  };
+
+  const middagUke = middagFil?.[String(uke)];
+  const harMiddag = middagUke && [1,2,3,4,5,6,7]
+    .some(d => middagUke[String(d)]?.rett);
+
+  const savnet = [];
+  if (!harNoe(aksFil)) savnet.push('AKS-plan');
+  if (!harNoe(lekseFil)) savnet.push('lekser');
+  if (!harMiddag) savnet.push('middager');
+  return savnet;
+}
+
 function tegnUke() {
   const boks = document.getElementById('uke');
   const start = mandagIUka(ukeOffset);
@@ -1828,6 +1900,17 @@ function tegnUke() {
       });
     });
 
+  // Lekseraden
+  const sofiafarge = CONFIG.barn.find(b => b.id === 'sofia')?.farge || 'var(--tekst-dus)';
+  html += `<div class="uke-navn uke-rad-lekser" style="--f:${sofiafarge}">Lekser</div>`;
+  dager.forEach(dag => {
+    const uke = ukenummer(dag.dato);
+    const l = (lekseFil?.[String(uke)]?.[String(dag.dato.getDay())] || []).filter(Boolean);
+    html += `<div class="uke-celle">${
+      l.map(x => `<div class="ue lekse" style="--f:${sofiafarge}">${x}</div>`).join('')
+    }</div>`;
+  });
+
   // Middagsraden
   html += `<div class="uke-navn uke-rad-middag" style="--f:var(--mat)">Middag</div>`;
   dager.forEach(dag => {
@@ -1847,6 +1930,21 @@ function tegnUke() {
   }
 
   boks.innerHTML = html;
+
+  /* Beskjed om hva som ikke er fylt ut. Vises der planleggingen
+     faktisk skjer, ikke først på mandag morgen. */
+  const savnet = manglerForUke(start);
+  const stripe = document.getElementById('ukemangler');
+  if (stripe) {
+    if (savnet.length && ukeOffset >= 0) {
+      const liste = savnet.length === 1 ? savnet[0]
+        : savnet.slice(0, -1).join(', ') + ' og ' + savnet[savnet.length - 1];
+      stripe.innerHTML = `<b>Mangler</b><span>Uke ${ukenummer(start)} har ingen ${liste}</span>`;
+      stripe.hidden = false;
+    } else {
+      stripe.hidden = true;
+    }
+  }
 }
 
 
@@ -2319,6 +2417,8 @@ function tegnAlt() {
 
   tegnStengtvarsel();
   ukeboks.hidden = true;
+  const mangler = document.getElementById('ukemangler');
+  if (mangler && visning !== 'uke') mangler.hidden = true;
 
   if (visning === 'uke') {
     rutenett.style.display = 'none';
