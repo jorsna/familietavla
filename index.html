@@ -1185,6 +1185,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 
 <script>
 const UKEDAGER = ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
+const DAGNAVN  = ['', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag'];
 const MAANEDER = ['januar','februar','mars','april','mai','juni','juli','august','september','oktober','november','desember'];
 
 const tilDesimal = t => { const [h,m] = t.split(':').map(Number); return h + m/60; };
@@ -1348,12 +1349,23 @@ function byggDag(offset = dagOffset) {
   });
 
   poster.filter(p => p.tittel === 'Gym').forEach(p => {
-    if (!husk.some(h => h.tekst === 'Gymtøy')) husk.unshift({ barn: p.barn, tekst: 'Gymtøy' });
+    const tekst = 'Gymtøy og gymsko';
+    if (!husk.some(h => h.tekst === tekst)) husk.unshift({ barn: p.barn, tekst });
   });
 
-  // Lekser i Sofias kolonne
-  const lekser = (lekseFil?.[String(uke)]?.[String(ukedag)] || []).filter(Boolean);
-  if (lekser.length) {
+  /* Lekser i Sofias kolonne. Skolen gir dem for uken, ikke per dag:
+     noen skal gjøres når som helst, andre har en frist. De med frist
+     vises fra mandag til og med fristdagen, så de forsvinner når de
+     er forfalt i stedet for å bli stående som støy. */
+  const lekseUke = lekseFil?.[String(uke)] || {};
+  const lekser = [];
+  (lekseUke.uken || []).filter(Boolean).forEach(x => lekser.push(x));
+  for (let d = 1; d <= 5; d++) {
+    if (d < ukedag) continue;
+    (lekseUke[String(d)] || []).filter(Boolean).forEach(x =>
+      lekser.push(`${x} (til ${DAGNAVN[d]})`));
+  }
+  if (lekser.length && ukedag >= 1 && ukedag <= 5) {
     poster.push({
       barn: 'sofia',
       tittel: 'Lekser: ' + lekser.join(' · '),
@@ -1925,9 +1937,14 @@ function tegnUke() {
   html += `<div class="uke-navn uke-rad-lekser" style="--f:${sofiafarge}">Lekser</div>`;
   dager.forEach(dag => {
     const uke = ukenummer(dag.dato);
-    const l = (lekseFil?.[String(uke)]?.[String(dag.dato.getDay())] || []).filter(Boolean);
+    const lu = lekseFil?.[String(uke)] || {};
+    const d = dag.dato.getDay();
+    const l = [];
+    if (d === 1) (lu.uken || []).filter(Boolean).forEach(x => l.push([x, 'Hele uken']));
+    (lu[String(d)] || []).filter(Boolean).forEach(x => l.push([x, 'Frist']));
     html += `<div class="uke-celle">${
-      l.map(x => `<div class="ue lekse" style="--f:${sofiafarge}">${x}</div>`).join('')
+      l.map(([x, merke]) =>
+        `<div class="ue lekse" style="--f:${sofiafarge}">${x}<small>${merke}</small></div>`).join('')
     }</div>`;
   });
 
