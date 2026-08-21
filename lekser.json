@@ -1,13 +1,25 @@
 {
-  "_lesmeg": "Lekser for Sofia. Nøkkel er ukenummer. 'uken' er lekser som skal gjøres når som helst i løpet av uken. Tall 1-5 er lekser med frist: 1=mandag, 5=fredag. De med frist vises fra mandag til og med fristdagen.",
+  "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. En frist til torsdag vises som 'i kveld' på onsdag. 'info' er beskjeder fra ukeplanen, 'tema' er periodens tema.",
 
   "35": {
     "uken": [
       "Norsk: les s. 8 og 9 i Salto lesebok",
       "Legg bokbind på Salto lesebok"
     ],
+
     "4": [
       "Matte: Matteboka 2A s. 11"
-    ]
+    ],
+
+    "info": [
+      "Kort fruktpause hver dag 09:45–10:00",
+      "Innesko og skiftetøy må være merket med navn",
+      "Gymsko til gymtimen på onsdag",
+      "Klassebilde av 2C onsdag 26. august",
+      "Foreldremøte 24. september kl. 17:30–19:00",
+      "Skolemelk bestilles på skolelyst.no"
+    ],
+
+    "tema": "Periode 1: En skole for alle · Tverrfaglig: folkehelse og livsmestring · Sosialt: vennskap"
   }
 }
