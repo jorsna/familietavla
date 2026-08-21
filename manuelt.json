@@ -1,33 +1,41 @@
 {
-  "_lesmeg": "Ting som ikke finnes i noen kalender. Lages av Claude fra e-poster og beskjeder, lastes opp til data-branchen. Gamle datoer kan bli liggende — tavla viser bare dagens.",
+  "_lesmeg": "Ting som ikke finnes i noen kalender. Lages av Claude fra e-poster og ukeplaner, lastes opp til data-branchen. Gamle datoer kan bli liggende — tavla viser bare dagens.",
 
   "hendelser": [
     {
-      "dato": "2026-08-20",
+      "dato": "2026-08-26",
       "barn": "sofia",
       "start": "08:30",
-      "slutt": "13:30",
-      "tittel": "Tur til Strømsdammen",
-      "sted": "Hele 2. trinn",
+      "slutt": "09:30",
+      "tittel": "Klassebilde 2C",
+      "type": "spesiell"
+    },
+    {
+      "dato": "2026-09-24",
+      "barn": "familie",
+      "start": "17:30",
+      "slutt": "19:00",
+      "tittel": "Foreldremøte 2. trinn",
+      "sted": "Grindbakken skole",
       "type": "spesiell"
     }
   ],
 
   "husk": [
     {
-      "dato": "2026-08-20",
+      "dato": "2026-08-24",
       "barn": "sofia",
-      "tekst": "Niste, drikke og klær etter vær"
-    },
-    {
-      "dato": "2026-08-20",
-      "barn": "sofia",
-      "tekst": "Presis til 08:30"
+      "tekst": "Innesko og skiftetøy, merket med navn"
     },
     {
       "dato": "2026-08-25",
       "barn": "sofia",
       "tekst": "Mat på AKS: knekkebrød med pålegg"
+    },
+    {
+      "dato": "2026-08-26",
+      "barn": "sofia",
+      "tekst": "Klassebilde — fine klær"
     },
     {
       "dato": "2026-08-26",

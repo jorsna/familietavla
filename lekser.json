@@ -1,0 +1,13 @@
+{
+  "_lesmeg": "Lekser for Sofia. Nøkkel er ukenummer. 'uken' er lekser som skal gjøres når som helst i løpet av uken. Tall 1-5 er lekser med frist: 1=mandag, 5=fredag. De med frist vises fra mandag til og med fristdagen.",
+
+  "35": {
+    "uken": [
+      "Norsk: les s. 8 og 9 i Salto lesebok",
+      "Legg bokbind på Salto lesebok"
+    ],
+    "4": [
+      "Matte: Matteboka 2A s. 11"
+    ]
+  }
+}
