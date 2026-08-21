@@ -372,6 +372,13 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 
 /* Stjerneknappen er barnas inngang og skal skille seg ut fra
    de tre visningsbryterne, som er for voksne. */
+.dagvalg button.lekseknapp {
+  color: var(--f-lekse, var(--tekst));
+  background: color-mix(in srgb, var(--tekst-dus) 14%, transparent);
+  margin-left: 4px;
+}
+.dagvalg button.lekseknapp:active { transform: scale(0.96); }
+
 .dagvalg button.stjerneknapp {
   color: var(--mat);
   background: color-mix(in srgb, var(--mat) 15%, transparent);
@@ -448,6 +455,30 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   background: color-mix(in srgb, var(--f) 14%, transparent);
   color: color-mix(in srgb, var(--f) 80%, var(--tekst));
 }
+
+.kol-lekser {
+  margin-top: 7px; padding-top: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--f) 25%, transparent);
+}
+.kl-merke {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--f) 75%, var(--tekst-dus));
+  margin-bottom: 3px;
+}
+.kl-linje {
+  font-size: 12.5px; font-weight: 500; line-height: 1.25;
+  margin-bottom: 2px;
+}
+.kl-linje em {
+  font-style: normal; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--naa); margin-left: 5px;
+}
+.kl-linje.frist { font-weight: 600; }
+.kl-flere { color: var(--tekst-dus); font-size: 11.5px; }
 
 .heldags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .heldags span {
@@ -972,6 +1003,40 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   padding: 14px 18px; color: var(--tekst-dus); font-size: 14px;
 }
 
+/* ── Leksesiden ── */
+
+.ls-uke {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--tekst-dus); margin-left: auto;
+}
+.ls-bolk { padding: 16px 18px 4px; max-width: 760px; }
+.ls-bolk h3 {
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 14px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--tekst-dus); margin-bottom: 10px;
+}
+.ls-post {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 12px 15px; border-radius: 9px; margin-bottom: 8px;
+  background: var(--panel);
+  border-left: 3px solid var(--f);
+}
+.ls-tekst { font-size: 16px; font-weight: 500; line-height: 1.3; }
+.ls-frist {
+  margin-left: auto; flex-shrink: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--naa);
+}
+.ls-post.passert { opacity: 0.4; }
+.ls-post.passert .ls-frist { color: var(--tekst-dus); }
+.ls-info {
+  font-size: 15px; line-height: 1.45; color: var(--tekst);
+  padding: 7px 0 7px 15px; margin-bottom: 4px;
+  border-left: 2px solid var(--line);
+}
+
 /* Seks kolonner får ikke plass på en telefon uten å krympe.
    Navnet flyttes over rutene, og rutene blir mindre. */
 @media (max-width: 700px) {
@@ -1157,6 +1222,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
       <button id="knappIdag" class="aktiv">I dag</button>
       <button id="knappImorgen">I morgen</button>
       <button id="knappUke">Uke</button>
+      <button id="knappLekser" class="lekseknapp">📖 Lekser</button>
       <button id="knappOppgaver" class="stjerneknapp">⭐ Stjerner</button>
       <button id="knappTema" class="temaknapp" title="Lys eller mørk">☼</button>
       <button id="knappFullskjerm" class="fullskjerm" title="Fullskjerm">⛶</button>
@@ -1171,6 +1237,7 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
   <main class="rutenett" id="rutenett"></main>
   <div class="uke" id="uke" hidden></div>
   <div class="stjerneside" id="stjerneside" hidden></div>
+  <div class="stjerneside lekseside" id="lekseside" hidden></div>
 
   <div class="ukemangler" id="ukemangler" hidden></div>
   <div class="stengtstripe" id="stengtstripe" hidden></div>
@@ -1186,6 +1253,14 @@ body { transition: background-color 1.2s ease, color 1.2s ease; }
 <script>
 const UKEDAGER = ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
 const DAGNAVN  = ['', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag'];
+
+/* En frist til torsdag betyr at leksen gjøres onsdag kveld.
+   Derfor sier tavla "i kveld" dagen før, ikke "til torsdag". */
+function fristTekst(frist, ukedag) {
+  if (frist === ukedag) return 'i dag';
+  if (frist === ukedag + 1) return 'i kveld';
+  return 'til ' + DAGNAVN[frist];
+}
 const MAANEDER = ['januar','februar','mars','april','mai','juni','juli','august','september','oktober','november','desember'];
 
 const tilDesimal = t => { const [h,m] = t.split(':').map(Number); return h + m/60; };
@@ -1353,29 +1428,6 @@ function byggDag(offset = dagOffset) {
     if (!husk.some(h => h.tekst === tekst)) husk.unshift({ barn: p.barn, tekst });
   });
 
-  /* Lekser i Sofias kolonne. Skolen gir dem for uken, ikke per dag:
-     noen skal gjøres når som helst, andre har en frist. De med frist
-     vises fra mandag til og med fristdagen, så de forsvinner når de
-     er forfalt i stedet for å bli stående som støy. */
-  const lekseUke = lekseFil?.[String(uke)] || {};
-  const lekser = [];
-  (lekseUke.uken || []).filter(Boolean).forEach(x => lekser.push(x));
-  for (let d = 1; d <= 5; d++) {
-    if (d < ukedag) continue;
-    (lekseUke[String(d)] || []).filter(Boolean).forEach(x =>
-      lekser.push(`${x} (til ${DAGNAVN[d]})`));
-  }
-  if (lekser.length && ukedag >= 1 && ukedag <= 5) {
-    poster.push({
-      barn: 'sofia',
-      tittel: 'Lekser: ' + lekser.join(' · '),
-      start: CONFIG.lekseTid[0],
-      slutt: CONFIG.lekseTid[1],
-      type: 'lekse',
-      kilde: 'lekser'
-    });
-  }
-
   // Middagen ligger i familiekolonnen
   const middag = middagFil?.[String(uke)]?.[String(isoDag(dato))];
   if (middag?.rett) {
@@ -1390,7 +1442,21 @@ function byggDag(offset = dagOffset) {
     });
   }
 
-  return { rammer, poster, heldags, husk, dato, noekkel, uke, ukedag,
+  /* Lekser hører ikke til et klokkeslett. Skolen gir dem for uken,
+     med eventuell frist. Derfor står de i kolonneoverskriften og på
+     leksesiden, ikke som en boks i tidslinjen. */
+  const lekseUke = lekseFil?.[String(uke)] || {};
+  const lekser = [];
+  if (ukedag >= 1 && ukedag <= 5) {
+    (lekseUke.uken || []).filter(Boolean).forEach(x => lekser.push({ tekst: x }));
+    for (let d = 1; d <= 5; d++) {
+      if (d < ukedag) continue;
+      (lekseUke[String(d)] || []).filter(Boolean).forEach(x =>
+        lekser.push({ tekst: x, frist: d, naar: fristTekst(d, ukedag) }));
+    }
+  }
+
+  return { rammer, poster, heldags, husk, lekser, dato, noekkel, uke, ukedag,
            aksMangler: ukedag >= 1 && ukedag <= 5
              && !(aksFil?.[String(uke)]?.[String(ukedag)] || []).filter(Boolean).length };
 }
@@ -1635,6 +1701,7 @@ function tegnRutenett(data) {
         ${barn.undertekst ? `<div class="kol-under">${barn.undertekst}</div>` : ''}
         ${kolonneVaer(barn, data.noekkel)}
         ${kolonneStjerner(barn, data.noekkel)}
+        ${kolonneLekser(barn, data)}
         ${id === 'sofia' && data.aksMangler
           ? `<div class="mangler">AKS-plan mangler for uke ${data.uke}</div>` : ''}
         ${heldags.length ? `<div class="heldags">${heldags.map(h => `<span class="${h.stengt ? 'stengt' : ''}">${h.tittel}</span>`).join('')}</div>` : ''}
@@ -1678,6 +1745,22 @@ function kolonneVaer(barn, noekkel) {
     <span class="kv-temp">${v.min}–${v.maks}°</span>
     ${visFoles ? `<span class="kv-foles">føles ${v.folesMin}°</span>` : ''}
     ${vaatt ? `<span class="kv-vaat">${v.mm.toFixed(1)} mm</span>` : ''}
+  </div>`;
+}
+
+function kolonneLekser(barn, data) {
+  if (barn.id !== 'sofia' || !data.lekser?.length) return '';
+
+  const linjer = data.lekser.slice(0, 3).map(l =>
+    `<div class="kl-linje${l.frist ? ' frist' : ''}">${l.tekst}`
+    + (l.naar ? `<em>${l.naar}</em>` : '') + `</div>`).join('');
+
+  const flere = data.lekser.length - 3;
+
+  return `<div class="kol-lekser">
+    <span class="kl-merke">Lekser</span>
+    ${linjer}
+    ${flere > 0 ? `<div class="kl-linje kl-flere">+ ${flere} til</div>` : ''}
   </div>`;
 }
 
@@ -2426,6 +2509,91 @@ function losInn(barnId) {
   oppdaterTall();
 }
 
+/* ══════════════════════════════════════════════════════════
+   LEKSESIDEN
+   Hele ukens hjemmearbeid og beskjedene fra ukeplanen, samlet
+   ett sted. Det som står i en PDF blir aldri lest to ganger.
+   ══════════════════════════════════════════════════════════ */
+
+function tegnLekseside() {
+  const side = document.getElementById('lekseside');
+  const idag = new Date();
+  const uke = ukenummer(idag);
+  const ukedag = idag.getDay();
+  const u = lekseFil?.[String(uke)] || {};
+
+  const farge = CONFIG.barn.find(b => b.id === 'sofia')?.farge || 'var(--tekst)';
+
+  let html = `<div class="ss-topp">
+      <button class="ss-tilbake" id="lsTilbake"><span class="pil">←</span> Tilbake</button>
+      <span class="ss-tittel">Lekser</span>
+      <span class="ls-uke">Uke ${uke}</span>
+    </div>`;
+
+  const uken = (u.uken || []).filter(Boolean);
+  const frister = [];
+  for (let d = 1; d <= 5; d++) {
+    (u[String(d)] || []).filter(Boolean).forEach(x => frister.push({ tekst: x, frist: d }));
+  }
+
+  if (!uken.length && !frister.length) {
+    html += `<div class="ss-melding">Ingen lekser lagt inn for uke ${uke}.</div>`;
+  }
+
+  if (frister.length) {
+    html += `<div class="ls-bolk"><h3>Med frist</h3>`;
+    frister.forEach(f => {
+      const passert = f.frist < ukedag && ukedag <= 5;
+      html += `<div class="ls-post ${passert ? 'passert' : ''}" style="--f:${farge}">
+        <span class="ls-tekst">${f.tekst}</span>
+        <span class="ls-frist">${passert ? 'passert' : fristTekst(f.frist, ukedag)}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (uken.length) {
+    html += `<div class="ls-bolk"><h3>I løpet av uken</h3>`;
+    uken.forEach(x => {
+      html += `<div class="ls-post" style="--f:${farge}"><span class="ls-tekst">${x}</span></div>`;
+    });
+    html += `</div>`;
+  }
+
+  const info = (u.info || []).filter(Boolean);
+  if (info.length) {
+    html += `<div class="ls-bolk"><h3>Ukens informasjon</h3>`;
+    info.forEach(x => { html += `<div class="ls-info">${x}</div>`; });
+    html += `</div>`;
+  }
+
+  if (u.tema) {
+    html += `<div class="ls-bolk"><h3>Tema</h3><div class="ls-info">${u.tema}</div></div>`;
+  }
+
+  side.innerHTML = html;
+  document.getElementById('lsTilbake').addEventListener('click', tilbakeFraLekser);
+}
+
+function visLekser() {
+  document.getElementById('lekseside').hidden = false;
+  tegnLekseside();
+}
+
+function skjulLekser() {
+  document.getElementById('lekseside').hidden = true;
+}
+
+function aapneLekser() {
+  if (location.hash === '#lekser') visLekser();
+  else location.hash = 'lekser';
+}
+
+function tilbakeFraLekser() {
+  if (location.hash === '#lekser') history.back();
+  else skjulLekser();
+}
+
 /* Stjernesiden har sin egen adresse, #stjerner. Det gjør at den
    kan legges på Hjem-skjermen som eget ikon, og at tilbake-gesten
    i Safari virker som barna forventer — uten å dele opp filen. */
@@ -2451,8 +2619,8 @@ function tilbakeFraStjerner() {
 }
 
 window.addEventListener('hashchange', () => {
-  if (location.hash === '#stjerner') visStjerner();
-  else skjulStjerner();
+  if (location.hash === '#stjerner') visStjerner(); else skjulStjerner();
+  if (location.hash === '#lekser') visLekser(); else skjulLekser();
 });
 
 /* Liten teller i dagsvisningens kolonneoverskrift */
@@ -2542,6 +2710,7 @@ function blaUke(steg) {
 document.getElementById('ukeForrige')?.addEventListener('click', () => blaUke(-1));
 document.getElementById('ukeNeste')?.addEventListener('click', () => blaUke(1));
 document.getElementById('knappOppgaver')?.addEventListener('click', aapneStjerner);
+document.getElementById('knappLekser')?.addEventListener('click', aapneLekser);
 
 /* Knappen sykler lys, mørk, auto. Auto er lys om dagen og mørk
    om kvelden. Valget lagres på denne skjermen, så iPaden kan stå
@@ -2587,6 +2756,7 @@ hentVaer().then(() => { if (sisteData) tegnAlt(); });
 last().then(() => {
   // Åpnet via #stjerner, for eksempel fra et eget ikon på Hjem-skjermen
   if (location.hash === '#stjerner') visStjerner();
+  if (location.hash === '#lekser') visLekser();
 });
 
 setInterval(oppdaterKlokke, 15000);
