@@ -548,7 +548,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
   position: absolute; left: 0; right: 0;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 8px;
-  border-bottom: 1px solid var(--line-svak);
+  border-top: 1px solid var(--line-svak);
 }
 .vaertime .vaat-fyll {
   position: absolute; left: 0; bottom: 0; right: 0;
@@ -1777,6 +1777,16 @@ function tegnRutenett(data) {
 
     rutenett.appendChild(kol);
   });
+
+  /* Hver kolonne er sitt eget rutenett, så overskriftene får ulik
+     høyde og sporene under starter på ulike steder. Da glir
+     klokkeslettene fra timelinjene. Vi måler den høyeste og gir
+     alle den samme, så alt starter på samme strek. */
+  const topper = [...rutenett.querySelectorAll('.kol-topp')];
+  if (topper.length) {
+    const hoyeste = Math.max(...topper.map(e => e.offsetHeight));
+    topper.forEach(e => { e.style.height = hoyeste + 'px'; });
+  }
 
   tegnTidsakse();
   tegnNaaLinje();
