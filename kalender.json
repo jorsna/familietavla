@@ -1,5 +1,5 @@
 {
-  "generert": "2026-08-21T10:27:51.597Z",
+  "generert": "2026-08-21T10:57:00.797Z",
   "dager": {
     "2026-09-01": [
       {
@@ -449,6 +449,22 @@
         "type": "spesiell"
       }
     ],
+    "2026-09-26": [
+      {
+        "barn": "familie",
+        "tittel": "Girlsnight hos Bjørr!",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
     "2026-08-24": [
       {
         "barn": "sebastian",
@@ -577,6 +593,16 @@
         "sted": "Rush",
         "start": "17:00",
         "slutt": "18:45",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
         "type": "spesiell"
       }
     ],
@@ -725,32 +751,6 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
-      }
-    ],
-    "2026-09-14": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-05": [
-      {
-        "barn": "familie",
-        "tittel": "Stiatlon",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
       }
     ],
     "2026-08-27": [
