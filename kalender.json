@@ -1,16 +1,16 @@
 {
-  "generert": "2026-08-21T10:57:00.797Z",
+  "generert": "2026-08-21T11:20:18.116Z",
   "dager": {
     "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
+        "tittel": "Søke prøvingsattest",
         "kilde": "kalender",
         "heldags": true
       },
       {
         "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
       },
@@ -449,20 +449,14 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-26": [
+    "2026-09-14": [
       {
         "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
+        "tittel": "Beths",
         "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-09-05": [
-      {
-        "barn": "familie",
-        "tittel": "Stiatlon",
-        "kilde": "kalender",
-        "heldags": true
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
       }
     ],
     "2026-08-24": [
@@ -596,14 +590,12 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-14": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Beths",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
+        "heldags": true
       }
     ],
     "2026-08-22": [
@@ -623,6 +615,14 @@
         "start": "11:00",
         "slutt": "13:30",
         "type": "spesiell"
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
       }
     ],
     "2026-08-25": [
@@ -954,14 +954,6 @@
         "tittel": "Hvilestund",
         "kilde": "mykid",
         "start": "12:00",
-        "slutt": "14:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Dorunde/tømme sekk etter tur/klargjøre for 2-maten",
-        "kilde": "mykid",
-        "start": "13:30",
         "slutt": "14:00",
         "type": "rutine"
       },
