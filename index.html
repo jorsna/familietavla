@@ -142,9 +142,10 @@ const CONFIG = {
   // Piksler per time når tavla vises på telefon. Høyere = mer luft.
   pxPerTimeSmal: 92,
 
-  /* Fast høyde på kolonneoverskriften. Må romme navn, vær, stjerner
-     og to leksefelt. Settes den for lavt, klippes innholdet. */
-  topphoyde: 142,
+  /* Fast høyde på kolonneoverskriften. Rommer navn, én infolinje
+     med vær, stjerner og lekser, samt en heldagslapp. Lik for alle
+     kolonner og alle dager, så tidslinjen har samme skala uansett. */
+  topphoyde: 104,
 
   nattFra: 21,
   nattTil: 6,
@@ -342,10 +343,16 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 
 /* ── Topplinje ── */
 
+/* Topplinjen skal stå helt stille. Fast høyde, ingen ombrekking,
+   og ingenting som dukker opp eller forsvinner og flytter resten. */
 .topp {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 18px; padding: 15px 22px 13px; border-bottom: 1px solid var(--line);
+  gap: 18px; padding: 0 22px; border-bottom: 1px solid var(--line);
+  height: var(--topplinje, 74px);
+  flex-wrap: nowrap; overflow: hidden;
 }
+.venstre, .hoyre { flex-wrap: nowrap; }
+.dagvalg { flex-shrink: 0; }
 .venstre { display: flex; align-items: baseline; gap: 11px; min-width: 0; }
 .dag {
   font-family: 'Anton', Impact, sans-serif;
@@ -360,7 +367,6 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 }
 
 .ukenav { display: inline-flex; gap: 3px; margin-left: 4px; }
-.ukenav[hidden] { display: none; }
 .ukenav button {
   background: var(--panel); border: 1px solid var(--line);
   color: var(--tekst); border-radius: 5px;
@@ -494,29 +500,13 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 }
 
 .kol-lekser {
-  margin-top: 5px; padding-top: 5px;
-  border-top: 1px solid color-mix(in srgb, var(--f) 25%, transparent);
-}
-.kl-merke {
-  display: block;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--f) 75%, var(--tekst-dus));
-  margin-bottom: 3px;
+  color: color-mix(in srgb, var(--f) 80%, var(--tekst));
 }
-.kl-linje {
-  font-size: 12.5px; font-weight: 500; line-height: 1.25;
-  margin-bottom: 2px;
-}
-.kl-linje em {
-  font-style: normal; font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--naa); margin-left: 5px;
-}
-.kl-linje.frist { font-weight: 600; }
-.kl-flere { color: var(--tekst-dus); font-size: 11.5px; }
-.kl-ferdig { color: var(--mat); font-weight: 600; }
+.kol-lekser.haster { color: var(--naa); }
+.kol-lekser.ferdig { color: var(--mat); }
 
 .heldags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .heldags span {
@@ -1232,7 +1222,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
   /* Værsammendraget øverst er også duplikat på smal skjerm */
   .vaertopp { display: none; }
 
-  .topp { padding: 8px 13px 6px; gap: 6px; }
+  .topp { padding: 0 13px; gap: 6px; height: auto; min-height: 58px; flex-wrap: wrap; }
   .dagvalg button { padding: 5px 0; font-size: 11.5px; }
   .kol-topp { padding: 11px 9px 7px; height: auto; }
   .kol-navn { font-size: 15px; }
@@ -1821,23 +1811,14 @@ function kolonneLekser(barn, data) {
   if (barn.id !== 'sofia' || !data.lekser?.length) return '';
 
   const igjen = data.lekser.filter(l => !l.gjort);
+  const haster = igjen.some(l => l.naar === 'i dag' || l.naar === 'i kveld');
+
   if (!igjen.length) {
-    return `<div class="kol-lekser">
-      <span class="kl-merke">Lekser</span>
-      <div class="kl-linje kl-ferdig">Alt er gjort</div></div>`;
+    return `<span class="kol-lekser ferdig">Lekser gjort</span>`;
   }
-
-  const linjer = igjen.slice(0, 2).map(l =>
-    `<div class="kl-linje${l.frist ? ' frist' : ''}">${l.tekst}`
-    + (l.naar ? `<em>${l.naar}</em>` : '') + `</div>`).join('');
-
-  const flere = igjen.length - 2;
-
-  return `<div class="kol-lekser">
-    <span class="kl-merke">Lekser</span>
-    ${linjer}
-    ${flere > 0 ? `<div class="kl-linje kl-flere">+ ${flere} til</div>` : ''}
-  </div>`;
+  return `<span class="kol-lekser ${haster ? 'haster' : ''}">`
+    + `${igjen.length} ${igjen.length === 1 ? 'lekse' : 'lekser'}`
+    + (haster ? ' i kveld' : '') + `</span>`;
 }
 
 function lagRamme(r) {
@@ -1950,8 +1931,10 @@ function tegnHusk(husk) {
 }
 
 function tegnDato() {
+  /* Pilene skjules, men beholder plassen sin. Fjernes de helt,
+     hopper datoen sidelengs hver gang du bytter visning. */
   const nav = document.getElementById('ukenav');
-  if (nav) nav.hidden = visning !== 'uke';
+  if (nav) nav.style.visibility = visning === 'uke' ? 'visible' : 'hidden';
 
   if (visning === 'uke') {
     const start = mandagIUka(ukeOffset);
