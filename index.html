@@ -438,7 +438,18 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 }
 .kol:last-child { border-right: none; }
 
-.kol-topp { padding: 15px 10px 9px; border-bottom: 1px solid var(--line); }
+.kol-topp { padding: 12px 10px 8px; border-bottom: 1px solid var(--line); }
+
+/* Overskriften legges på tvers, ikke nedover. Hver linje den vokser
+   spiser høyde fra timene under, og da klemmes de korte øktene. */
+.kt-navnrad {
+  display: flex; align-items: baseline; gap: 9px;
+  min-width: 0; flex-wrap: wrap;
+}
+.kt-info {
+  display: flex; align-items: baseline; flex-wrap: wrap;
+  gap: 2px 12px; margin-top: 4px;
+}
 .kol-navn {
   font-family: 'Anton', Impact, sans-serif;
   font-size: clamp(17px, 2.3vw, 27px);
@@ -448,10 +459,11 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 .kol-under {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 12px; font-weight: 500; letter-spacing: 0.13em;
-  text-transform: uppercase; color: var(--tekst-dus); margin-top: 4px;
+  text-transform: uppercase; color: var(--tekst-dus);
+  white-space: nowrap;
 }
 .kol-vaer {
-  display: flex; align-items: baseline; gap: 7px; margin-top: 5px;
+  display: flex; align-items: baseline; gap: 7px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -473,7 +485,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 }
 
 .kol-lekser {
-  margin-top: 7px; padding-top: 6px;
+  margin-top: 5px; padding-top: 5px;
   border-top: 1px solid color-mix(in srgb, var(--f) 25%, transparent);
 }
 .kl-merke {
@@ -1097,7 +1109,6 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 }
 
 .kol-stjerner {
-  margin-top: 5px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
   color: var(--tekst-dus);
@@ -1737,10 +1748,14 @@ function tegnRutenett(data) {
 
     kol.innerHTML = `
       <div class="kol-topp">
-        <div class="kol-navn ${alleGjort(barn, data.noekkel) ? 'glitrer' : ''}">${barn.navn}</div>
-        ${barn.undertekst ? `<div class="kol-under">${barn.undertekst}</div>` : ''}
-        ${kolonneVaer(barn, data.noekkel)}
-        ${kolonneStjerner(barn, data.noekkel)}
+        <div class="kt-navnrad">
+          <span class="kol-navn ${alleGjort(barn, data.noekkel) ? 'glitrer' : ''}">${barn.navn}</span>
+          ${barn.undertekst ? `<span class="kol-under">${barn.undertekst}</span>` : ''}
+        </div>
+        <div class="kt-info">
+          ${kolonneVaer(barn, data.noekkel)}
+          ${kolonneStjerner(barn, data.noekkel)}
+        </div>
         ${kolonneLekser(barn, data)}
         ${id === 'sofia' && data.aksMangler
           ? `<div class="mangler">AKS-plan mangler for uke ${data.uke}</div>` : ''}
@@ -1798,11 +1813,11 @@ function kolonneLekser(barn, data) {
       <div class="kl-linje kl-ferdig">Alt er gjort</div></div>`;
   }
 
-  const linjer = igjen.slice(0, 3).map(l =>
+  const linjer = igjen.slice(0, 2).map(l =>
     `<div class="kl-linje${l.frist ? ' frist' : ''}">${l.tekst}`
     + (l.naar ? `<em>${l.naar}</em>` : '') + `</div>`).join('');
 
-  const flere = igjen.length - 3;
+  const flere = igjen.length - 2;
 
   return `<div class="kol-lekser">
     <span class="kl-merke">Lekser</span>
