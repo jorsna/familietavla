@@ -1,5 +1,5 @@
 {
-  "generert": "2026-08-21T09:05:48.841Z",
+  "generert": "2026-08-21T09:58:07.461Z",
   "dager": {
     "2026-08-25": [
       {
@@ -135,6 +135,25 @@
         "tittel": "Stiatlon",
         "kilde": "kalender",
         "heldags": true
+      }
+    ],
+    "2026-08-22": [
+      {
+        "barn": "familie",
+        "tittel": "TRY Fotballdag 2026 ⚽️💙",
+        "kilde": "kalender",
+        "sted": "Jarbakken 1",
+        "start": "11:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Try fotballdag",
+        "kilde": "kalender",
+        "start": "11:00",
+        "slutt": "13:30",
+        "type": "spesiell"
       }
     ],
     "2026-08-21": [
@@ -448,25 +467,6 @@
         "kilde": "kalender",
         "start": "15:30",
         "slutt": "16:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-22": [
-      {
-        "barn": "familie",
-        "tittel": "TRY Fotballdag 2026 ⚽️💙",
-        "kilde": "kalender",
-        "sted": "Jarbakken 1",
-        "start": "11:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Try fotballdag",
-        "kilde": "kalender",
-        "start": "11:00",
-        "slutt": "13:30",
         "type": "spesiell"
       }
     ],
