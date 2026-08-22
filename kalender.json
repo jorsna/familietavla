@@ -1,16 +1,16 @@
 {
-  "generert": "2026-08-22T09:47:00.720Z",
+  "generert": "2026-08-22T10:08:23.205Z",
   "dager": {
     "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
+        "tittel": "Søke prøvingsattest",
         "kilde": "kalender",
         "heldags": true
       },
       {
         "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
       },
@@ -135,10 +135,36 @@
         "type": "rutine"
       }
     ],
-    "2026-08-25": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Vermox",
+        "tittel": "Girlsnight hos Bjørr!",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-08-23": [
+      {
+        "barn": "sofia",
+        "tittel": "Sebastian og Sofia - Plukke mais med farmor",
+        "kilde": "kalender",
+        "start": "10:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Sebastian og Sofia - Plukke mais med farmor",
+        "kilde": "kalender",
+        "start": "10:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-26": [
+      {
+        "barn": "sofia",
+        "tittel": "Klassebilde Sofia",
         "kilde": "kalender",
         "heldags": true
       },
@@ -183,14 +209,6 @@
         "type": "rutine"
       },
       {
-        "barn": "sebastian",
-        "tittel": "Felles tur: Vidsyn",
-        "kilde": "mykid",
-        "start": "09:30",
-        "slutt": "13:30",
-        "type": "spesiell"
-      },
-      {
         "barn": "ellie",
         "tittel": "Felles oppdagelsestur!",
         "kilde": "mykid",
@@ -219,14 +237,6 @@
         "tittel": "Hvilestund",
         "kilde": "mykid",
         "start": "12:00",
-        "slutt": "14:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Dorunde/tømme sekk etter tur/klargjøre for 2-maten",
-        "kilde": "mykid",
-        "start": "13:30",
         "slutt": "14:00",
         "type": "rutine"
       },
@@ -401,6 +411,14 @@
         "type": "spesiell"
       }
     ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
     "2026-09-04": [
       {
         "barn": "sebastian",
@@ -555,6 +573,26 @@
         "type": "spesiell"
       }
     ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-30": [
+      {
+        "barn": "familie",
+        "tittel": "Bestemor",
+        "kilde": "kalender",
+        "start": "13:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
     "2026-08-22": [
       {
         "barn": "familie",
@@ -574,20 +612,10 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-14": [
+    "2026-08-25": [
       {
         "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-26": [
-      {
-        "barn": "sofia",
-        "tittel": "Klassebilde Sofia",
+        "tittel": "Vermox",
         "kilde": "kalender",
         "heldags": true
       },
@@ -632,6 +660,14 @@
         "type": "rutine"
       },
       {
+        "barn": "sebastian",
+        "tittel": "Felles tur: Vidsyn",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "13:30",
+        "type": "spesiell"
+      },
+      {
         "barn": "ellie",
         "tittel": "Felles oppdagelsestur!",
         "kilde": "mykid",
@@ -660,6 +696,14 @@
         "tittel": "Hvilestund",
         "kilde": "mykid",
         "start": "12:00",
+        "slutt": "14:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Dorunde/tømme sekk etter tur/klargjøre for 2-maten",
+        "kilde": "mykid",
+        "start": "13:30",
         "slutt": "14:00",
         "type": "rutine"
       },
@@ -825,50 +869,6 @@
         "start": "17:00",
         "slutt": "18:45",
         "type": "spesiell"
-      }
-    ],
-    "2026-08-30": [
-      {
-        "barn": "familie",
-        "tittel": "Bestemor",
-        "kilde": "kalender",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-08-23": [
-      {
-        "barn": "sofia",
-        "tittel": "Sebastian og Sofia - Plukke mais med farmor",
-        "kilde": "kalender",
-        "start": "10:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Sebastian og Sofia - Plukke mais med farmor",
-        "kilde": "kalender",
-        "start": "10:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-05": [
-      {
-        "barn": "familie",
-        "tittel": "Stiatlon",
-        "kilde": "kalender",
-        "heldags": true
       }
     ],
     "2026-08-27": [
