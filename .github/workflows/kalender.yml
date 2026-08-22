@@ -2,8 +2,10 @@ name: Hent familiekalender
 
 on:
   schedule:
-    # Hver halvtime mellom 06 og 21 norsk tid (cron er i UTC)
-    - cron: '0,30 4-19 * * *'
+    # Hvert tiende minutt mellom 06 og 23 norsk tid (cron er i UTC).
+    # Kjøringene skriver bare til data-branchen og utløser ingen
+    # publisering, så frekvensen koster ingenting.
+    - cron: '*/10 4-21 * * *'
   workflow_dispatch:
 
 permissions:
