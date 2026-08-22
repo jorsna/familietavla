@@ -1448,7 +1448,8 @@ function byggDag(offset = dagOffset) {
   let poster = [];
 
   alleBarn.forEach(id => {
-    (RAMMER[id]?.[ukedag] || []).forEach(r => rammer.push({ ...r, barn: id }));
+    const dagensRammer = RAMMER[id]?.[ukedag] || [];
+    dagensRammer.forEach(r => rammer.push({ ...r, barn: id }));
 
     const fag = (FAGPLAN[id]?.[ukedag] || [])
       .map(f => ({ ...f, type: f.viktig ? 'spesiell' : 'okt' }));
@@ -1464,7 +1465,12 @@ function byggDag(offset = dagOffset) {
       }))
       .filter(a => a.start);
 
-    const faste = [...fag, ...aksIdag, ...(RUTINER[id] || [])]
+    /* Rutiner hører til skole- eller barnehagedagen. Uten denne
+       sjekken dukker Lillefri og Storefri opp på lørdager, siden
+       rutinelisten ikke er nøklet på ukedag slik timeplanen er. */
+    const rutiner = dagensRammer.length ? (RUTINER[id] || []) : [];
+
+    const faste = [...fag, ...aksIdag, ...rutiner]
       .map(p => ({ ...p, barn: id, kilde: 'fast' }));
 
     const dagensForBarn = dagens.filter(d => d.barn === id);
