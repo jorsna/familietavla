@@ -85,19 +85,22 @@ const CONFIG = {
     sofia: [
       { id: 'bord',   tekst: 'Dekke på bordet', emoji: '🍴', antall: 2 },
       { id: 'soppel', tekst: 'Gå med søpla',    emoji: '🗑️', antall: 2 }
+    ],
+    sebastian: [
+      { id: 'soppel', tekst: 'Gå med søpla',    emoji: '🗑️', antall: 1 }
     ]
   },
 
   /* Ukesmål per barn. Sofia har fem daglige oppgaver, fire
      ukesoppgaver og som regel to-tre lekser, altså rundt 42 mulige.
-     Sebastian har 35, Ellie 28.
+     Sebastian har 36, Ellie 28.
      Målene ligger rundt tre fjerdedeler av det mulige — nok til at
      en slapp dag ikke ødelegger uken, men ikke gratis.
 
      Poenget er at hver måler seg mot sitt eget tall. Å sammenligne
      stjerneantall på tvers av en seksåring og en ettåring blir
      urettferdig uansett hvordan man vrir på det. */
-  ukesmaal: { sofia: 31, sebastian: 26, ellie: 21 },
+  ukesmaal: { sofia: 31, sebastian: 27, ellie: 21 },
 
   /* Datafilene hentes fra data-branchen, ikke fra selve nettsiden.
      Da utløser ikke robotens oppdateringer noen ny publisering,
