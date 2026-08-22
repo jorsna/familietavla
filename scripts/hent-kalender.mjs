@@ -95,12 +95,17 @@ const tilTid  = d => tidFmt.format(d);
 
 const normaliser = t => (t || '').toLowerCase().replace(/[!.:\s]+$/, '').trim();
 
-function finnBarn(tekst) {
+/* Alle barn som nevnes, ikke bare det første. "Sofia og Sebastian
+   plukke mais" gjelder to barn, og skal stå i begge kolonnene. */
+function finnAlleBarn(tekst) {
   const t = (tekst || '').toLowerCase();
-  for (const [id, ord] of Object.entries(NAVN)) {
-    if (ord.some(o => t.includes(o))) return id;
-  }
-  return null;
+  return Object.entries(NAVN)
+    .filter(([, ord]) => ord.some(o => t.includes(o)))
+    .map(([id]) => id);
+}
+
+function finnBarn(tekst) {
+  return finnAlleBarn(tekst)[0] || null;
 }
 
 function ryddTittel(tittel) {
@@ -195,18 +200,23 @@ async function main() {
         /* MyKid legger barnets navn i stedsfeltet. For Google-
            kalendere leter vi først i tittelen, deretter i sted og
            beskrivelse — Spond legger av og til gruppen der. */
-        const barn = feed.type === 'mykid'
-          ? (finnBarn(sted) || feed.navn)
-          : (feed.barn
-             || finnBarn(kilde.summary)
-             || finnBarn(`${sted} ${kilde.description || ''}`)
-             || 'familie');
+        let mottakere;
+        if (feed.type === 'mykid') {
+          mottakere = [finnBarn(sted) || feed.navn];
+        } else if (feed.barn) {
+          mottakere = [feed.barn];
+        } else {
+          const iTittel = finnAlleBarn(kilde.summary);
+          const iResten = finnAlleBarn(`${sted} ${kilde.description || ''}`);
+          mottakere = iTittel.length ? iTittel
+                    : (iResten.length ? iResten : ['familie']);
+        }
 
         /* Stengte dager samles for hele halvåret. Å oppdage en
            planleggingsdag samme morgen er den dyreste feilen tavla
            kan la gå gjennom. */
         if (feed.type === 'mykid' && erStengt(tittel)) {
-          stengteDager.push({ dato, tittel, barn });
+          stengteDager.push({ dato, tittel, barn: mottakere[0] });
         }
 
         /* De første to ukene tas med i sin helhet. Videre fram
@@ -216,17 +226,19 @@ async function main() {
         if (forekomst.start >= tilPlan) continue;
         const kunHovedpunkt = forekomst.start >= til;
 
-        raa.push({
-          kunHovedpunkt,
-          feedtype: feed.type,
-          barn,
-          dato,
-          tittel,
-          sted: feed.type === 'mykid' ? '' : sted,
-          heldags: erHeldags(kilde),
-          start: tilTid(forekomst.start),
-          slutt: tilTid(forekomst.slutt)
-        });
+        for (const barn of mottakere) {
+          raa.push({
+            kunHovedpunkt,
+            feedtype: feed.type,
+            barn,
+            dato,
+            tittel,
+            sted: feed.type === 'mykid' ? '' : sted,
+            heldags: erHeldags(kilde),
+            start: tilTid(forekomst.start),
+            slutt: tilTid(forekomst.slutt)
+          });
+        }
       }
     }
   }
