@@ -1,24 +1,10 @@
 {
-  "generert": "2026-08-23T04:40:17.626Z",
+  "generert": "2026-08-23T05:16:07.787Z",
   "dager": {
-    "2026-09-26": [
+    "2026-08-25": [
       {
         "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-09-01": [
-      {
-        "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Vermox",
         "kilde": "kalender",
         "heldags": true
       },
@@ -64,11 +50,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur",
+        "tittel": "Felles tur: Vidsyn",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "rutine"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
@@ -141,12 +127,21 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
+        "type": "spesiell"
       }
     ],
-    "2026-09-05": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
       }
@@ -261,26 +256,6 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
-      }
-    ],
-    "2026-09-14": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-30": [
-      {
-        "barn": "familie",
-        "tittel": "Bestemor",
-        "kilde": "kalender",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
       }
     ],
     "2026-08-28": [
@@ -439,7 +414,37 @@
         "type": "spesiell"
       }
     ],
-    "2026-08-24": [
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-09-01": [
+      {
+        "barn": "familie",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "familie",
+        "tittel": "Søke prøvingsattest",
+        "kilde": "kalender",
+        "heldags": true
+      },
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -482,11 +487,11 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "De eldste på tur: Strømsdammen",
+        "tittel": "Felles tur",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "spesiell"
+        "type": "rutine"
       },
       {
         "barn": "ellie",
@@ -559,14 +564,15 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
-      },
+      }
+    ],
+    "2026-08-30": [
       {
-        "barn": "sofia",
-        "tittel": "Sofia bursdag til Victoria",
+        "barn": "familie",
+        "tittel": "Bestemor",
         "kilde": "kalender",
-        "sted": "Rush",
-        "start": "17:00",
-        "slutt": "18:45",
+        "start": "13:00",
+        "slutt": "15:00",
         "type": "spesiell"
       }
     ],
@@ -724,13 +730,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-08-25": [
-      {
-        "barn": "familie",
-        "tittel": "Vermox",
-        "kilde": "kalender",
-        "heldags": true
-      },
+    "2026-08-24": [
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -773,7 +773,7 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur: Vidsyn",
+        "tittel": "De eldste på tur: Strømsdammen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
@@ -850,6 +850,15 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Sofia bursdag til Victoria",
+        "kilde": "kalender",
+        "sted": "Rush",
+        "start": "17:00",
+        "slutt": "18:45",
+        "type": "spesiell"
       }
     ],
     "2026-08-27": [
