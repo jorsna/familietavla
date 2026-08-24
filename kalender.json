@@ -1,19 +1,7 @@
 {
-  "generert": "2026-08-24T20:52:41.421Z",
+  "generert": "2026-08-24T21:32:18.495Z",
   "dager": {
-    "2026-09-01": [
-      {
-        "barn": "familie",
-        "tittel": "Søke prøvingsattest",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
-        "kilde": "kalender",
-        "heldags": true
-      },
+    "2026-08-27": [
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -56,19 +44,19 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur",
+        "tittel": "Dagens aktivitet: Kardemomme by - Forming",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "rutine"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
-        "tittel": "Felles oppdagelsestur!",
+        "tittel": "Delt gruppe: Hengekøyetur og lek i skogen bak barnehagen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "11:00",
-        "type": "rutine"
+        "type": "spesiell"
       },
       {
         "barn": "sebastian",
@@ -133,6 +121,23 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "🎈Våges kinobursdag🥳",
+        "kilde": "kalender",
+        "sted": "ODEON Oslo IMAX",
+        "start": "16:15",
+        "slutt": "19:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Turn Sofia",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
       }
     ],
     "2026-08-28": [
@@ -427,139 +432,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-09": [
-      {
-        "barn": "familie",
-        "tittel": "Jørgen hos Volvo Norge - jobber til",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "17:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-26": [
-      {
-        "barn": "sofia",
-        "tittel": "Klassebilde Sofia",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Frokost+matpakkelaging",
-        "kilde": "mykid",
-        "start": "07:30",
-        "slutt": "08:15",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Frokost",
-        "kilde": "mykid",
-        "start": "07:30",
-        "slutt": "08:15",
-        "type": "mat"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Frilek og rydding før lesestund",
-        "kilde": "mykid",
-        "start": "08:15",
-        "slutt": "08:45",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Vi gjør oss klare for dagen!",
-        "kilde": "mykid",
-        "start": "08:15",
-        "slutt": "09:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Dorunde+påkledning",
-        "kilde": "mykid",
-        "start": "08:45",
-        "slutt": "09:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Maling",
-        "kilde": "mykid",
-        "start": "09:30",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Varmlunsj",
-        "kilde": "mykid",
-        "start": "11:00",
-        "slutt": "12:00",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Varmlunsj",
-        "kilde": "mykid",
-        "start": "11:00",
-        "slutt": "12:00",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Hvilestund",
-        "kilde": "mykid",
-        "start": "12:00",
-        "slutt": "14:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Måltid",
-        "kilde": "mykid",
-        "start": "14:00",
-        "slutt": "14:45",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Ettermiddagsmat",
-        "kilde": "mykid",
-        "start": "14:00",
-        "slutt": "15:00",
-        "type": "mat"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Ettermiddag i barnehagen",
-        "kilde": "mykid",
-        "start": "14:45",
-        "slutt": "17:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Vi leker!",
-        "kilde": "mykid",
-        "start": "15:00",
-        "slutt": "17:00",
-        "type": "rutine"
-      }
-    ],
-    "2026-09-14": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-08-27": [
+    "2026-08-24": [
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -602,7 +475,7 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Dagens aktivitet: Kardemomme by - Forming",
+        "tittel": "De eldste på tur: Strømsdammen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
@@ -610,7 +483,7 @@
       },
       {
         "barn": "ellie",
-        "tittel": "Delt gruppe: Hengekøyetur og lek i skogen bak barnehagen",
+        "tittel": "Tur i skogen bak barnehagen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "11:00",
@@ -682,26 +555,18 @@
       },
       {
         "barn": "sofia",
-        "tittel": "🎈Våges kinobursdag🥳",
+        "tittel": "Sofia bursdag til Victoria",
         "kilde": "kalender",
-        "sted": "ODEON Oslo IMAX",
-        "start": "16:15",
-        "slutt": "19:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Turn Sofia",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "sted": "Rush",
+        "start": "17:00",
+        "slutt": "18:45",
         "type": "spesiell"
       }
     ],
-    "2026-09-05": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
       }
@@ -843,25 +708,19 @@
         "type": "spesiell"
       }
     ],
-    "2026-08-30": [
+    "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Bestemor",
-        "kilde": "kalender",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
-      }
-    ],
-    "2026-08-24": [
+      },
+      {
+        "barn": "familie",
+        "tittel": "Søke prøvingsattest",
+        "kilde": "kalender",
+        "heldags": true
+      },
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging",
@@ -904,19 +763,19 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "De eldste på tur: Strømsdammen",
+        "tittel": "Felles tur",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "spesiell"
+        "type": "rutine"
       },
       {
         "barn": "ellie",
-        "tittel": "Tur i skogen bak barnehagen",
+        "tittel": "Felles oppdagelsestur!",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "11:00",
-        "type": "spesiell"
+        "type": "rutine"
       },
       {
         "barn": "sebastian",
@@ -981,14 +840,155 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
-      },
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-08-26": [
       {
         "barn": "sofia",
-        "tittel": "Sofia bursdag til Victoria",
+        "tittel": "Klassebilde Sofia",
         "kilde": "kalender",
-        "sted": "Rush",
-        "start": "17:00",
-        "slutt": "18:45",
+        "heldags": true
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Frokost+matpakkelaging",
+        "kilde": "mykid",
+        "start": "07:30",
+        "slutt": "08:15",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Frokost",
+        "kilde": "mykid",
+        "start": "07:30",
+        "slutt": "08:15",
+        "type": "mat"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Frilek og rydding før lesestund",
+        "kilde": "mykid",
+        "start": "08:15",
+        "slutt": "08:45",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Vi gjør oss klare for dagen!",
+        "kilde": "mykid",
+        "start": "08:15",
+        "slutt": "09:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Dorunde+påkledning",
+        "kilde": "mykid",
+        "start": "08:45",
+        "slutt": "09:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Maling",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Varmlunsj",
+        "kilde": "mykid",
+        "start": "11:00",
+        "slutt": "12:00",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Varmlunsj",
+        "kilde": "mykid",
+        "start": "11:00",
+        "slutt": "12:00",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Hvilestund",
+        "kilde": "mykid",
+        "start": "12:00",
+        "slutt": "14:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Måltid",
+        "kilde": "mykid",
+        "start": "14:00",
+        "slutt": "14:45",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Ettermiddagsmat",
+        "kilde": "mykid",
+        "start": "14:00",
+        "slutt": "15:00",
+        "type": "mat"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Ettermiddag i barnehagen",
+        "kilde": "mykid",
+        "start": "14:45",
+        "slutt": "17:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Vi leker!",
+        "kilde": "mykid",
+        "start": "15:00",
+        "slutt": "17:00",
+        "type": "rutine"
+      }
+    ],
+    "2026-09-09": [
+      {
+        "barn": "familie",
+        "tittel": "Jørgen hos Volvo Norge - jobber til",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "17:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-30": [
+      {
+        "barn": "familie",
+        "tittel": "Bestemor",
+        "kilde": "kalender",
+        "start": "13:00",
+        "slutt": "15:00",
         "type": "spesiell"
       }
     ],
