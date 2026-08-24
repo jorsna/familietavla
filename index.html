@@ -37,7 +37,7 @@ const CONFIG = {
   tema: 'auto',
 
   dagStart: 7.5,
-  dagSlutt: 18,
+  dagSlutt: 19.5,
 
   aksTider: [['14:00', '15:00'], ['15:15', '16:15']],
 
@@ -225,10 +225,13 @@ const FAGPLAN = {
    ══════════════════════════════════════════════════════════ */
 
 const RUTINER = {
+  /* Lillefri, matpakke og storefri er tatt ut. De vises like godt
+     som mellomrom mellom timene, og tre små bokser stjal mer plass
+     enn de ga. Vil du ha dem tilbake, fjern kommentartegnene. */
   sofia: [
-    { start: '09:30', slutt: '09:45', tittel: 'Lillefri', type: 'rutine' },
-    { start: '11:15', slutt: '11:30', tittel: 'Matpakke', type: 'mat' },
-    { start: '11:30', slutt: '12:00', tittel: 'Storefri', type: 'rutine' }
+    // { start: '09:30', slutt: '09:45', tittel: 'Lillefri', type: 'rutine' },
+    // { start: '11:15', slutt: '11:30', tittel: 'Matpakke', type: 'mat' },
+    // { start: '11:30', slutt: '12:00', tittel: 'Storefri', type: 'rutine' }
   ],
   sebastian: [],
   ellie: []
@@ -701,6 +704,15 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 .husk-post { display: flex; align-items: center; gap: 7px; font-size: clamp(13px, 1.5vw, 17px); font-weight: 500; }
 .husk-post i { width: 8px; height: 8px; border-radius: 50%; background: var(--f); flex-shrink: 0; }
 .husk-post.ai i { background: transparent; box-shadow: inset 0 0 0 2px var(--f); }
+
+/* Avtaler etter at tidslinjen slutter. Klokkeslettet er poenget,
+   så det står i barnets farge og med tyngde. */
+.husk-post.senere i { width: 6px; height: 6px; }
+.husk-post.senere b {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; letter-spacing: 0.06em;
+  color: var(--f); margin-right: 4px;
+}
 .husk-tom { color: var(--tekst-dus); font-size: 15px; }
 
 .status { position: fixed; right: 7px; bottom: 6px; width: 5px; height: 5px; border-radius: 50%; background: #3FB8A5; opacity: 0.3; z-index: 50; }
@@ -1482,6 +1494,24 @@ function byggDag(offset = dagOffset) {
     poster = poster.concat(beholdt, dagensForBarn);
   });
 
+  /* Alt som ligger utenfor tidsvinduet tegnes ikke, men skal ikke
+     forsvinne. Det havner i huskelinjen med klokkeslett i stedet.
+     Da koster kveldsavtaler ingen høyde på dager uten dem. */
+  const utenfor = poster.filter(p =>
+    !p.heldags && p.start && p.slutt &&
+    (tilDesimal(p.start) >= CONFIG.dagSlutt || tilDesimal(p.slutt) <= CONFIG.dagStart));
+
+  if (utenfor.length) {
+    poster = poster.filter(p => !utenfor.includes(p));
+    utenfor
+      .sort((a, b) => tilDesimal(a.start) - tilDesimal(b.start))
+      .forEach(p => husk.push({
+        barn: p.barn,
+        tekst: `<b>${p.start}</b> ${p.tittel}`,
+        kilde: 'senere'
+      }));
+  }
+
   poster.filter(p => p.tittel === 'Gym').forEach(p => {
     const tekst = 'Gymtøy og gymsko';
     if (!husk.some(h => h.tekst === tekst)) husk.unshift({ barn: p.barn, tekst });
@@ -1934,8 +1964,8 @@ function tegnHusk(husk) {
   if (!husk.length) { boks.innerHTML = '<span class="husk-tom">Ingenting spesielt</span>'; return; }
   boks.innerHTML = husk.map(h => {
     const b = finnBarn(h.barn);
-    const ai = h.kilde === 'ai' ? ' ai' : '';
-    return `<div class="husk-post${ai}" style="--f:${b.farge}"><i></i><span>${h.tekst}</span></div>`;
+    const merke = h.kilde === 'ai' ? ' ai' : (h.kilde === 'senere' ? ' senere' : '');
+    return `<div class="husk-post${merke}" style="--f:${b.farge}"><i></i><span>${h.tekst}</span></div>`;
   }).join('');
 }
 
