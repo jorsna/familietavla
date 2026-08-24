@@ -1,17 +1,22 @@
 {
-  "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. En frist til torsdag vises som 'i kveld' på onsdag. 'info' er beskjeder fra ukeplanen, 'tema' er periodens tema.",
+  "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. Hver lekse har en fast id, så avhukingen ikke flytter seg når filen endres midt i uken. En frist til onsdag vises som 'i kveld' på tirsdag.",
 
   "35": {
     "uken": [
-      "Norsk: les s. 8 og 9 i Salto lesebok",
-      "Legg bokbind på Salto lesebok"
+      { "id": "bokbind-salto", "tekst": "Legg bokbind på Salto lesebok" }
+    ],
+
+    "3": [
+      { "id": "norsk-salto-s8-9", "tekst": "Norsk: les s. 8 og 9 i Salto lesebok" }
     ],
 
     "4": [
-      "Matte: Matteboka 2A s. 11"
+      { "id": "matte-2a-s11", "tekst": "Matte: Matteboka 2A s. 11" }
     ],
 
     "info": [
+      "Salto lesebok kommer hjem på mandager og skal tilbake innen onsdag",
+      "Fra uke 36 er norskleksen til tirsdag",
       "Kort fruktpause hver dag 09:45–10:00",
       "Innesko og skiftetøy må være merket med navn",
       "Gymsko til gymtimen på onsdag",
