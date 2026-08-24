@@ -2088,11 +2088,10 @@ function tegnUke() {
   html += `<div class="uke-navn uke-rad-lekser" style="--f:${sofiafarge}">Lekser</div>`;
   dager.forEach(dag => {
     const uke = ukenummer(dag.dato);
-    const lu = lekseFil?.[String(uke)] || {};
     const d = dag.dato.getDay();
     const l = [];
-    if (d === 1) (lu.uken || []).filter(Boolean).forEach(x => l.push([x, 'Hele uken']));
-    (lu[String(d)] || []).filter(Boolean).forEach(x => l.push([x, 'Frist']));
+    if (d === 1) lekseListe(uke, 'uken').forEach(x => l.push([x.tekst, 'Hele uken']));
+    if (d >= 1 && d <= 5) lekseListe(uke, String(d)).forEach(x => l.push([x.tekst, 'Frist']));
     html += `<div class="uke-celle">${
       l.map(([x, merke]) =>
         `<div class="ue lekse" style="--f:${sofiafarge}">${x}<small>${merke}</small></div>`).join('')
