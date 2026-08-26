@@ -1,22 +1,6 @@
 {
-  "generert": "2026-08-26T06:54:08.488Z",
+  "generert": "2026-08-26T07:49:36.776Z",
   "dager": {
-    "2026-08-30": [
-      {
-        "barn": "familie",
-        "tittel": "Julie bursdag",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "familie",
-        "tittel": "Bestemor",
-        "kilde": "kalender",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-08-27": [
       {
         "barn": "sebastian",
@@ -156,12 +140,14 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-26": [
+    "2026-09-09": [
       {
         "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
+        "tittel": "Jørgen hos Volvo Norge - jobber til",
         "kilde": "kalender",
-        "heldags": true
+        "start": "15:00",
+        "slutt": "17:30",
+        "type": "spesiell"
       }
     ],
     "2026-09-01": [
@@ -298,14 +284,12 @@
         "type": "rutine"
       }
     ],
-    "2026-09-09": [
+    "2026-09-05": [
       {
         "barn": "familie",
-        "tittel": "Jørgen hos Volvo Norge - jobber til",
+        "tittel": "Stiatlon",
         "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "17:30",
-        "type": "spesiell"
+        "heldags": true
       }
     ],
     "2026-08-28": [
@@ -600,20 +584,10 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-14": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-05": [
-      {
-        "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
       }
@@ -728,6 +702,32 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      }
+    ],
+    "2026-08-30": [
+      {
+        "barn": "familie",
+        "tittel": "Julie bursdag",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "familie",
+        "tittel": "Bestemor",
+        "kilde": "kalender",
+        "start": "13:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
       }
     ],
     "2026-08-31": [
