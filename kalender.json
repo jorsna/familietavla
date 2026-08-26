@@ -1,22 +1,6 @@
 {
-  "generert": "2026-08-26T13:13:37.134Z",
+  "generert": "2026-08-26T14:08:36.371Z",
   "dager": {
-    "2026-08-30": [
-      {
-        "barn": "familie",
-        "tittel": "Julie bursdag",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "familie",
-        "tittel": "Bestemor",
-        "kilde": "kalender",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-08-28": [
       {
         "barn": "sebastian",
@@ -309,34 +293,16 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-14": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
     "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
       },
       {
         "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
+        "tittel": "Søke prøvingsattest",
         "kilde": "kalender",
         "heldags": true
       },
@@ -459,6 +425,50 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
+      }
+    ],
+    "2026-09-14": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-08-30": [
+      {
+        "barn": "familie",
+        "tittel": "Julie bursdag",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "familie",
+        "tittel": "Bestemor",
+        "kilde": "kalender",
+        "start": "13:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-05": [
+      {
+        "barn": "familie",
+        "tittel": "Stiatlon",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-09-09": [
+      {
+        "barn": "familie",
+        "tittel": "Jørgen hos Volvo Norge - jobber til",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "17:30",
+        "type": "spesiell"
       }
     ],
     "2026-08-27": [
@@ -600,6 +610,14 @@
         "type": "spesiell"
       }
     ],
+    "2026-09-26": [
+      {
+        "barn": "familie",
+        "tittel": "Girlsnight hos Bjørr!",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
     "2026-08-26": [
       {
         "barn": "sofia",
@@ -717,24 +735,6 @@
         "kilde": "kalender",
         "start": "17:00",
         "slutt": "19:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-05": [
-      {
-        "barn": "familie",
-        "tittel": "Stiatlon",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-09-09": [
-      {
-        "barn": "familie",
-        "tittel": "Jørgen hos Volvo Norge - jobber til",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "17:30",
         "type": "spesiell"
       }
     ],
