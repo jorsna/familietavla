@@ -725,7 +725,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
 .uke {
   overflow: auto; padding: 0 0 4px;
   display: grid;
-  grid-template-columns: 96px repeat(7, minmax(132px, 1fr));
+  grid-template-columns: 96px repeat(7, minmax(108px, 1fr));
 }
 .uke[hidden] { display: none; }
 
@@ -1978,12 +1978,17 @@ function tegnDato() {
   if (visning === 'uke') {
     const start = mandagIUka(ukeOffset);
     const slutt = new Date(start); slutt.setDate(slutt.getDate() + 6);
-    const naa = ukeOffset === 0 ? ' · denne uken'
-              : ukeOffset === 1 ? ' · neste uke' : '';
+    const naa = ukeOffset === 0 ? ' · nå'
+              : ukeOffset === 1 ? ' · neste' : '';
     document.getElementById('ukedag').textContent = `Uke ${ukenummer(start)}`;
-    document.getElementById('datorest').textContent =
-      `${start.getDate()}. ${MAANEDER[start.getMonth()].slice(0,3)} – `
-      + `${slutt.getDate()}. ${MAANEDER[slutt.getMonth()].slice(0,3)}${naa}`;
+
+    /* Kort form: samme måned gir "31.–6. sep", ulik måned gir
+       "31. aug–6. sep". Den lange varianten dyttet fanene sammen. */
+    const sammeMnd = start.getMonth() === slutt.getMonth();
+    document.getElementById('datorest').textContent = sammeMnd
+      ? `${start.getDate()}.–${slutt.getDate()}. ${MAANEDER[slutt.getMonth()].slice(0,3)}${naa}`
+      : `${start.getDate()}. ${MAANEDER[start.getMonth()].slice(0,3)}`
+        + `–${slutt.getDate()}. ${MAANEDER[slutt.getMonth()].slice(0,3)}${naa}`;
 
     const forrige = document.getElementById('ukeForrige');
     const neste = document.getElementById('ukeNeste');
