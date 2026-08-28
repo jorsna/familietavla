@@ -1,26 +1,21 @@
 {
-  "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. Hver lekse har en fast id, så avhukingen ikke flytter seg når filen endres midt i uken. En frist til onsdag vises som 'i kveld' på tirsdag.",
+  "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. Hver lekse har en fast id, så avhukingen ikke flytter seg når filen endres midt i uken.",
 
-  "35": {
-    "uken": [
-      { "id": "bokbind-salto", "tekst": "Legg bokbind på Salto lesebok" }
-    ],
-
-    "3": [
-      { "id": "norsk-salto-s8-9", "tekst": "Norsk: les s. 8 og 9 i Salto lesebok" }
+  "36": {
+    "2": [
+      { "id": "u36-norsk-salto-s16-17", "tekst": "Norsk: les s. 16 og 17 i Salto lesebok" }
     ],
 
     "4": [
-      { "id": "matte-2a-s11", "tekst": "Matte: Matteboka 2A s. 11" }
+      { "id": "u36-matte-2a-s19", "tekst": "Matte: Matteboka 2A, Øve 2 s. 19" }
     ],
 
     "info": [
-      "Salto lesebok kommer hjem på mandager og skal tilbake innen onsdag",
-      "Fra uke 36 er norskleksen til tirsdag",
+      "Salto lesebok skal tilbake på skolen tirsdag",
+      "Ingen bamser, leker eller fotballkort på skolen — bare på ha med-dag",
+      "Ha med-dag på AKS fredag",
       "Kort fruktpause hver dag 09:45–10:00",
       "Innesko og skiftetøy må være merket med navn",
-      "Gymsko til gymtimen på onsdag",
-      "Klassebilde av 2C onsdag 26. august",
       "Foreldremøte 24. september kl. 17:30–19:00",
       "Skolemelk bestilles på skolelyst.no"
     ],

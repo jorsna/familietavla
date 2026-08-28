@@ -1,19 +1,19 @@
 {
   "_lesmeg": "AKS-plan for Sofia. Nøkkel er ukenummer, deretter ukedag: 1=mandag, 5=fredag. To aktiviteter per dag. Gamle uker kan bli liggende.",
 
-  "34": {
-    "1": ["Sommerglede ballong", "Dødball"],
-    "2": ["Bingo", "Makrame"],
-    "3": ["Gymsal: stikkball", "Navneskilt"],
-    "4": ["Fotball", "Is krem"],
-    "5": ["Just dance", "Superhelt-masker"]
-  },
-
   "35": {
     "1": ["Makrame", "Fang skurken"],
     "2": ["Superkraft stafett", "Superhelt kapper"],
     "3": ["Gymsal: superhelt danseleken", "Superhelt skjold"],
     "4": ["Finn superheltens skatter", "Superhero armbånd"],
     "5": ["Just dance", "Superhelt perling"]
+  },
+
+  "36": {
+    "1": ["Makrame", "Mine venner-plakat"],
+    "2": ["Fotball", "Vennskapskort"],
+    "3": ["Gymsal: kanonball", "Vennskapsarmbånd"],
+    "4": ["Just dance", "Naturbingo"],
+    "5": ["Film", "Ha med-dag"]
   }
 }
