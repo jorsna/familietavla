@@ -1,5 +1,5 @@
 {
-  "generert": "2026-08-29T10:54:32.053Z",
+  "generert": "2026-08-29T15:32:11.432Z",
   "dager": {
     "2026-09-04": [
       {
@@ -261,10 +261,26 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-05": [
+    "2026-08-30": [
       {
         "barn": "familie",
-        "tittel": "Stiatlon",
+        "tittel": "Julie bursdag",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "familie",
+        "tittel": "Bestemor",
+        "kilde": "kalender",
+        "start": "13:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-26": [
+      {
+        "barn": "familie",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
       }
@@ -277,26 +293,24 @@
         "heldags": true
       }
     ],
-    "2026-09-14": [
+    "2026-09-05": [
       {
         "barn": "familie",
-        "tittel": "Beths",
+        "tittel": "Stiatlon",
         "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:00",
-        "type": "spesiell"
+        "heldags": true
       }
     ],
     "2026-09-01": [
       {
         "barn": "familie",
-        "tittel": "Søke prøvingsattest",
+        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
         "kilde": "kalender",
         "heldags": true
       },
       {
         "barn": "familie",
-        "tittel": "Jørgen til Porsgrunn - Besøk Autostrada",
+        "tittel": "Søke prøvingsattest",
         "kilde": "kalender",
         "heldags": true
       },
@@ -421,12 +435,14 @@
         "type": "rutine"
       }
     ],
-    "2026-09-26": [
+    "2026-09-14": [
       {
         "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
+        "tittel": "Beths",
         "kilde": "kalender",
-        "heldags": true
+        "start": "12:30",
+        "slutt": "13:00",
+        "type": "spesiell"
       }
     ],
     "2026-09-09": [
@@ -517,22 +533,6 @@
         "start": "15:00",
         "slutt": "17:00",
         "type": "rutine"
-      }
-    ],
-    "2026-08-30": [
-      {
-        "barn": "familie",
-        "tittel": "Julie bursdag",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "familie",
-        "tittel": "Bestemor",
-        "kilde": "kalender",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
       }
     ],
     "2026-08-31": [
