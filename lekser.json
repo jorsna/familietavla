@@ -1,22 +1,21 @@
 {
   "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. Hver lekse har en fast id, så avhukingen ikke flytter seg når filen endres midt i uken.",
 
-  "36": {
+  "37": {
     "2": [
-      { "id": "u36-norsk-salto-s16-17", "tekst": "Norsk: les s. 16 og 17 i Salto lesebok" }
+      { "id": "u37-norsk-salto-s24-25", "tekst": "Norsk: les s. 24 og 25 i Salto lesebok" }
     ],
 
     "4": [
-      { "id": "u36-matte-2a-s19", "tekst": "Matte: Matteboka 2A, Øve 2 s. 19" }
+      { "id": "u37-matte-2a-s29", "tekst": "Matte: Matteboka 2A, Øve 2 s. 29" }
     ],
 
     "info": [
-      "Salto lesebok skal tilbake på skolen tirsdag",
+      "Salto lesebok kommer hjem mandag og skal tilbake tirsdag",
       "Ingen bamser, leker eller fotballkort på skolen — bare på ha med-dag",
-      "Ha med-dag på AKS fredag",
       "Kort fruktpause hver dag 09:45–10:00",
       "Innesko og skiftetøy må være merket med navn",
-      "Foreldremøte 24. september kl. 17:30–19:00",
+      "Foreldremøte torsdag 24. september kl. 17:30–19:00",
       "Skolemelk bestilles på skolelyst.no"
     ],
 
