@@ -15,17 +15,22 @@
 
   "husk": [
     {
-      "dato": "2026-09-08",
+      "dato": "2026-09-14",
+      "barn": "familie",
+      "tekst": "Svar i Helsenorge om vaksine"
+    },
+    {
+      "dato": "2026-09-15",
       "barn": "sofia",
       "tekst": "Salto lesebok tilbake til skolen"
     },
     {
-      "dato": "2026-09-08",
+      "dato": "2026-09-15",
       "barn": "sofia",
-      "tekst": "Mat på AKS: knekkebrød med pålegg"
+      "tekst": "Mat på AKS: smørbrød og yoghurt"
     },
     {
-      "dato": "2026-09-09",
+      "dato": "2026-09-16",
       "barn": "sofia",
       "tekst": "Frukt på AKS"
     }

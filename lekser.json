@@ -1,22 +1,20 @@
 {
   "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. Hver lekse har en fast id, så avhukingen ikke flytter seg når filen endres midt i uken.",
 
-  "37": {
+  "38": {
     "2": [
-      { "id": "u37-norsk-salto-s24-25", "tekst": "Norsk: les s. 24 og 25 i Salto lesebok" }
+      { "id": "u38-norsk-salto-s32-33", "tekst": "Norsk: les s. 32 og 33 i Salto lesebok" }
     ],
 
     "4": [
-      { "id": "u37-matte-2a-s29", "tekst": "Matte: Matteboka 2A, Øve 2 s. 29" }
+      { "id": "u38-matte-2a-s36", "tekst": "Matte: Matteboka 2A s. 36" }
     ],
 
     "info": [
-      "Salto lesebok kommer hjem mandag og skal tilbake tirsdag",
-      "Ingen bamser, leker eller fotballkort på skolen — bare på ha med-dag",
-      "Kort fruktpause hver dag 09:45–10:00",
-      "Innesko og skiftetøy må være merket med navn",
+      "Svar i Helsenorge om Sofia skal ha vaksine",
       "Foreldremøte torsdag 24. september kl. 17:30–19:00",
-      "Skolemelk bestilles på skolelyst.no"
+      "Salto lesebok kommer hjem mandag og skal tilbake tirsdag",
+      "Ingen bamser, leker eller fotballkort på skolen — bare på ha med-dag"
     ],
 
     "tema": "Periode 1: En skole for alle · Tverrfaglig: folkehelse og livsmestring · Sosialt: vennskap"
