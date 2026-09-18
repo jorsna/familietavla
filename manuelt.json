@@ -3,34 +3,48 @@
 
   "hendelser": [
     {
+      "dato": "2026-09-22",
+      "barn": "sofia",
+      "start": "08:30",
+      "slutt": "13:30",
+      "tittel": "Tur til Midtstuedammen",
+      "sted": "Hele 2. trinn",
+      "type": "spesiell"
+    },
+    {
       "dato": "2026-09-24",
       "barn": "familie",
       "start": "17:30",
       "slutt": "19:00",
       "tittel": "Foreldremøte 2. trinn",
-      "sted": "Grindbakken skole",
+      "sted": "Gymsalen, Grindbakken",
       "type": "spesiell"
     }
   ],
 
   "husk": [
     {
-      "dato": "2026-09-14",
-      "barn": "familie",
-      "tekst": "Svar i Helsenorge om vaksine"
+      "dato": "2026-09-22",
+      "barn": "sofia",
+      "tekst": "Tur: vedkubbe, grillpinne, kjeks og varm termos"
     },
     {
-      "dato": "2026-09-15",
+      "dato": "2026-09-22",
+      "barn": "sofia",
+      "tekst": "Presis til 08:30 — turen går med én gang"
+    },
+    {
+      "dato": "2026-09-22",
       "barn": "sofia",
       "tekst": "Salto lesebok tilbake til skolen"
     },
     {
-      "dato": "2026-09-15",
+      "dato": "2026-09-22",
       "barn": "sofia",
-      "tekst": "Mat på AKS: smørbrød og yoghurt"
+      "tekst": "Mat på AKS: knekkebrød med pålegg"
     },
     {
-      "dato": "2026-09-16",
+      "dato": "2026-09-23",
       "barn": "sofia",
       "tekst": "Frukt på AKS"
     }
