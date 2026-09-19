@@ -1,40 +1,12 @@
 {
-  "generert": "2026-09-19T16:06:31.622Z",
+  "generert": "2026-09-19T18:35:21.299Z",
   "dager": {
-    "2026-09-19": [
-      {
-        "barn": "sofia",
-        "tittel": "Sofia besøk til Othilia",
-        "kilde": "kalender",
-        "start": "14:30",
-        "slutt": "17:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-09-20": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Hedda Oline 1 år",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
         "heldags": true
-      }
-    ],
-    "2026-10-16": [
-      {
-        "barn": "familie",
-        "tittel": "Beths Peeling",
-        "kilde": "kalender",
-        "start": "15:30",
-        "slutt": "16:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "Jørgen henter E & S",
-        "kilde": "kalender",
-        "start": "15:30",
-        "slutt": "16:30",
-        "type": "spesiell"
       }
     ],
     "2026-10-08": [
@@ -55,14 +27,21 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-04": [
+    "2026-10-16": [
       {
         "barn": "familie",
-        "tittel": "Jørgen Hyrox",
+        "tittel": "Beths Peeling",
         "kilde": "kalender",
-        "sted": "Avancia Sport Center Skedsmokorset AS",
-        "start": "12:00",
-        "slutt": "15:00",
+        "start": "15:30",
+        "slutt": "16:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "familie",
+        "tittel": "Jørgen henter E & S",
+        "kilde": "kalender",
+        "start": "15:30",
+        "slutt": "16:30",
         "type": "spesiell"
       }
     ],
@@ -364,14 +343,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-26": [
-      {
-        "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
     "2026-10-14": [
       {
         "barn": "familie",
@@ -531,14 +502,52 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-24": [
+    "2026-09-20": [
+      {
+        "barn": "familie",
+        "tittel": "Hedda Oline 1 år",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-10-04": [
+      {
+        "barn": "familie",
+        "tittel": "Jørgen Hyrox",
+        "kilde": "kalender",
+        "sted": "Avancia Sport Center Skedsmokorset AS",
+        "start": "12:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-09-19": [
       {
         "barn": "sofia",
-        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "tittel": "Sofia besøk til Othilia",
         "kilde": "kalender",
-        "sted": "OBOS-hallen (Grei-hallen)",
-        "start": "09:30",
-        "slutt": "14:00",
+        "start": "14:30",
+        "slutt": "17:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-13": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
         "type": "spesiell"
       }
     ],
@@ -682,6 +691,26 @@
         "type": "spesiell"
       }
     ],
+    "2026-10-15": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-29": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-10-27": [
       {
         "barn": "sofia",
@@ -702,37 +731,27 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-29": [
+    "2026-10-18": [
       {
         "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
+        "tittel": "TRY Skogsløp 2026",
         "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-20": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
         "type": "spesiell"
       },
       {
         "barn": "sofia",
-        "tittel": "J2019 Fotballtrening ⚽️",
+        "tittel": "Konsert sammen med skolekorpset 🎶✨",
         "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "17:55",
-        "slutt": "19:00",
+        "sted": "Voldsløkka kulturstasjon",
+        "start": "16:00",
+        "slutt": "17:00",
         "type": "spesiell"
       }
     ],
-    "2026-10-13": [
+    "2026-10-20": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -882,43 +901,24 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-18": [
+    "2026-10-17": [
       {
         "barn": "sofia",
-        "tittel": "TRY Skogsløp 2026",
+        "tittel": "Generalprøve konsert 🎵",
         "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Konsert sammen med skolekorpset 🎶✨",
-        "kilde": "kalender",
-        "sted": "Voldsløkka kulturstasjon",
-        "start": "16:00",
-        "slutt": "17:00",
+        "sted": "Grindbakken skole Måltrostveien 106",
+        "start": "10:30",
+        "slutt": "14:00",
         "type": "spesiell"
       }
     ],
-    "2026-10-06": [
+    "2026-10-22": [
       {
         "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
+        "tittel": "TURN 1.-2. klasse",
         "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "J2019 Fotballtrening ⚽️",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "17:55",
-        "slutt": "19:00",
+        "start": "17:30",
+        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
@@ -1052,34 +1052,34 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-17": [
+    "2026-10-06": [
       {
         "barn": "sofia",
-        "tittel": "Generalprøve konsert 🎵",
+        "tittel": "Korøvelse for 2. - 3. trinn",
         "kilde": "kalender",
-        "sted": "Grindbakken skole Måltrostveien 106",
-        "start": "10:30",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-24": [
+      {
+        "barn": "sofia",
+        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "kilde": "kalender",
+        "sted": "OBOS-hallen (Grei-hallen)",
+        "start": "09:30",
         "slutt": "14:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-22": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-15": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
