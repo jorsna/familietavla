@@ -19,6 +19,15 @@
       "tittel": "Foreldremøte 2. trinn",
       "sted": "Gymsalen, Grindbakken",
       "type": "spesiell"
+    },
+    {
+      "dato": "2026-10-21",
+      "barn": "sofia",
+      "start": "15:30",
+      "slutt": "16:00",
+      "tittel": "Utviklingssamtale",
+      "sted": "Inngang 1. trinn",
+      "type": "spesiell"
     }
   ],
 
@@ -47,6 +56,11 @@
       "dato": "2026-09-23",
       "barn": "sofia",
       "tekst": "Frukt på AKS"
+    },
+    {
+      "dato": "2026-10-21",
+      "barn": "familie",
+      "tekst": "Utviklingssamtale 15:30 — Sofia skal være med"
     }
   ]
 }
