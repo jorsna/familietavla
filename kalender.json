@@ -1,6 +1,24 @@
 {
-  "generert": "2026-09-26T13:46:51.095Z",
+  "generert": "2026-09-26T17:25:03.050Z",
   "dager": {
+    "2026-10-21": [
+      {
+        "barn": "familie",
+        "tittel": "Frist innlevering bøker 24. okt - Deichman Majorstua",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Utviklingssamtale Sofia",
+        "kilde": "kalender",
+        "start": "15:30",
+        "slutt": "16:00",
+        "type": "spesiell"
+      }
+    ],
     "2026-10-02": [
       {
         "barn": "sebastian",
@@ -309,66 +327,24 @@
         "type": "spesiell"
       }
     ],
-    "2026-09-26": [
+    "2026-10-04": [
       {
         "barn": "familie",
-        "tittel": "Girlsnight hos Bjørr!",
+        "tittel": "Jørgen Hyrox",
         "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-10-18": [
-      {
-        "barn": "sofia",
-        "tittel": "TRY Skogsløp – oppgaver til dugnad",
-        "kilde": "kalender",
-        "start": "09:30",
-        "slutt": "10:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "TRY Skogsløp 2026",
-        "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "TRY Skogsløp 2026",
-        "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Konsert sammen med skolekorpset 🎶✨",
-        "kilde": "kalender",
-        "sted": "Voldsløkka kulturstasjon",
-        "start": "16:00",
-        "slutt": "17:00",
+        "sted": "Avancia Sport Center Skedsmokorset AS",
+        "start": "12:00",
+        "slutt": "15:00",
         "type": "spesiell"
       }
     ],
-    "2026-10-21": [
+    "2026-10-14": [
       {
         "barn": "familie",
-        "tittel": "Frist innlevering bøker 24. okt - Deichman Majorstua",
+        "tittel": "Ida Kiropraktor",
         "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Utviklingssamtale Sofia",
-        "kilde": "kalender",
-        "start": "15:30",
-        "slutt": "16:00",
+        "start": "09:00",
+        "slutt": "10:00",
         "type": "spesiell"
       }
     ],
@@ -502,74 +478,69 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-04": [
+    "2026-09-26": [
       {
         "barn": "familie",
-        "tittel": "Jørgen Hyrox",
+        "tittel": "Girlsnight hos Bjørr!",
         "kilde": "kalender",
-        "sted": "Avancia Sport Center Skedsmokorset AS",
-        "start": "12:00",
-        "slutt": "15:00",
+        "heldags": true
+      }
+    ],
+    "2026-10-18": [
+      {
+        "barn": "sofia",
+        "tittel": "TRY Skogsløp – oppgaver til dugnad",
+        "kilde": "kalender",
+        "start": "09:30",
+        "slutt": "10:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "familie",
+        "tittel": "TRY Skogsløp 2026",
+        "kilde": "kalender",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "TRY Skogsløp 2026",
+        "kilde": "kalender",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Konsert sammen med skolekorpset 🎶✨",
+        "kilde": "kalender",
+        "sted": "Voldsløkka kulturstasjon",
+        "start": "16:00",
+        "slutt": "17:00",
         "type": "spesiell"
       }
     ],
-    "2026-10-14": [
+    "2026-10-17": [
       {
-        "barn": "familie",
-        "tittel": "Ida Kiropraktor",
+        "barn": "sofia",
+        "tittel": "Generalprøve konsert 🎵",
         "kilde": "kalender",
-        "start": "09:00",
-        "slutt": "10:00",
+        "sted": "Grindbakken skole Måltrostveien 106",
+        "start": "10:30",
+        "slutt": "14:00",
         "type": "spesiell"
       }
     ],
-    "2026-10-29": [
+    "2026-10-22": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
         "kilde": "kalender",
         "start": "17:30",
         "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-13": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "J2019 Fotballtrening ⚽️",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "17:55",
-        "slutt": "19:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-20": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "J2019 Fotballtrening ⚽️",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "17:55",
-        "slutt": "19:00",
         "type": "spesiell"
       }
     ],
@@ -713,16 +684,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-22": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
     "2026-10-27": [
       {
         "barn": "sofia",
@@ -743,6 +704,16 @@
         "type": "spesiell"
       }
     ],
+    "2026-11-05": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-10-15": [
       {
         "barn": "sofia",
@@ -753,7 +724,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-03": [
+    "2026-10-13": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -761,6 +732,45 @@
         "sted": "Musikkrommet",
         "start": "14:45",
         "slutt": "15:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-20": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-29": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
@@ -775,24 +785,14 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-17": [
+    "2026-11-03": [
       {
         "barn": "sofia",
-        "tittel": "Generalprøve konsert 🎵",
+        "tittel": "Korøvelse for 2. - 3. trinn",
         "kilde": "kalender",
-        "sted": "Grindbakken skole Måltrostveien 106",
-        "start": "10:30",
-        "slutt": "14:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-05": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
