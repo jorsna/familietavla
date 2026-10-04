@@ -1,23 +1,23 @@
 {
   "_lesmeg": "Lekser og ukeplan for Sofia. Nøkkel er ukenummer. 'uken' er lekser uten frist. Tall 1-5 er frister: 1=mandag, 5=fredag. Hver lekse har en fast id, så avhukingen ikke flytter seg når filen endres midt i uken.",
 
-  "39": {
+  "41": {
     "2": [
-      { "id": "u39-norsk-salto-s40-41", "tekst": "Norsk: les s. 40 og 41 i Salto lesebok" }
+      { "id": "u41-norsk-salto-s44-45", "tekst": "Norsk: les s. 44 og 45 i Salto lesebok" }
     ],
 
     "4": [
-      { "id": "u39-matte-2a-s53", "tekst": "Matte: Matteboka 2A, Øve 2 s. 53" }
+      { "id": "u41-matte-2a-s56", "tekst": "Matte: Matteboka 2A, Øve 1 s. 56" }
     ],
 
     "info": [
-      "Tur til Midtstuedammen tirsdag 22. september — de går med én gang skolen starter",
-      "Til turen: én vedkubbe i sekken, grillpinne hvis hun skal grille, kjeks eller marshmallow i matpakken og noe varmt på termosen",
-      "Foreldremøte torsdag 24. september kl. 17:30–19:00, oppmøte i gymsalen",
-      "Salto lesebok kommer hjem mandag og skal tilbake tirsdag",
-      "Ingen bamser, leker eller fotballkort på skolen — bare på ha med-dag"
+      "Høstaktivitetsdag torsdag 8. oktober — 2. trinn går på tur til Jegersborgdammen",
+      "Utviklingssamtaler gjennomføres fra uke 42. Sofia har onsdag 21. oktober kl. 15:30",
+      "Ingen bamser, leker eller fotballkort på skolen — bare på ha med-dag",
+      "Ha med-dag på AKS fredag",
+      "Salto lesebok kommer hjem mandag og skal tilbake tirsdag"
     ],
 
-    "tema": "Periode 1: En skole for alle · Tverrfaglig: folkehelse og livsmestring · Sosialt: vennskap"
+    "tema": "Periode 2: Vi er nysgjerrige · Tverrfaglig: bærekraftig utvikling · Sosialt: ansvar"
   }
 }
