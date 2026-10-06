@@ -1,317 +1,6 @@
 {
-  "generert": "2026-10-06T11:05:30.558Z",
+  "generert": "2026-10-06T17:09:53.023Z",
   "dager": {
-    "2026-10-13": [
-      {
-        "barn": "sebastian",
-        "tittel": "Frokost+matpakkelaging+pakking av sin egen tursekk",
-        "kilde": "mykid",
-        "start": "07:30",
-        "slutt": "08:15",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Frokost",
-        "kilde": "mykid",
-        "start": "07:30",
-        "slutt": "08:15",
-        "type": "mat"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Lek i små grupper før morgensamling",
-        "kilde": "mykid",
-        "start": "08:15",
-        "slutt": "08:45",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Vi gjør oss klare for dagen!",
-        "kilde": "mykid",
-        "start": "08:15",
-        "slutt": "09:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Morgensamling - Dorunde - Påkledning",
-        "kilde": "mykid",
-        "start": "08:45",
-        "slutt": "09:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Felles tur",
-        "kilde": "mykid",
-        "start": "09:30",
-        "slutt": "13:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Felles oppdagelsestur!",
-        "kilde": "mykid",
-        "start": "09:30",
-        "slutt": "11:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Hvilestund",
-        "kilde": "mykid",
-        "start": "12:00",
-        "slutt": "14:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Måltid",
-        "kilde": "mykid",
-        "start": "14:00",
-        "slutt": "14:45",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Ettermiddagsmat",
-        "kilde": "mykid",
-        "start": "14:00",
-        "slutt": "15:00",
-        "type": "mat"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Ettermiddag i barnehagen",
-        "kilde": "mykid",
-        "start": "14:45",
-        "slutt": "17:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Sofia hjem til Ingrid før fotballtrening",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "18:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Vi leker!",
-        "kilde": "mykid",
-        "start": "15:00",
-        "slutt": "17:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "J2019 Fotballtrening ⚽️",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "17:55",
-        "slutt": "19:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-18": [
-      {
-        "barn": "sofia",
-        "tittel": "TRY Skogsløp – oppgaver til dugnad",
-        "kilde": "kalender",
-        "start": "09:30",
-        "slutt": "10:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "TRY Skogsløp 2026",
-        "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "TRY Skogsløp 2026",
-        "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Konsert sammen med skolekorpset 🎶✨",
-        "kilde": "kalender",
-        "sted": "Voldsløkka kulturstasjon",
-        "start": "16:00",
-        "slutt": "17:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-23": [
-      {
-        "barn": "familie",
-        "tittel": "Høstfest bhg",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "17:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-09": [
-      {
-        "barn": "sebastian",
-        "tittel": "Frokost+matpakkelaging+pakking av sin egen tursekk",
-        "kilde": "mykid",
-        "start": "07:30",
-        "slutt": "08:15",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Frokost",
-        "kilde": "mykid",
-        "start": "07:30",
-        "slutt": "08:15",
-        "type": "mat"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Lek i små grupper før morgensamling",
-        "kilde": "mykid",
-        "start": "08:15",
-        "slutt": "08:45",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Vi gjør oss klare for dagen!",
-        "kilde": "mykid",
-        "start": "08:15",
-        "slutt": "09:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Morgensamling - Dorunde - Påkledning",
-        "kilde": "mykid",
-        "start": "08:45",
-        "slutt": "09:30",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Felles tur: Karpedammen/Holmenkollen",
-        "kilde": "mykid",
-        "start": "09:30",
-        "slutt": "13:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Lek ute!",
-        "kilde": "mykid",
-        "start": "09:30",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Varmlunsj",
-        "kilde": "mykid",
-        "start": "11:00",
-        "slutt": "12:00",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Varmlunsj",
-        "kilde": "mykid",
-        "start": "11:00",
-        "slutt": "12:00",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Hvilestund",
-        "kilde": "mykid",
-        "start": "12:00",
-        "slutt": "14:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Måltid",
-        "kilde": "mykid",
-        "start": "14:00",
-        "slutt": "14:45",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Ettermiddagsmat",
-        "kilde": "mykid",
-        "start": "14:00",
-        "slutt": "15:00",
-        "type": "mat"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Ettermiddag i barnehagen",
-        "kilde": "mykid",
-        "start": "14:45",
-        "slutt": "17:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Vi leker!",
-        "kilde": "mykid",
-        "start": "15:00",
-        "slutt": "17:00",
-        "type": "rutine"
-      },
-      {
-        "barn": "familie",
-        "tittel": "Beths Peeling",
-        "kilde": "kalender",
-        "start": "15:30",
-        "slutt": "16:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-21": [
-      {
-        "barn": "familie",
-        "tittel": "Frist innlevering bøker 24. okt - Deichman Majorstua",
-        "kilde": "kalender",
-        "start": "12:30",
-        "slutt": "13:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Utviklingssamtale Sofia",
-        "kilde": "kalender",
-        "start": "15:30",
-        "slutt": "16:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-10-08": [
       {
         "barn": "sebastian",
@@ -442,6 +131,59 @@
         "type": "spesiell"
       }
     ],
+    "2026-10-18": [
+      {
+        "barn": "sofia",
+        "tittel": "TRY Skogsløp – oppgaver til dugnad",
+        "kilde": "kalender",
+        "start": "09:30",
+        "slutt": "10:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "familie",
+        "tittel": "TRY Skogsløp 2026",
+        "kilde": "kalender",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "TRY Skogsløp 2026",
+        "kilde": "kalender",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Konsert sammen med skolekorpset 🎶✨",
+        "kilde": "kalender",
+        "sted": "Voldsløkka kulturstasjon",
+        "start": "16:00",
+        "slutt": "17:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-23": [
+      {
+        "barn": "familie",
+        "tittel": "Bursdagsfeiring Hedda",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "familie",
+        "tittel": "Høstfest bhg",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "17:00",
+        "type": "spesiell"
+      }
+    ],
     "2026-10-16": [
       {
         "barn": "sebastian",
@@ -556,26 +298,209 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-22": [
+    "2026-10-09": [
       {
-        "barn": "sofia",
-        "tittel": "Vennegruppe hos Sebastian 🎃🍁",
-        "kilde": "kalender",
-        "sted": "Orreveien 15C",
-        "start": "15:30",
-        "slutt": "18:00",
+        "barn": "sebastian",
+        "tittel": "Frokost+matpakkelaging+pakking av sin egen tursekk",
+        "kilde": "mykid",
+        "start": "07:30",
+        "slutt": "08:15",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Frokost",
+        "kilde": "mykid",
+        "start": "07:30",
+        "slutt": "08:15",
+        "type": "mat"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Lek i små grupper før morgensamling",
+        "kilde": "mykid",
+        "start": "08:15",
+        "slutt": "08:45",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Vi gjør oss klare for dagen!",
+        "kilde": "mykid",
+        "start": "08:15",
+        "slutt": "09:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Morgensamling - Dorunde - Påkledning",
+        "kilde": "mykid",
+        "start": "08:45",
+        "slutt": "09:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Felles tur: Karpedammen/Holmenkollen",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "13:30",
         "type": "spesiell"
       },
       {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
+        "barn": "ellie",
+        "tittel": "Lek ute!",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Varmlunsj",
+        "kilde": "mykid",
+        "start": "11:00",
+        "slutt": "12:00",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Varmlunsj",
+        "kilde": "mykid",
+        "start": "11:00",
+        "slutt": "12:00",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Hvilestund",
+        "kilde": "mykid",
+        "start": "12:00",
+        "slutt": "14:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Måltid",
+        "kilde": "mykid",
+        "start": "14:00",
+        "slutt": "14:45",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Ettermiddagsmat",
+        "kilde": "mykid",
+        "start": "14:00",
+        "slutt": "15:00",
+        "type": "mat"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Ettermiddag i barnehagen",
+        "kilde": "mykid",
+        "start": "14:45",
+        "slutt": "17:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Vi leker!",
+        "kilde": "mykid",
+        "start": "15:00",
+        "slutt": "17:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "familie",
+        "tittel": "Beths Peeling",
         "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "start": "15:30",
+        "slutt": "16:30",
         "type": "spesiell"
       }
     ],
-    "2026-10-20": [
+    "2026-10-13": [
+      {
+        "barn": "sebastian",
+        "tittel": "Frokost+matpakkelaging+pakking av sin egen tursekk",
+        "kilde": "mykid",
+        "start": "07:30",
+        "slutt": "08:15",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Frokost",
+        "kilde": "mykid",
+        "start": "07:30",
+        "slutt": "08:15",
+        "type": "mat"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Lek i små grupper før morgensamling",
+        "kilde": "mykid",
+        "start": "08:15",
+        "slutt": "08:45",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Vi gjør oss klare for dagen!",
+        "kilde": "mykid",
+        "start": "08:15",
+        "slutt": "09:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Morgensamling - Dorunde - Påkledning",
+        "kilde": "mykid",
+        "start": "08:45",
+        "slutt": "09:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Felles tur",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "13:30",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Felles oppdagelsestur!",
+        "kilde": "mykid",
+        "start": "09:30",
+        "slutt": "11:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Hvilestund",
+        "kilde": "mykid",
+        "start": "12:00",
+        "slutt": "14:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Måltid",
+        "kilde": "mykid",
+        "start": "14:00",
+        "slutt": "14:45",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Ettermiddagsmat",
+        "kilde": "mykid",
+        "start": "14:00",
+        "slutt": "15:00",
+        "type": "mat"
+      },
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -584,6 +509,30 @@
         "start": "14:45",
         "slutt": "15:30",
         "type": "spesiell"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Ettermiddag i barnehagen",
+        "kilde": "mykid",
+        "start": "14:45",
+        "slutt": "17:00",
+        "type": "rutine"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Sofia hjem til Ingrid før fotballtrening",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "18:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Vi leker!",
+        "kilde": "mykid",
+        "start": "15:00",
+        "slutt": "17:00",
+        "type": "rutine"
       },
       {
         "barn": "sofia",
@@ -595,14 +544,21 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-24": [
+    "2026-10-21": [
+      {
+        "barn": "familie",
+        "tittel": "Frist innlevering bøker 24. okt - Deichman Majorstua",
+        "kilde": "kalender",
+        "start": "12:30",
+        "slutt": "13:30",
+        "type": "spesiell"
+      },
       {
         "barn": "sofia",
-        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "tittel": "Utviklingssamtale Sofia",
         "kilde": "kalender",
-        "sted": "OBOS-hallen (Grei-hallen)",
-        "start": "09:30",
-        "slutt": "14:00",
+        "start": "15:30",
+        "slutt": "16:00",
         "type": "spesiell"
       }
     ],
@@ -614,17 +570,6 @@
         "sted": "Thorleif Haugs vei 105",
         "start": "17:00",
         "slutt": "20:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-03": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
@@ -751,28 +696,6 @@
         "kilde": "kalender",
         "start": "17:30",
         "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-17": [
-      {
-        "barn": "sofia",
-        "tittel": "Generalprøve konsert 🎵",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole Måltrostveien 106",
-        "start": "10:30",
-        "slutt": "14:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-31": [
-      {
-        "barn": "sofia",
-        "tittel": "Halloweenfeiring 2C🎃",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "16:30",
-        "slutt": "20:00",
         "type": "spesiell"
       }
     ],
@@ -916,28 +839,58 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-01": [
+    "2026-10-24": [
       {
         "barn": "sofia",
-        "tittel": "Sang på Lysebu 🎄🎶",
+        "tittel": "3x3 Playmakers-turnering ⚽️",
         "kilde": "kalender",
-        "sted": "Lysebu",
-        "start": "11:55",
+        "sted": "OBOS-hallen (Grei-hallen)",
+        "start": "09:30",
         "slutt": "14:00",
         "type": "spesiell"
       }
     ],
-    "2026-11-12": [
+    "2026-10-31": [
       {
         "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
+        "tittel": "Halloweenfeiring 2C🎃",
         "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "sted": "Grindbakken skole",
+        "start": "16:30",
+        "slutt": "20:00",
         "type": "spesiell"
       }
     ],
-    "2026-11-05": [
+    "2026-10-20": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-22": [
+      {
+        "barn": "sofia",
+        "tittel": "Vennegruppe hos Sebastian 🎃🍁",
+        "kilde": "kalender",
+        "sted": "Orreveien 15C",
+        "start": "15:30",
+        "slutt": "18:00",
+        "type": "spesiell"
+      },
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -965,6 +918,59 @@
         "kilde": "kalender",
         "start": "17:30",
         "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-05": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-12": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-01": [
+      {
+        "barn": "sofia",
+        "tittel": "Sang på Lysebu 🎄🎶",
+        "kilde": "kalender",
+        "sted": "Lysebu",
+        "start": "11:55",
+        "slutt": "14:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-03": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-17": [
+      {
+        "barn": "sofia",
+        "tittel": "Generalprøve konsert 🎵",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole Måltrostveien 106",
+        "start": "10:30",
+        "slutt": "14:00",
         "type": "spesiell"
       }
     ],
