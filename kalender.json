@@ -1,53 +1,6 @@
 {
-  "generert": "2026-10-06T00:57:35.590Z",
+  "generert": "2026-10-06T11:05:30.558Z",
   "dager": {
-    "2026-10-23": [
-      {
-        "barn": "familie",
-        "tittel": "Høstfest bhg",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "17:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-18": [
-      {
-        "barn": "sofia",
-        "tittel": "TRY Skogsløp – oppgaver til dugnad",
-        "kilde": "kalender",
-        "start": "09:30",
-        "slutt": "10:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "TRY Skogsløp 2026",
-        "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "TRY Skogsløp 2026",
-        "kilde": "kalender",
-        "sted": "Øvresetertjern",
-        "start": "10:00",
-        "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Konsert sammen med skolekorpset 🎶✨",
-        "kilde": "kalender",
-        "sted": "Voldsløkka kulturstasjon",
-        "start": "16:00",
-        "slutt": "17:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-10-13": [
       {
         "barn": "sebastian",
@@ -172,7 +125,54 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-16": [
+    "2026-10-18": [
+      {
+        "barn": "sofia",
+        "tittel": "TRY Skogsløp – oppgaver til dugnad",
+        "kilde": "kalender",
+        "start": "09:30",
+        "slutt": "10:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "familie",
+        "tittel": "TRY Skogsløp 2026",
+        "kilde": "kalender",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "TRY Skogsløp 2026",
+        "kilde": "kalender",
+        "sted": "Øvresetertjern",
+        "start": "10:00",
+        "slutt": "11:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Konsert sammen med skolekorpset 🎶✨",
+        "kilde": "kalender",
+        "sted": "Voldsløkka kulturstasjon",
+        "start": "16:00",
+        "slutt": "17:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-23": [
+      {
+        "barn": "familie",
+        "tittel": "Høstfest bhg",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "17:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-09": [
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging+pakking av sin egen tursekk",
@@ -215,19 +215,35 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur",
+        "tittel": "Felles tur: Karpedammen/Holmenkollen",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "rutine"
+        "type": "spesiell"
       },
       {
         "barn": "ellie",
-        "tittel": "Felles oppdagelsestur!",
+        "tittel": "Lek ute!",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "11:00",
-        "type": "rutine"
+        "type": "spesiell"
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Varmlunsj",
+        "kilde": "mykid",
+        "start": "11:00",
+        "slutt": "12:00",
+        "type": "mat"
+      },
+      {
+        "barn": "ellie",
+        "tittel": "Varmlunsj",
+        "kilde": "mykid",
+        "start": "11:00",
+        "slutt": "12:00",
+        "type": "mat"
       },
       {
         "barn": "ellie",
@@ -262,14 +278,6 @@
         "type": "rutine"
       },
       {
-        "barn": "sofia",
-        "tittel": "Bursdag for Ingrid",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "17:00",
-        "type": "spesiell"
-      },
-      {
         "barn": "ellie",
         "tittel": "Vi leker!",
         "kilde": "mykid",
@@ -279,10 +287,10 @@
       },
       {
         "barn": "familie",
-        "tittel": "Jørgen ut med jobben",
+        "tittel": "Beths Peeling",
         "kilde": "kalender",
-        "start": "17:00",
-        "slutt": "23:00",
+        "start": "15:30",
+        "slutt": "16:30",
         "type": "spesiell"
       }
     ],
@@ -434,7 +442,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-09": [
+    "2026-10-16": [
       {
         "barn": "sebastian",
         "tittel": "Frokost+matpakkelaging+pakking av sin egen tursekk",
@@ -477,35 +485,19 @@
       },
       {
         "barn": "sebastian",
-        "tittel": "Felles tur: Karpedammen/Holmenkollen",
+        "tittel": "Felles tur",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "13:30",
-        "type": "spesiell"
+        "type": "rutine"
       },
       {
         "barn": "ellie",
-        "tittel": "Lek ute!",
+        "tittel": "Felles oppdagelsestur!",
         "kilde": "mykid",
         "start": "09:30",
         "slutt": "11:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Varmlunsj",
-        "kilde": "mykid",
-        "start": "11:00",
-        "slutt": "12:00",
-        "type": "mat"
-      },
-      {
-        "barn": "ellie",
-        "tittel": "Varmlunsj",
-        "kilde": "mykid",
-        "start": "11:00",
-        "slutt": "12:00",
-        "type": "mat"
+        "type": "rutine"
       },
       {
         "barn": "ellie",
@@ -540,6 +532,14 @@
         "type": "rutine"
       },
       {
+        "barn": "sofia",
+        "tittel": "Bursdag for Ingrid",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "17:00",
+        "type": "spesiell"
+      },
+      {
         "barn": "ellie",
         "tittel": "Vi leker!",
         "kilde": "mykid",
@@ -549,24 +549,23 @@
       },
       {
         "barn": "familie",
-        "tittel": "Beths Peeling",
+        "tittel": "Jørgen ut med jobben",
         "kilde": "kalender",
-        "start": "15:30",
-        "slutt": "16:30",
+        "start": "17:00",
+        "slutt": "23:00",
         "type": "spesiell"
       }
     ],
-    "2026-11-05": [
+    "2026-10-22": [
       {
         "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
+        "tittel": "Vennegruppe hos Sebastian 🎃🍁",
         "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "sted": "Orreveien 15C",
+        "start": "15:30",
+        "slutt": "18:00",
         "type": "spesiell"
-      }
-    ],
-    "2026-10-29": [
+      },
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -596,18 +595,29 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-17": [
+    "2026-10-24": [
       {
         "barn": "sofia",
-        "tittel": "Generalprøve konsert 🎵",
+        "tittel": "3x3 Playmakers-turnering ⚽️",
         "kilde": "kalender",
-        "sted": "Grindbakken skole Måltrostveien 106",
-        "start": "10:30",
+        "sted": "OBOS-hallen (Grei-hallen)",
+        "start": "09:30",
         "slutt": "14:00",
         "type": "spesiell"
       }
     ],
-    "2026-11-10": [
+    "2026-10-10": [
+      {
+        "barn": "sofia",
+        "tittel": "Alba 7 års bursdagsfeiring🥳",
+        "kilde": "kalender",
+        "sted": "Thorleif Haugs vei 105",
+        "start": "17:00",
+        "slutt": "20:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-03": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -615,6 +625,26 @@
         "sted": "Musikkrommet",
         "start": "14:45",
         "slutt": "15:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-27": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "J2019 Fotballtrening ⚽️",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "17:55",
+        "slutt": "19:00",
         "type": "spesiell"
       }
     ],
@@ -721,6 +751,28 @@
         "kilde": "kalender",
         "start": "17:30",
         "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-17": [
+      {
+        "barn": "sofia",
+        "tittel": "Generalprøve konsert 🎵",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole Måltrostveien 106",
+        "start": "10:30",
+        "slutt": "14:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-31": [
+      {
+        "barn": "sofia",
+        "tittel": "Halloweenfeiring 2C🎃",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "16:30",
+        "slutt": "20:00",
         "type": "spesiell"
       }
     ],
@@ -864,6 +916,17 @@
         "type": "spesiell"
       }
     ],
+    "2026-11-01": [
+      {
+        "barn": "sofia",
+        "tittel": "Sang på Lysebu 🎄🎶",
+        "kilde": "kalender",
+        "sted": "Lysebu",
+        "start": "11:55",
+        "slutt": "14:00",
+        "type": "spesiell"
+      }
+    ],
     "2026-11-12": [
       {
         "barn": "sofia",
@@ -874,58 +937,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-03": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-27": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "J2019 Fotballtrening ⚽️",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "17:55",
-        "slutt": "19:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-10": [
-      {
-        "barn": "sofia",
-        "tittel": "Alba 7 års bursdagsfeiring🥳",
-        "kilde": "kalender",
-        "sted": "Thorleif Haugs vei 105",
-        "start": "17:00",
-        "slutt": "20:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-22": [
-      {
-        "barn": "sofia",
-        "tittel": "Vennegruppe hos Sebastian 🎃🍁",
-        "kilde": "kalender",
-        "sted": "Orreveien 15C",
-        "start": "15:30",
-        "slutt": "18:00",
-        "type": "spesiell"
-      },
+    "2026-11-05": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -935,25 +947,24 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-24": [
+    "2026-11-10": [
       {
         "barn": "sofia",
-        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "tittel": "Korøvelse for 2. - 3. trinn",
         "kilde": "kalender",
-        "sted": "OBOS-hallen (Grei-hallen)",
-        "start": "09:30",
-        "slutt": "14:00",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
-    "2026-11-01": [
+    "2026-10-29": [
       {
         "barn": "sofia",
-        "tittel": "Sang på Lysebu 🎄🎶",
+        "tittel": "TURN 1.-2. klasse",
         "kilde": "kalender",
-        "sted": "Lysebu",
-        "start": "11:55",
-        "slutt": "14:00",
+        "start": "17:30",
+        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
