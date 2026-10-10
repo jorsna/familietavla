@@ -19,5 +19,31 @@
     ],
 
     "tema": "Periode 2: Vi er nysgjerrige · Tverrfaglig: bærekraftig utvikling · Sosialt: ansvar"
+  },
+
+  "42": {
+    "uken": [
+      { "id": "u42-lesing-egen-bok", "tekst": "Les i egen bok minst 15 minutter hver dag" }
+    ],
+
+    "2": [
+      { "id": "u42-norsk-salto-s56-57", "tekst": "Norsk: les s. 56 og 57 i Salto lesebok. Svar muntlig på spørsmålene nederst på s. 57" }
+    ],
+
+    "4": [
+      { "id": "u42-matte-lekseark", "tekst": "Matte: løs oppgavene på leksearket. Bonuslekse: oppgaver fra passende nivå på baksiden" }
+    ],
+
+    "info": [
+      "Utviklingssamtalene starter denne uken. Tenk gjennom på forhånd hva dere vil dele",
+      "Sofia har utviklingssamtale onsdag 21. oktober kl. 15:30 — utenfor inngangen til 1. trinn. Sofia skal være med",
+      "Engelsk denne uken: «fruit»",
+      "Kunst og håndverk: materialer fra naturen",
+      "Salto lesebok kommer hjem mandag og skal tilbake tirsdag",
+      "Ingen bamser, leker eller fotballkort på skolen",
+      "Sosialt mål: jeg kan vente på tur"
+    ],
+
+    "tema": "Periode 2: Vi er nysgjerrige · Tverrfaglig: bærekraftig utvikling · Sosialt: ansvar"
   }
 }
