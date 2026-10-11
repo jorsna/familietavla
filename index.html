@@ -131,9 +131,6 @@ const CONFIG = {
   vaerFra: 8,
   vaerTil: 16,
 
-  // Når middagen vises i familiekolonnen
-  middagTid: ['16:45', '17:45'],
-
   /* Når leksene vises i Sofias kolonne. Lekser har ikke noe eget
      klokkeslett — dette er når dere pleier å gjøre dem, ikke en
      påstand om når de må gjøres. */
@@ -781,10 +778,7 @@ body.fullskjerm .lekseside .ss-topp { padding-left: 112px; }
   text-transform: uppercase; color: var(--tekst-dus); margin-top: 1px;
 }
 .ue.stengt { border-left-color: var(--naa); color: var(--naa-tekst); }
-.ue.middag { border-left-color: var(--mat); color: var(--mat-tekst); }
 .ue.lekse { border-left-style: dashed; font-weight: 500; }
-
-.uke-rad-middag .uke-navn { color: var(--mat); }
 
 /* ── Beskjed om ufylte ukeplaner ── */
 
@@ -1408,7 +1402,6 @@ const isoDag = d => d.getDay() === 0 ? 7 : d.getDay();
 let kalenderFil = null;
 let paaminnelserFil = null;
 let aksFil = null;
-let middagFil = null;
 let lekseFil = null;
 let stengtFil = null;
 let manueltFil = null;
@@ -1434,7 +1427,6 @@ async function hentKalenderfil() {
   }
 
   aksFil          = await hentValgfri('aks.json');
-  middagFil       = await hentValgfri('middager.json');
   lekseFil        = await hentValgfri('lekser.json');
   stengtFil       = await hentValgfri('stengt.json');
   manueltFil      = await hentValgfri('manuelt.json');
@@ -1516,20 +1508,6 @@ function byggDag(offset = dagOffset) {
     const tekst = 'Gymtøy og gymsko';
     if (!husk.some(h => h.tekst === tekst)) husk.unshift({ barn: p.barn, tekst });
   });
-
-  // Middagen ligger i familiekolonnen
-  const middag = middagFil?.[String(uke)]?.[String(isoDag(dato))];
-  if (middag?.rett) {
-    poster.push({
-      barn: 'familie',
-      tittel: 'Middag: ' + middag.rett,
-      sted: middag.tid || '',
-      start: CONFIG.middagTid[0],
-      slutt: CONFIG.middagTid[1],
-      type: 'mat',
-      kilde: 'middag'
-    });
-  }
 
   /* Lekser hører ikke til et klokkeslett. Skolen gir dem for uken,
      med eventuell frist. Derfor står de i kolonneoverskriften og på
@@ -2047,7 +2025,6 @@ let ukeOffset = 0;
 
 function verdtAaVise(p) {
   if (p.type === 'rutine') return false;
-  if (p.kilde === 'middag') return false;          // egen rad
   if (p.type === 'mat') return false;              // måltider i barnehagen
   if (p.type === 'spesiell') return true;
   return p.kilde === 'fast' && p.barn === 'sofia' && p.start >= '13:30'; // AKS
@@ -2064,14 +2041,9 @@ function manglerForUke(start) {
       .some(x => (typeof x === 'string' ? x.trim() : x)));
   };
 
-  const middagUke = middagFil?.[String(uke)];
-  const harMiddag = middagUke && [1,2,3,4,5,6,7]
-    .some(d => middagUke[String(d)]?.rett);
-
   const savnet = [];
   if (!harNoe(aksFil)) savnet.push('AKS-plan');
   if (!harNoe(lekseFil)) savnet.push('lekser');
-  if (!harMiddag) savnet.push('middager');
   return savnet;
 }
 
@@ -2130,18 +2102,6 @@ function tegnUke() {
     html += `<div class="uke-celle">${
       l.map(([x, merke]) =>
         `<div class="ue lekse" style="--f:${sofiafarge}">${x}<small>${merke}</small></div>`).join('')
-    }</div>`;
-  });
-
-  // Middagsraden
-  html += `<div class="uke-navn uke-rad-middag" style="--f:var(--mat)">Middag</div>`;
-  dager.forEach(dag => {
-    const uke = ukenummer(dag.dato);
-    const m = middagFil?.[String(uke)]?.[String(isoDag(dag.dato))];
-    html += `<div class="uke-celle">${
-      m?.rett
-        ? `<div class="ue middag">${m.rett}${m.tid ? `<small>${m.tid}</small>` : ''}${m.notat ? `<small>${m.notat}</small>` : ''}</div>`
-        : ''
     }</div>`;
   });
 
