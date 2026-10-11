@@ -52,14 +52,15 @@ kalender.json   roboten skriver        alle hendelser, 6 uker fram
 stengt.json     roboten skriver        planleggingsdager, 180 dager fram
 aks.json        lastes opp manuelt     AKS-plan per uke
 lekser.json     lastes opp manuelt     lekser, info og tema per uke
-manuelt.json    lastes opp manuelt     hendelser og huskepunkter med dato
-middager.json   MANGLER                middagsplan per uke
+manuelt.json    Claude committer       hendelser og huskepunkter med dato
 ```
 
-`middager.json` ble slettet av roboten den gangen publiseringssteget
-force-pushet, og er aldri lagt tilbake. `index.html` leser den som valgfri, så
-tavla krasjer ikke — men ukesvisningen melder «middager» som savnet. Lag den
-aldri med oppdiktede middager; den må komme fra Jørgen.
+Middagsplanen er **fjernet** med vilje. Jørgen fikk den aldri til å fungere —
+det er for vanskelig å planlegge en uke når aktivitetene varierer — og tavla
+meldte «middager» som savnet hver uke uten at det var noe å gjøre med. Bygg
+den ikke opp igjen uten at han ber om det. `CONFIG.middagFra` og
+`naar: 'middag'` på oppgaven «Rydde tallerken» hører til stjernesystemet og er
+fortsatt i bruk.
 
 En commit til `main` utløser Pages-publisering på ett til tre minutter. Derfor
 ligger dataene for seg: robotkjøringene koster ingenting og står ikke i kø
@@ -67,10 +68,10 @@ foran Jørgens egne endringer.
 
 Publiseringssteget i workflowen kopierer **bare** `kalender.json`,
 `stengt.json` og `paaminnelser.json`. Alt annet på `data`-branchen blir
-stående. Ikke gjør den force-pushende igjen — det slettet `manuelt.json` og
-`middager.json` én gang.
+stående. Ikke gjør den force-pushende igjen — det slettet to manuelt
+opplastede filer én gang.
 
-`main/data/*.json` er døde filer fra før branchdelingen. Tavla leser dem ikke.
+`main/data/` fantes før branchdelingen og er fjernet. Opprett den ikke på nytt.
 
 ## Dataformatene
 

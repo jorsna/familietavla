@@ -27,7 +27,6 @@ stengt.json        skrives av roboten — planleggingsdager, 180 dager fram
 aks.json           AKS-plan per uke
 lekser.json        lekser og ukeplan per uke
 manuelt.json       hendelser og huskepunkter med dato
-middager.json      middagsplan per uke — finnes ikke nå, se nedenfor
 ```
 
 Roboten rører bare sine egne to filer. Alt annet på `data` blir stående.
@@ -38,18 +37,20 @@ dine egne endringer. Nå koster datakjøringer ingenting.
 
 ---
 
-## Hvor ting lastes opp
+## Hvem endrer hva
+
+Claude har skrivetilgang til repoet og committer selv. Du laster ikke opp
+filer for hånd lenger — send ukeplanen, så går den rett inn på riktig branch.
 
 | Hva | Hvor | Publisering |
 |---|---|---|
 | `index.html` | `main`, rota | ja, 1–3 min |
 | `hent-kalender.mjs` | `main`, `scripts/` | ja |
 | `kalender.yml` | `main`, `.github/workflows/` | ja |
-| AKS, lekser, middager, manuelt | **`data`-branchen**, rota | nei, ute straks |
+| AKS, lekser, manuelt | `data`-branchen, rota | nei, ute straks |
 
-Den vanligste feilen er å blande `data`-**mappen** på `main` med
-`data`-**branchen**. Sjekk alltid branchvelgeren over fillisten.
-Adressen skal si `/tree/data`, ikke `/tree/main/data`.
+`main/data/` fantes før branchdelingen og er fjernet. Blir du i tvil om hvor
+en fil hører, er regelen at kode ligger på `main` og innhold på `data`.
 
 ---
 
