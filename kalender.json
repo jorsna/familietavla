@@ -1,5 +1,5 @@
 {
-  "generert": "2026-10-22T14:33:44.059Z",
+  "generert": "2026-10-22T18:47:22.916Z",
   "dager": {
     "2026-10-22": [
       {
@@ -17,6 +17,26 @@
         "kilde": "kalender",
         "start": "16:00",
         "slutt": "18:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-20": [
+      {
+        "barn": "familie",
+        "tittel": "Ida til Silje",
+        "kilde": "kalender",
+        "start": "17:00",
+        "slutt": "23:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-29": [
+      {
+        "barn": "sofia",
+        "tittel": "Sofia navnedag",
+        "kilde": "kalender",
+        "start": "08:00",
+        "slutt": "08:30",
         "type": "spesiell"
       }
     ],
@@ -38,27 +58,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-20": [
-      {
-        "barn": "familie",
-        "tittel": "Ida til Silje",
-        "kilde": "kalender",
-        "start": "17:00",
-        "slutt": "23:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-18": [
-      {
-        "barn": "familie",
-        "tittel": "Trenerforum - evaluering av sesongen 2026 og sosialt samvær",
-        "kilde": "kalender",
-        "sted": "Kommer",
-        "start": "19:30",
-        "slutt": "20:30",
-        "type": "spesiell"
-      }
-    ],
     "2026-10-23": [
       {
         "barn": "familie",
@@ -77,16 +76,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-29": [
-      {
-        "barn": "sofia",
-        "tittel": "Sofia navnedag",
-        "kilde": "kalender",
-        "start": "08:00",
-        "slutt": "08:30",
-        "type": "spesiell"
-      }
-    ],
     "2026-11-22": [
       {
         "barn": "familie",
@@ -95,56 +84,14 @@
         "heldags": true
       }
     ],
-    "2026-11-09": [
+    "2026-11-18": [
       {
-        "barn": "sofia",
-        "tittel": "Bursdagsfest for Emil og Henrik på Rush",
+        "barn": "familie",
+        "tittel": "Trenerforum - evaluering av sesongen 2026 og sosialt samvær",
         "kilde": "kalender",
-        "sted": "Rush trampolinepark",
-        "start": "16:15",
-        "slutt": "18:45",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-05": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-19": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-24": [
-      {
-        "barn": "sofia",
-        "tittel": "3x3 Playmakers-turnering ⚽️",
-        "kilde": "kalender",
-        "sted": "OBOS-hallen (Grei-hallen)",
-        "start": "09:30",
-        "slutt": "14:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-01": [
-      {
-        "barn": "sofia",
-        "tittel": "Sang på Lysebu 🎄🎶",
-        "kilde": "kalender",
-        "sted": "Lysebu",
-        "start": "11:55",
-        "slutt": "14:00",
+        "sted": "Kommer",
+        "start": "19:30",
+        "slutt": "20:30",
         "type": "spesiell"
       }
     ],
@@ -159,7 +106,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-29": [
+    "2026-11-26": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -169,7 +116,17 @@
         "type": "spesiell"
       }
     ],
-    "2026-12-01": [
+    "2026-11-12": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-10": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -200,27 +157,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-12": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-26": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-24": [
+    "2026-11-17": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -228,6 +165,16 @@
         "sted": "Musikkrommet",
         "start": "14:45",
         "slutt": "15:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-29": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
@@ -242,7 +189,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-17": [
+    "2026-11-24": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -253,7 +200,60 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-10": [
+    "2026-11-09": [
+      {
+        "barn": "sofia",
+        "tittel": "Bursdagsfest for Emil og Henrik på Rush",
+        "kilde": "kalender",
+        "sted": "Rush trampolinepark",
+        "start": "16:15",
+        "slutt": "18:45",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-01": [
+      {
+        "barn": "sofia",
+        "tittel": "Sang på Lysebu 🎄🎶",
+        "kilde": "kalender",
+        "sted": "Lysebu",
+        "start": "11:55",
+        "slutt": "14:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-24": [
+      {
+        "barn": "sofia",
+        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "kilde": "kalender",
+        "sted": "OBOS-hallen (Grei-hallen)",
+        "start": "09:30",
+        "slutt": "14:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-05": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-19": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-01": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
