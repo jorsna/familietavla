@@ -1,22 +1,12 @@
 {
-  "generert": "2026-10-23T14:17:33.200Z",
+  "generert": "2026-10-23T18:29:44.831Z",
   "dager": {
-    "2026-10-28": [
+    "2026-11-22": [
       {
         "barn": "familie",
-        "tittel": "Utviklingssamtale Seb",
+        "tittel": "Mie bursdagsfeiring",
         "kilde": "kalender",
-        "start": "09:30",
-        "slutt": "10:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "familie",
-        "tittel": "Jørgen - Stor Oslo Mobility Kveld",
-        "kilde": "kalender",
-        "start": "16:00",
-        "slutt": "22:00",
-        "type": "spesiell"
+        "heldags": true
       }
     ],
     "2026-11-20": [
@@ -26,27 +16,6 @@
         "kilde": "kalender",
         "start": "17:00",
         "slutt": "23:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-29": [
-      {
-        "barn": "sofia",
-        "tittel": "Sofia navnedag",
-        "kilde": "kalender",
-        "start": "08:00",
-        "slutt": "08:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-18": [
-      {
-        "barn": "familie",
-        "tittel": "Trenerforum - evaluering av sesongen 2026 og sosialt samvær",
-        "kilde": "kalender",
-        "sted": "Kommer",
-        "start": "19:30",
-        "slutt": "20:30",
         "type": "spesiell"
       }
     ],
@@ -68,37 +37,46 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-22": [
+    "2026-11-29": [
+      {
+        "barn": "sofia",
+        "tittel": "Sofia navnedag",
+        "kilde": "kalender",
+        "start": "08:00",
+        "slutt": "08:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-28": [
       {
         "barn": "familie",
-        "tittel": "Mie bursdagsfeiring",
+        "tittel": "Utviklingssamtale Seb",
         "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-11-10": [
+        "start": "09:30",
+        "slutt": "10:00",
+        "type": "spesiell"
+      },
       {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
+        "barn": "familie",
+        "tittel": "Jørgen - Stor Oslo Mobility Kveld",
         "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
+        "start": "16:00",
+        "slutt": "22:00",
         "type": "spesiell"
       }
     ],
-    "2026-12-01": [
+    "2026-11-18": [
       {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
+        "barn": "familie",
+        "tittel": "Trenerforum - evaluering av sesongen 2026 og sosialt samvær",
         "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
+        "sted": "Kommer",
+        "start": "19:30",
+        "slutt": "20:30",
         "type": "spesiell"
       }
     ],
-    "2026-11-03": [
+    "2026-11-24": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
@@ -119,7 +97,39 @@
         "type": "spesiell"
       }
     ],
+    "2026-11-09": [
+      {
+        "barn": "sofia",
+        "tittel": "Bursdagsfest for Emil og Henrik på Rush",
+        "kilde": "kalender",
+        "sted": "Rush trampolinepark",
+        "start": "16:15",
+        "slutt": "18:45",
+        "type": "spesiell"
+      }
+    ],
     "2026-12-03": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-24": [
+      {
+        "barn": "sofia",
+        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "kilde": "kalender",
+        "sted": "OBOS-hallen (Grei-hallen)",
+        "start": "09:10",
+        "slutt": "13:40",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-29": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -149,24 +159,25 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-09": [
+    "2026-12-01": [
       {
         "barn": "sofia",
-        "tittel": "Bursdagsfest for Emil og Henrik på Rush",
+        "tittel": "Korøvelse for 2. - 3. trinn",
         "kilde": "kalender",
-        "sted": "Rush trampolinepark",
-        "start": "16:15",
-        "slutt": "18:45",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
-    "2026-11-12": [
+    "2026-10-31": [
       {
         "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
+        "tittel": "Halloweenfeiring 2C🎃",
         "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "sted": "Grindbakken skole",
+        "start": "16:30",
+        "slutt": "20:00",
         "type": "spesiell"
       }
     ],
@@ -181,7 +192,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-26": [
+    "2026-11-19": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -191,13 +202,25 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-29": [
+    "2026-11-10": [
       {
         "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
+        "tittel": "Korøvelse for 2. - 3. trinn",
         "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-03": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
@@ -212,18 +235,7 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-24": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-19": [
+    "2026-11-12": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -233,25 +245,13 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-24": [
+    "2026-11-26": [
       {
         "barn": "sofia",
-        "tittel": "3x3 Playmakers-turnering ⚽️",
+        "tittel": "TURN 1.-2. klasse",
         "kilde": "kalender",
-        "sted": "OBOS-hallen (Grei-hallen)",
-        "start": "09:10",
-        "slutt": "13:40",
-        "type": "spesiell"
-      }
-    ],
-    "2026-10-31": [
-      {
-        "barn": "sofia",
-        "tittel": "Halloweenfeiring 2C🎃",
-        "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "16:30",
-        "slutt": "20:00",
+        "start": "17:30",
+        "slutt": "18:30",
         "type": "spesiell"
       }
     ]
