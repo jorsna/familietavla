@@ -1,12 +1,51 @@
 {
-  "generert": "2026-10-25T17:15:34.109Z",
+  "generert": "2026-10-25T19:45:19.953Z",
   "dager": {
+    "2026-11-29": [
+      {
+        "barn": "sofia",
+        "tittel": "Sofia navnedag",
+        "kilde": "kalender",
+        "start": "08:00",
+        "slutt": "08:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-12-04": [
       {
         "barn": "familie",
         "tittel": "Julebord Verket",
         "kilde": "kalender",
         "heldags": true
+      }
+    ],
+    "2026-11-18": [
+      {
+        "barn": "familie",
+        "tittel": "Trenerforum - evaluering av sesongen 2026 og sosialt samvær",
+        "kilde": "kalender",
+        "sted": "Kommer",
+        "start": "19:30",
+        "slutt": "20:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-22": [
+      {
+        "barn": "familie",
+        "tittel": "Mie bursdagsfeiring",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-10-26": [
+      {
+        "barn": "sofia",
+        "tittel": "Sofia med Haakon hjem",
+        "kilde": "kalender",
+        "start": "16:00",
+        "slutt": "18:00",
+        "type": "spesiell"
       }
     ],
     "2026-10-28": [
@@ -27,45 +66,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-26": [
-      {
-        "barn": "sofia",
-        "tittel": "Sofia med Haakon hjem",
-        "kilde": "kalender",
-        "start": "16:00",
-        "slutt": "18:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-18": [
-      {
-        "barn": "familie",
-        "tittel": "Trenerforum - evaluering av sesongen 2026 og sosialt samvær",
-        "kilde": "kalender",
-        "sted": "Kommer",
-        "start": "19:30",
-        "slutt": "20:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-29": [
-      {
-        "barn": "sofia",
-        "tittel": "Sofia navnedag",
-        "kilde": "kalender",
-        "start": "08:00",
-        "slutt": "08:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-22": [
-      {
-        "barn": "familie",
-        "tittel": "Mie bursdagsfeiring",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
     "2026-11-20": [
       {
         "barn": "familie",
@@ -73,69 +73,6 @@
         "kilde": "kalender",
         "start": "17:00",
         "slutt": "23:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-03": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-05": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-01": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-12": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-09": [
-      {
-        "barn": "sofia",
-        "tittel": "Bursdagsfest for Emil og Henrik på Rush",
-        "kilde": "kalender",
-        "sted": "Rush trampolinepark",
-        "start": "16:15",
-        "slutt": "18:45",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-26": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
@@ -159,16 +96,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-19": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
     "2026-11-24": [
       {
         "barn": "sofia",
@@ -180,18 +107,18 @@
         "type": "spesiell"
       }
     ],
-    "2026-10-31": [
+    "2026-12-01": [
       {
         "barn": "sofia",
-        "tittel": "Halloweenfeiring 2C🎃",
+        "tittel": "Korøvelse for 2. - 3. trinn",
         "kilde": "kalender",
-        "sted": "Grindbakken skole",
-        "start": "16:30",
-        "slutt": "18:30",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
-    "2026-12-03": [
+    "2026-11-19": [
       {
         "barn": "sofia",
         "tittel": "TURN 1.-2. klasse",
@@ -212,6 +139,58 @@
         "type": "spesiell"
       }
     ],
+    "2026-11-05": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-10": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-03": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-10-31": [
+      {
+        "barn": "sofia",
+        "tittel": "Halloweenfeiring 2C🎃",
+        "kilde": "kalender",
+        "sted": "Grindbakken skole",
+        "start": "16:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-26": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-11-01": [
       {
         "barn": "sofia",
@@ -220,6 +199,16 @@
         "sted": "Lysebu",
         "start": "11:55",
         "slutt": "14:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-12": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
         "type": "spesiell"
       }
     ],
@@ -233,7 +222,18 @@
         "type": "spesiell"
       }
     ],
-    "2026-11-10": [
+    "2026-11-09": [
+      {
+        "barn": "sofia",
+        "tittel": "Bursdagsfest for Emil og Henrik på Rush",
+        "kilde": "kalender",
+        "sted": "Rush trampolinepark",
+        "start": "16:15",
+        "slutt": "18:45",
+        "type": "spesiell"
+      }
+    ],
+    "2026-11-03": [
       {
         "barn": "sofia",
         "tittel": "Korøvelse for 2. - 3. trinn",
