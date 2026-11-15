@@ -1,6 +1,30 @@
 {
-  "generert": "2026-11-15T01:18:12.267Z",
+  "generert": "2026-11-15T11:48:37.488Z",
   "dager": {
+    "2026-12-06": [
+      {
+        "barn": "familie",
+        "tittel": "Njård Turn Juleoppvisning",
+        "kilde": "kalender",
+        "start": "10:00",
+        "slutt": "12:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-04": [
+      {
+        "barn": "familie",
+        "tittel": "Julebord Verket",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "TERMOSFREDAG",
+        "kilde": "mykid",
+        "heldags": true
+      }
+    ],
     "2026-12-08": [
       {
         "barn": "sofia",
@@ -20,76 +44,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-12-04": [
-      {
-        "barn": "familie",
-        "tittel": "Julebord Verket",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "TERMOSFREDAG",
-        "kilde": "mykid",
-        "heldags": true
-      }
-    ],
-    "2026-12-05": [
-      {
-        "barn": "familie",
-        "tittel": "Skal vi Danse",
-        "kilde": "kalender",
-        "start": "15:00",
-        "slutt": "23:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-11-22": [
-      {
-        "barn": "familie",
-        "tittel": "Mie bursdagsfeiring",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "Bursdag hos Julie",
-        "kilde": "kalender",
-        "sted": "Blåbærsvingen 42",
-        "start": "13:00",
-        "slutt": "15:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-17": [
-      {
-        "barn": "sofia",
-        "tittel": "Sofia Bursdag!",
-        "kilde": "kalender",
-        "start": "07:00",
-        "slutt": "08:00",
-        "type": "spesiell"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Opptreden på julesamling i Voksen kirke✨",
-        "kilde": "kalender",
-        "sted": "Voksen menighet",
-        "start": "08:30",
-        "slutt": "10:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-06": [
-      {
-        "barn": "familie",
-        "tittel": "Njård Turn Juleoppvisning",
-        "kilde": "kalender",
-        "start": "10:00",
-        "slutt": "12:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-11-28": [
       {
         "barn": "sofia",
@@ -106,6 +60,16 @@
         "kilde": "kalender",
         "start": "18:00",
         "slutt": "23:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-21": [
+      {
+        "barn": "familie",
+        "tittel": "Beths",
+        "kilde": "kalender",
+        "start": "09:30",
+        "slutt": "10:00",
         "type": "spesiell"
       }
     ],
@@ -240,6 +204,33 @@
         "type": "mat"
       }
     ],
+    "2026-11-22": [
+      {
+        "barn": "familie",
+        "tittel": "Mie bursdagsfeiring",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "Bursdag hos Julie",
+        "kilde": "kalender",
+        "sted": "Blåbærsvingen 42",
+        "start": "13:00",
+        "slutt": "15:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-05": [
+      {
+        "barn": "familie",
+        "tittel": "Skal vi Danse",
+        "kilde": "kalender",
+        "start": "15:00",
+        "slutt": "23:00",
+        "type": "spesiell"
+      }
+    ],
     "2026-11-18": [
       {
         "barn": "sebastian",
@@ -369,38 +360,6 @@
         "start": "19:30",
         "slutt": "20:30",
         "type": "spesiell"
-      }
-    ],
-    "2026-11-21": [
-      {
-        "barn": "familie",
-        "tittel": "Mikkel og Julie",
-        "kilde": "kalender",
-        "heldags": true
-      }
-    ],
-    "2026-12-21": [
-      {
-        "barn": "familie",
-        "tittel": "Beths",
-        "kilde": "kalender",
-        "start": "09:30",
-        "slutt": "10:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-18": [
-      {
-        "barn": "familie",
-        "tittel": "Jørgen stå i Voksnlia",
-        "kilde": "kalender",
-        "heldags": true
-      },
-      {
-        "barn": "sebastian",
-        "tittel": "TERMOSFREDAG",
-        "kilde": "mykid",
-        "heldags": true
       }
     ],
     "2026-11-29": [
@@ -550,6 +509,98 @@
         "kilde": "kalender",
         "start": "17:00",
         "slutt": "23:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-17": [
+      {
+        "barn": "sofia",
+        "tittel": "Sofia Bursdag!",
+        "kilde": "kalender",
+        "start": "07:00",
+        "slutt": "08:00",
+        "type": "spesiell"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Opptreden på julesamling i Voksen kirke✨",
+        "kilde": "kalender",
+        "sted": "Voksen menighet",
+        "start": "08:30",
+        "slutt": "10:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-18": [
+      {
+        "barn": "familie",
+        "tittel": "Jørgen stå i Voksnlia",
+        "kilde": "kalender",
+        "heldags": true
+      },
+      {
+        "barn": "sebastian",
+        "tittel": "TERMOSFREDAG",
+        "kilde": "mykid",
+        "heldags": true
+      }
+    ],
+    "2026-11-21": [
+      {
+        "barn": "familie",
+        "tittel": "Mikkel og Julie",
+        "kilde": "kalender",
+        "heldags": true
+      }
+    ],
+    "2026-12-03": [
+      {
+        "barn": "sofia",
+        "tittel": "TURN 1.-2. klasse",
+        "kilde": "kalender",
+        "start": "17:30",
+        "slutt": "18:30",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-14": [
+      {
+        "barn": "sofia",
+        "tittel": "Bursdag for Sofia 🎈",
+        "kilde": "kalender",
+        "sted": "Blåbærsvingen 13b",
+        "start": "17:00",
+        "slutt": "19:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-02": [
+      {
+        "barn": "sebastian",
+        "tittel": "Fellessamling Storbarn - Holmenkollen ansvarlig",
+        "kilde": "mykid",
+        "start": "12:00",
+        "slutt": "12:20",
+        "type": "okt"
+      },
+      {
+        "barn": "sofia",
+        "tittel": "Vennegruppe hos Ulrik ⛸️☃️",
+        "kilde": "kalender",
+        "sted": "Måltrostveien 1c",
+        "start": "15:00",
+        "slutt": "18:00",
+        "type": "spesiell"
+      }
+    ],
+    "2026-12-15": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
@@ -807,36 +858,6 @@
         "type": "spesiell"
       }
     ],
-    "2026-12-01": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-02": [
-      {
-        "barn": "sebastian",
-        "tittel": "Fellessamling Storbarn - Holmenkollen ansvarlig",
-        "kilde": "mykid",
-        "start": "12:00",
-        "slutt": "12:20",
-        "type": "okt"
-      },
-      {
-        "barn": "sofia",
-        "tittel": "Vennegruppe hos Ulrik ⛸️☃️",
-        "kilde": "kalender",
-        "sted": "Måltrostveien 1c",
-        "start": "15:00",
-        "slutt": "18:00",
-        "type": "spesiell"
-      }
-    ],
     "2026-11-25": [
       {
         "barn": "sebastian",
@@ -968,6 +989,17 @@
         "type": "spesiell"
       }
     ],
+    "2026-12-01": [
+      {
+        "barn": "sofia",
+        "tittel": "Korøvelse for 2. - 3. trinn",
+        "kilde": "kalender",
+        "sted": "Musikkrommet",
+        "start": "14:45",
+        "slutt": "15:30",
+        "type": "spesiell"
+      }
+    ],
     "2026-11-26": [
       {
         "barn": "sebastian",
@@ -1087,38 +1119,6 @@
         "kilde": "kalender",
         "start": "17:30",
         "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-14": [
-      {
-        "barn": "sofia",
-        "tittel": "Bursdag for Sofia 🎈",
-        "kilde": "kalender",
-        "sted": "Blåbærsvingen 13b",
-        "start": "17:00",
-        "slutt": "19:00",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-03": [
-      {
-        "barn": "sofia",
-        "tittel": "TURN 1.-2. klasse",
-        "kilde": "kalender",
-        "start": "17:30",
-        "slutt": "18:30",
-        "type": "spesiell"
-      }
-    ],
-    "2026-12-15": [
-      {
-        "barn": "sofia",
-        "tittel": "Korøvelse for 2. - 3. trinn",
-        "kilde": "kalender",
-        "sted": "Musikkrommet",
-        "start": "14:45",
-        "slutt": "15:30",
         "type": "spesiell"
       }
     ],
